@@ -16,31 +16,31 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createBrowserHistory } from 'history';
-import { Router, Route, Switch, Redirect } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createBrowserHistory } from 'history'
+import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
-import 'bootstrap/dist/css/bootstrap.css';
-import './assets/scss/paper-dashboard.scss?v=1.2.0';
-import './assets/demo/demo.css';
-import 'perfect-scrollbar/css/perfect-scrollbar.css';
-import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.css'
+import './assets/scss/paper-dashboard.scss?v=1.2.0'
+import './assets/demo/demo.css'
+import 'perfect-scrollbar/css/perfect-scrollbar.css'
+import 'react-toastify/dist/ReactToastify.css'
 
-import AdminLayout from './layouts/Admin';
+import AdminLayout from './layouts/Admin'
 
-const hist = createBrowserHistory();
+const hist = createBrowserHistory()
 
 ReactDOM.render(
-	<>
-		<Router history={hist}>
-			<Switch>
-				<Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-				<Redirect to="/admin/dashboard" />
-			</Switch>
-		</Router>
-		<ToastContainer />
-	</>,
-	document.getElementById('root')
-);
+  <>
+    <Router history={hist}>
+      <Switch>
+        <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+        <Redirect to="/admin/dashboard" />
+      </Switch>
+    </Router>
+    <ToastContainer />
+  </>,
+  document.getElementById('root')
+)

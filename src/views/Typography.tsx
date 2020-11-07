@@ -16,10 +16,10 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React from 'react'
 
 // reactstrap components
-import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
+import { Card, CardHeader, CardBody, Row, Col } from 'reactstrap'
 
 class Typography extends React.Component {
   render() {
@@ -90,7 +90,7 @@ class Typography extends React.Component {
                         worth billions of dollars, because I got the answers. I
                         understand culture. I am the nucleus. I think that’s a
                         responsibility that I have, to push possibilities, to
-                        show people, this is the level that things could be at."{" "}
+                        show people, this is the level that things could be at."{' '}
                         <br />
                         <br />
                         <small>- Noaa</small>
@@ -152,8 +152,8 @@ class Typography extends React.Component {
           </Row>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default Typography;
+export default Typography

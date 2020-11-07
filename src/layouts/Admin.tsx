@@ -16,103 +16,103 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from 'react';
+import React from 'react'
 // javascript plugin used to create scrollbars on windows
-import PerfectScrollbar from 'perfect-scrollbar';
-import { Route, Switch } from 'react-router-dom';
+import PerfectScrollbar from 'perfect-scrollbar'
+import { Route, Switch } from 'react-router-dom'
 
-import DemoNavbar from '../components/Navbars/DemoNavbar';
-import Footer from '../components/Footer/Footer';
-import Sidebar from '../components/Sidebar/Sidebar';
-import FixedPlugin from '../components/FixedPlugin/FixedPlugin';
+import DemoNavbar from '../components/Navbars/DemoNavbar'
+import Footer from '../components/Footer/Footer'
+import Sidebar from '../components/Sidebar/Sidebar'
+import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 
-import routes from '../routes';
-import { History, Location } from 'history';
+import routes from '../routes'
+import { History, Location } from 'history'
 
-var ps: PerfectScrollbar;
+var ps: PerfectScrollbar
 
 type Props = {
-	history: History;
-	location: Location;
-};
-
-type State = {
-	activeColor: string;
-	backgroundColor: string;
-};
-
-class Dashboard extends React.Component<Props, State> {
-	mainPanel: React.RefObject<HTMLDivElement>;
-
-	constructor(props: Props) {
-		super(props);
-		this.state = {
-			backgroundColor: 'black',
-			activeColor: 'info',
-		};
-		this.mainPanel = React.createRef();
-	}
-	componentDidMount() {
-		if (navigator.platform.indexOf('Win') > -1 && this.mainPanel?.current) {
-			ps = new PerfectScrollbar(this.mainPanel.current);
-			document.body.classList.toggle('perfect-scrollbar-on');
-		}
-	}
-	componentWillUnmount() {
-		if (navigator.platform.indexOf('Win') > -1) {
-			ps.destroy();
-			document.body.classList.toggle('perfect-scrollbar-on');
-		}
-	}
-	componentDidUpdate(prevProps: Props) {
-		if (prevProps.history.action === 'PUSH') {
-			if (this.mainPanel?.current) {
-				this.mainPanel.current.scrollTop = 0;
-			}
-			if (document && document.scrollingElement) {
-				document.scrollingElement.scrollTop = 0;
-			}
-		}
-	}
-	handleActiveClick = (color: string) => {
-		this.setState({ activeColor: color });
-	};
-	handleBgClick = (color: string) => {
-		this.setState({ backgroundColor: color });
-	};
-	render() {
-		return (
-			<div className="wrapper">
-				<Sidebar
-					{...this.props}
-					routes={routes}
-					bgColor={this.state.backgroundColor}
-					activeColor={this.state.activeColor}
-				/>
-				<div className="main-panel" ref={this.mainPanel}>
-					<DemoNavbar {...this.props} />
-					<Switch>
-						{routes.map((prop, key) => {
-							return (
-								<Route
-									path={prop.layout + prop.path}
-									component={prop.component}
-									key={key}
-								/>
-							);
-						})}
-					</Switch>
-					<Footer fluid />
-				</div>
-				<FixedPlugin
-					bgColor={this.state.backgroundColor}
-					activeColor={this.state.activeColor}
-					handleActiveClick={this.handleActiveClick}
-					handleBgClick={this.handleBgClick}
-				/>
-			</div>
-		);
-	}
+  history: History
+  location: Location
 }
 
-export default Dashboard;
+type State = {
+  activeColor: string
+  backgroundColor: string
+}
+
+class Dashboard extends React.Component<Props, State> {
+  mainPanel: React.RefObject<HTMLDivElement>
+
+  constructor(props: Props) {
+    super(props)
+    this.state = {
+      backgroundColor: 'black',
+      activeColor: 'info',
+    }
+    this.mainPanel = React.createRef()
+  }
+  componentDidMount() {
+    if (navigator.platform.indexOf('Win') > -1 && this.mainPanel?.current) {
+      ps = new PerfectScrollbar(this.mainPanel.current)
+      document.body.classList.toggle('perfect-scrollbar-on')
+    }
+  }
+  componentWillUnmount() {
+    if (navigator.platform.indexOf('Win') > -1) {
+      ps.destroy()
+      document.body.classList.toggle('perfect-scrollbar-on')
+    }
+  }
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.history.action === 'PUSH') {
+      if (this.mainPanel?.current) {
+        this.mainPanel.current.scrollTop = 0
+      }
+      if (document && document.scrollingElement) {
+        document.scrollingElement.scrollTop = 0
+      }
+    }
+  }
+  handleActiveClick = (color: string) => {
+    this.setState({ activeColor: color })
+  }
+  handleBgClick = (color: string) => {
+    this.setState({ backgroundColor: color })
+  }
+  render() {
+    return (
+      <div className="wrapper">
+        <Sidebar
+          {...this.props}
+          routes={routes}
+          bgColor={this.state.backgroundColor}
+          activeColor={this.state.activeColor}
+        />
+        <div className="main-panel" ref={this.mainPanel}>
+          <DemoNavbar {...this.props} />
+          <Switch>
+            {routes.map((prop, key) => {
+              return (
+                <Route
+                  path={prop.layout + prop.path}
+                  component={prop.component}
+                  key={key}
+                />
+              )
+            })}
+          </Switch>
+          <Footer fluid />
+        </div>
+        <FixedPlugin
+          bgColor={this.state.backgroundColor}
+          activeColor={this.state.activeColor}
+          handleActiveClick={this.handleActiveClick}
+          handleBgClick={this.handleBgClick}
+        />
+      </div>
+    )
+  }
+}
+
+export default Dashboard
