@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Button, Card, FormGroup, Form, Input, Label } from 'reactstrap'
+import { getGoogleLoginLink } from '../services/api.service'
 
 const LoginPageContainer = styled.div`
   max-width: 400px;
@@ -44,9 +45,8 @@ const Login = () => {
 
             <hr />
 
-            <Button color="secondary" block>
-              以 Google 帳號登入
-            </Button>
+            <a href={getGoogleLoginLink()}>以 Google 帳號登入</a>
+
             <hr />
 
             <Center>

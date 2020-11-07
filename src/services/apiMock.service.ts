@@ -5,7 +5,7 @@ var MockAdapter = require('axios-mock-adapter')
 const clientMock = (axios: AxiosInstance): void => {
   const mock = new MockAdapter(axios)
 
-  mock.passThrough()
+  mock.onAny().passThrough()
 }
 
 export default clientMock

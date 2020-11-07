@@ -3,19 +3,21 @@ import { User } from '../types/user.type'
 
 type SliceState = {
   isLogined: boolean
+  jwt?: string
   data?: User
 }
 const initialState: SliceState = {
   isLogined: false,
 }
 
-const userSlice = createSlice({
+const authUserSlice = createSlice({
   name: 'user',
   initialState: initialState,
   reducers: {
     login: (_, action) => ({
       isLogined: true,
-      data: action.payload,
+      jwt: action.payload.jwt,
+      data: action.payload.data,
     }),
     logout: () => ({
       isLogined: false,
@@ -23,4 +25,4 @@ const userSlice = createSlice({
   },
 })
 
-export default userSlice
+export default authUserSlice

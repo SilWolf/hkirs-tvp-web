@@ -28,6 +28,7 @@ import UserPage from './views/User'
 import UpgradeToPro from './views/Upgrade'
 
 import Login from './views/Login'
+import AfterSSOLogin from './views/AfterSSOLogin'
 
 export type RouteType = {
   path: string
@@ -44,6 +45,13 @@ var routes: RouteType[] = [
     name: 'Login',
     icon: '',
     component: Login,
+    layout: '',
+  },
+  {
+    path: '/connect/:provider/redirect',
+    name: 'AfterSSOLogin',
+    icon: '',
+    component: AfterSSOLogin,
     layout: '',
   },
   {

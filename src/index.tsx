@@ -42,7 +42,6 @@ ReactDOM.render(
       <Switch>
         <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
         <Route path="/" render={(props) => <PlainLayout {...props} />} />
-        <Redirect to="/admin/dashboard" />
       </Switch>
     </Router>
     <ToastContainer />
