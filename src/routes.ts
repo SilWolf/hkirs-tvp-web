@@ -27,16 +27,25 @@ import Maps from './views/Map'
 import UserPage from './views/User'
 import UpgradeToPro from './views/Upgrade'
 
+import Login from './views/Login'
+
 export type RouteType = {
   path: string
   name: string
   icon: string
-  component: typeof React.Component
+  component: typeof React.Component | React.FC
   layout: string
   pro?: boolean
 }
 
 var routes: RouteType[] = [
+  {
+    path: '/login',
+    name: 'Login',
+    icon: '',
+    component: Login,
+    layout: '',
+  },
   {
     path: '/dashboard',
     name: 'Dashboard',

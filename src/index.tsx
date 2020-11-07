@@ -18,6 +18,7 @@
 */
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider as ReduxProvider } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
@@ -28,19 +29,23 @@ import './assets/demo/demo.css'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import 'react-toastify/dist/ReactToastify.css'
 
+import PlainLayout from './layouts/Plain'
 import AdminLayout from './layouts/Admin'
+
+import store from './store'
 
 const hist = createBrowserHistory()
 
 ReactDOM.render(
-  <>
+  <ReduxProvider store={store}>
     <Router history={hist}>
       <Switch>
         <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+        <Route path="/" render={(props) => <PlainLayout {...props} />} />
         <Redirect to="/admin/dashboard" />
       </Switch>
     </Router>
     <ToastContainer />
-  </>,
+  </ReduxProvider>,
   document.getElementById('root')
 )

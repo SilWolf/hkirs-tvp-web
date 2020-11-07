@@ -34,7 +34,7 @@ class FixedPlugin extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      classes: 'dropdown show',
+      classes: 'dropdown',
     }
     this.handleClick = this.handleClick.bind(this)
   }
