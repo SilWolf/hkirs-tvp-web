@@ -27,11 +27,24 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import FixedPlugin from '../components/FixedPlugin/FixedPlugin';
 
 import routes from '../routes';
+import { History, Location } from 'history';
 
-var ps;
+var ps: PerfectScrollbar;
 
-class Dashboard extends React.Component {
-	constructor(props) {
+type Props = {
+	history: History;
+	location: Location;
+};
+
+type State = {
+	activeColor: string;
+	backgroundColor: string;
+};
+
+class Dashboard extends React.Component<Props, State> {
+	mainPanel: React.RefObject<HTMLDivElement>;
+
+	constructor(props: Props) {
 		super(props);
 		this.state = {
 			backgroundColor: 'black',
@@ -40,7 +53,7 @@ class Dashboard extends React.Component {
 		this.mainPanel = React.createRef();
 	}
 	componentDidMount() {
-		if (navigator.platform.indexOf('Win') > -1) {
+		if (navigator.platform.indexOf('Win') > -1 && this.mainPanel?.current) {
 			ps = new PerfectScrollbar(this.mainPanel.current);
 			document.body.classList.toggle('perfect-scrollbar-on');
 		}
@@ -51,16 +64,20 @@ class Dashboard extends React.Component {
 			document.body.classList.toggle('perfect-scrollbar-on');
 		}
 	}
-	componentDidUpdate(e) {
-		if (e.history.action === 'PUSH') {
-			this.mainPanel.current.scrollTop = 0;
-			document.scrollingElement.scrollTop = 0;
+	componentDidUpdate(prevProps: Props) {
+		if (prevProps.history.action === 'PUSH') {
+			if (this.mainPanel?.current) {
+				this.mainPanel.current.scrollTop = 0;
+			}
+			if (document && document.scrollingElement) {
+				document.scrollingElement.scrollTop = 0;
+			}
 		}
 	}
-	handleActiveClick = (color) => {
+	handleActiveClick = (color: string) => {
 		this.setState({ activeColor: color });
 	};
-	handleBgClick = (color) => {
+	handleBgClick = (color: string) => {
 		this.setState({ backgroundColor: color });
 	};
 	render() {

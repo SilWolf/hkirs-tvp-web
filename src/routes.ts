@@ -16,6 +16,8 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+import React from 'react';
+
 import Dashboard from './views/Dashboard';
 import Notifications from './views/Notifications';
 import Icons from './views/Icons';
@@ -25,7 +27,16 @@ import Maps from './views/Map';
 import UserPage from './views/User';
 import UpgradeToPro from './views/Upgrade';
 
-var routes = [
+export type RouteType = {
+	path: string;
+	name: string;
+	icon: string;
+	component: typeof React.Component;
+	layout: string;
+	pro?: boolean;
+};
+
+var routes: RouteType[] = [
 	{
 		path: '/dashboard',
 		name: 'Dashboard',

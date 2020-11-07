@@ -20,8 +20,18 @@ import React, { Component } from 'react';
 
 import { Button } from 'reactstrap';
 
-class FixedPlugin extends Component {
-	constructor(props) {
+type Props = {
+	bgColor: string;
+	handleBgClick: (color: string) => void;
+	activeColor: string;
+	handleActiveClick: (color: string) => void;
+};
+type State = {
+	classes: string;
+};
+
+class FixedPlugin extends Component<Props, State> {
+	constructor(props: Props) {
 		super(props);
 		this.state = {
 			classes: 'dropdown show',

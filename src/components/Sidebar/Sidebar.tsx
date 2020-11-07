@@ -23,21 +23,36 @@ import { Nav } from 'reactstrap';
 import PerfectScrollbar from 'perfect-scrollbar';
 
 import logo from '../../logo.svg';
+import { Location } from 'history';
+import { RouteType } from '../../routes';
 
-var ps;
+var ps: PerfectScrollbar;
 
-class Sidebar extends React.Component {
-	constructor(props) {
+type Props = {
+	location: Location;
+	bgColor: string;
+	activeColor: string;
+	routes: RouteType[];
+};
+
+class Sidebar extends React.Component<Props> {
+	sidebar: React.RefObject<HTMLDivElement>;
+
+	constructor(props: Props) {
 		super(props);
 		this.activeRoute.bind(this);
 		this.sidebar = React.createRef();
 	}
 	// verifies if routeName is the one active (in browser input)
-	activeRoute(routeName) {
+	activeRoute(routeName: string) {
 		return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : '';
 	}
 	componentDidMount() {
-		if (navigator.platform.indexOf('Win') > -1) {
+		if (
+			navigator.platform.indexOf('Win') > -1 &&
+			this.sidebar &&
+			this.sidebar.current
+		) {
 			ps = new PerfectScrollbar(this.sidebar.current, {
 				suppressScrollX: true,
 				suppressScrollY: false,
@@ -45,7 +60,7 @@ class Sidebar extends React.Component {
 		}
 	}
 	componentWillUnmount() {
-		if (navigator.platform.indexOf('Win') > -1) {
+		if (navigator.platform.indexOf('Win') > -1 && ps) {
 			ps.destroy();
 		}
 	}

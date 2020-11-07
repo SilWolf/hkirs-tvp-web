@@ -16,6 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+import { History, Location } from 'history';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -38,8 +39,21 @@ import {
 
 import routes from '../../routes';
 
-class Header extends React.Component {
-	constructor(props) {
+type Props = {
+	location: Location;
+	history: History;
+};
+
+type State = {
+	isOpen: boolean;
+	dropdownOpen: boolean;
+	color: string;
+};
+
+class Header extends React.Component<Props, State> {
+	sidebarToggle: React.RefObject<HTMLButtonElement>;
+
+	constructor(props: Props) {
 		super(props);
 		this.state = {
 			isOpen: false,
@@ -64,7 +78,7 @@ class Header extends React.Component {
 			isOpen: !this.state.isOpen,
 		});
 	}
-	dropdownToggle(e) {
+	dropdownToggle() {
 		this.setState({
 			dropdownOpen: !this.state.dropdownOpen,
 		});
@@ -81,7 +95,9 @@ class Header extends React.Component {
 	}
 	openSidebar() {
 		document.documentElement.classList.toggle('nav-open');
-		this.sidebarToggle.current.classList.toggle('toggled');
+		if (this.sidebarToggle && this.sidebarToggle.current) {
+			this.sidebarToggle.current.classList.toggle('toggled');
+		}
 	}
 	// function that adds color dark/transparent to the navbar on resize (this is for the collapse)
 	updateColor() {
@@ -98,14 +114,16 @@ class Header extends React.Component {
 	componentDidMount() {
 		window.addEventListener('resize', this.updateColor.bind(this));
 	}
-	componentDidUpdate(e) {
+	componentDidUpdate(prevProps: Props) {
 		if (
 			window.innerWidth < 993 &&
-			e.history.location.pathname !== e.location.pathname &&
+			prevProps.history.location.pathname !== prevProps.location.pathname &&
 			document.documentElement.className.indexOf('nav-open') !== -1
 		) {
 			document.documentElement.classList.toggle('nav-open');
-			this.sidebarToggle.current.classList.toggle('toggled');
+			if (this.sidebarToggle && this.sidebarToggle.current) {
+				this.sidebarToggle.current.classList.toggle('toggled');
+			}
 		}
 	}
 	render() {
@@ -173,7 +191,7 @@ class Header extends React.Component {
 							<Dropdown
 								nav
 								isOpen={this.state.dropdownOpen}
-								toggle={(e) => this.dropdownToggle(e)}
+								toggle={this.dropdownToggle}
 							>
 								<DropdownToggle caret nav>
 									<i className="nc-icon nc-bell-55" />
