@@ -27,8 +27,10 @@ import Maps from './views/Map'
 import UserPage from './views/User'
 import UpgradeToPro from './views/Upgrade'
 
-import Login from './views/Login'
-import AfterSSOLogin from './views/AfterSSOLogin'
+import SignIn from './views/SignIn'
+import SignUp from './views/SignIn'
+import ForgetPassword from './views/SignIn'
+import AfterSSOSignIn from './views/AfterSSOSignIn'
 
 export type RouteType = {
   path: string
@@ -41,17 +43,31 @@ export type RouteType = {
 
 var routes: RouteType[] = [
   {
-    path: '/login',
-    name: 'Login',
+    path: '/sign-in',
+    name: 'SignIn',
     icon: '',
-    component: Login,
+    component: SignIn,
+    layout: '',
+  },
+  {
+    path: '/sign-up',
+    name: 'SignUp',
+    icon: '',
+    component: SignUp,
+    layout: '',
+  },
+  {
+    path: '/forget-password',
+    name: 'Forget Password',
+    icon: '',
+    component: ForgetPassword,
     layout: '',
   },
   {
     path: '/connect/:provider/redirect',
-    name: 'AfterSSOLogin',
+    name: 'AfterSSOSignIn',
     icon: '',
-    component: AfterSSOLogin,
+    component: AfterSSOSignIn,
     layout: '',
   },
   {

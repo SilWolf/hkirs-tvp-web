@@ -35,14 +35,26 @@ const apis = {
   options: <T>(url: string, config?: AxiosRequestConfig): Promise<T> => {
     return instance.options<T, T>(url, config)
   },
-  post: <T>(url: string, config?: AxiosRequestConfig): Promise<T> => {
-    return instance.post<T, T>(url, config)
+  post: <T>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> => {
+    return instance.post<T, T>(url, data, config)
   },
-  put: <T>(url: string, config?: AxiosRequestConfig): Promise<T> => {
-    return instance.put<T, T>(url, config)
+  put: <T>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> => {
+    return instance.put<T, T>(url, data, config)
   },
-  patch: <T>(url: string, config?: AxiosRequestConfig): Promise<T> => {
-    return instance.patch<T, T>(url, config)
+  patch: <T>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> => {
+    return instance.patch<T, T>(url, data, config)
   },
 }
 
@@ -52,6 +64,6 @@ const defaultExport = {
 }
 export default defaultExport
 
-export const getGoogleLoginLink = () => {
+export const getGoogleSignInLink = () => {
   return `${process.env.REACT_APP_API_BASE_ROOT}/connect/google`
 }

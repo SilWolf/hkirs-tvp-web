@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useStore } from 'react-redux'
 import { useParams, useLocation, Redirect } from 'react-router-dom'
-import { SSOLogin } from '../services/auth.service'
+import { ssoSignIn } from '../services/auth.service'
 import authUserSlice from '../slices/authUser.slice'
 
 enum StatusEnum {
@@ -10,7 +10,7 @@ enum StatusEnum {
   Failure,
 }
 
-const AfterSSOLogin = () => {
+const AfterSSOSignIn = () => {
   const [status, setStatus] = useState<StatusEnum>(StatusEnum.Verifying)
 
   const { provider } = useParams<{ provider: string }>()
@@ -19,7 +19,7 @@ const AfterSSOLogin = () => {
 
   useEffect(() => {
     if (dispatch && provider && search) {
-      SSOLogin(provider, search)
+      ssoSignIn(provider, search)
         .then(({ jwt, user }) => {
           dispatch(
             authUserSlice.actions.login({
@@ -50,4 +50,4 @@ const AfterSSOLogin = () => {
   return <></>
 }
 
-export default AfterSSOLogin
+export default AfterSSOSignIn
