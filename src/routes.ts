@@ -31,6 +31,7 @@ import SignIn from './views/SignIn'
 import SignUp from './views/SignUp'
 import ForgetPassword from './views/ForgetPassword'
 import AfterSSOSignIn from './views/AfterSSOSignIn'
+import ResetPassword from './views/ResetPassword'
 
 export type RouteType = {
   path: string
@@ -61,6 +62,13 @@ var routes: RouteType[] = [
     name: 'Forget Password',
     icon: '',
     component: ForgetPassword,
+    layout: '',
+  },
+  {
+    path: '/reset-password',
+    name: 'Reset Password',
+    icon: '',
+    component: ResetPassword,
     layout: '',
   },
   {

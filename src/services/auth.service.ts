@@ -23,11 +23,20 @@ export const signUp = (identifier: string, password: string) => {
 }
 
 export const forgetPassword = (email: string) => {
-  return api.post<{
-    jwt: string
-    user: User
-  }>('/auth/local/forget-password', {
+  return api.post('/auth/local/forget-password', {
     email,
+  })
+}
+
+export const resetPassword = (
+  code: string,
+  password: string,
+  passwordConfirmation: string
+) => {
+  return api.post('/auth/local/reset-password', {
+    code,
+    password,
+    passwordConfirmation,
   })
 }
 
@@ -43,4 +52,5 @@ export default {
   signUp,
   ssoSignIn,
   forgetPassword,
+  resetPassword,
 }
