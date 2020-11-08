@@ -28,7 +28,7 @@ import UserPage from './views/User'
 import UpgradeToPro from './views/Upgrade'
 
 import SignIn from './views/SignIn'
-import SignUp from './views/SignIn'
+import SignUp from './views/SignUp'
 import ForgetPassword from './views/SignIn'
 import AfterSSOSignIn from './views/AfterSSOSignIn'
 

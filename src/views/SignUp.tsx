@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 
@@ -10,17 +9,20 @@ import {
   Input,
   Label,
   FormFeedback,
-  Fade,
+  FormText,
+  CardText,
 } from 'reactstrap'
 import Button from '../components/Button'
 
 import authService from '../services/auth.service'
-import authUserSlice from '../slices/authUser.slice'
+import { getGoogleSignInLink } from '../services/api.service'
 import { Link } from 'react-router-dom'
+import icons from '../variables/icons'
 
 type FormData = {
   email: string
   password: string
+  confirmPassword: string
 }
 
 const SignUpPageContainer = styled.div`
@@ -42,84 +44,158 @@ const Center = styled.div`
 `
 
 const SignUp = () => {
-  const dispatch = useDispatch()
-  const { register, handleSubmit, errors, setError } = useForm<FormData>()
+  const { register, handleSubmit, errors, setError, watch } = useForm<
+    FormData
+  >()
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isSignUpSuccess, setIsSignUpSuccess] = useState<boolean>(true)
 
   const onSubmit = (data: FormData) => {
     setIsLoading(true)
     authService
-      .signIn(data.email, data.password)
-      .then(({ jwt, user }) => {
-        dispatch(authUserSlice.actions.login({ jwt, data: user }))
+      .signUp(data.email, data.password)
+      .then(() => {
+        setIsSignUpSuccess(true)
       })
-      .catch(() => {
-        setError('email', {
-          message: '電郵或密碼錯誤，請檢查後再試一次。',
-        })
+      .catch((e) => {
+        console.log(e.response)
+        switch (e.response?.status) {
+          case 400: {
+            setError('email', {
+              message: '註冊失敗: 此電郵已被註冊',
+            })
+            break
+          }
+          default: {
+            setError('email', {
+              message: '註冊失敗: 未知的錯誤',
+            })
+          }
+        }
       })
       .finally(() => {
         setIsLoading(false)
       })
   }
 
+  if (isSignUpSuccess) {
+    return (
+      <div className="content">
+        <SignUpPageContainer>
+          <SignUpCard body className="text-center">
+            <CardText>
+              <i
+                className="nc-icon nc-email-85"
+                style={{ fontSize: '4em' }}
+              ></i>
+            </CardText>
+            <CardText>
+              一封驗證電郵已經發到您的信箱，請按指示完成註冊程序。若沒有收到，請檢查垃圾郵件或重新發送。
+            </CardText>
+
+            <hr />
+
+            <Button color="link" tag={Link} to="/sign-in">
+              登入
+            </Button>
+          </SignUpCard>
+        </SignUpPageContainer>
+      </div>
+    )
+  }
+
   return (
     <div className="content">
       <SignUpPageContainer>
-        <Fade in>
-          <SignUpCard body>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-              <FormGroup>
-                <Label>電郵</Label>
-                <Input
-                  type="text"
-                  name="email"
-                  innerRef={register({
-                    required: '請輸入電郵',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: '錯誤的電郵格式',
-                    },
-                  })}
-                  invalid={!!errors.email}
-                />
-                {errors.email && (
-                  <FormFeedback>{errors.email?.message}</FormFeedback>
-                )}
-              </FormGroup>
-              <FormGroup>
-                <Label>密碼</Label>
-                <Input
-                  type="password"
-                  name="password"
-                  innerRef={register({
-                    required: '請輸入密碼',
-                  })}
-                  invalid={!!errors.password}
-                />
-                {errors.password && (
-                  <FormFeedback>{errors.password?.message}</FormFeedback>
-                )}
-              </FormGroup>
+        <SignUpCard body>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <FormGroup>
+              <Label>電郵</Label>
+              <Input
+                type="text"
+                name="email"
+                maxLength={120}
+                innerRef={register({
+                  required: '請輸入電郵',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: '錯誤的電郵格式',
+                  },
+                })}
+                invalid={!!errors.email}
+              />
+              {errors.email && (
+                <FormFeedback>{errors.email?.message}</FormFeedback>
+              )}
+              <FormText color="muted">
+                我們將會驗證您的 Email，故請正確輸入。此外，這將是您登入時用的
+                Email。
+              </FormText>
+            </FormGroup>
+            <FormGroup>
+              <Label>密碼</Label>
+              <Input
+                type="password"
+                name="password"
+                innerRef={register({
+                  required: '請輸入密碼',
+                  minLength: {
+                    value: 8,
+                    message: '密碼太短了，請填一個更長的。',
+                  },
+                  maxLength: {
+                    value: 24,
+                    message: '密碼太長了，請填一個短一點的。',
+                  },
+                })}
+                invalid={!!errors.password}
+              />
+              {errors.password && (
+                <FormFeedback>{errors.password?.message}</FormFeedback>
+              )}
+              <FormText color="muted">
+                8-24字元，可使用英文字母、數字、底線及符號。
+              </FormText>
+            </FormGroup>
+            <FormGroup>
+              <Label>再次輸入密碼</Label>
+              <Input
+                type="password"
+                name="confirmPassword"
+                innerRef={register({
+                  required: '請再次輸入密碼',
+                  validate: (value) =>
+                    value === watch('password') ||
+                    '密碼不一致，請檢查後重新輸入',
+                })}
+                invalid={!!errors.confirmPassword}
+              />
+              {errors.confirmPassword && (
+                <FormFeedback>{errors.confirmPassword?.message}</FormFeedback>
+              )}
+            </FormGroup>
+            <div style={{ marginTop: 48 }}>
               <Button color="primary" type="submit" block isLoading={isLoading}>
+                提交
+              </Button>
+            </div>
+
+            <hr />
+
+            <Center>
+              <CardText>或者你可以選擇</CardText>
+              <a href={getGoogleSignInLink()}>以 Google 帳號登入</a>
+            </Center>
+
+            <hr />
+
+            <Center>
+              <Button color="link" tag={Link} to="/sign-in">
                 登入
               </Button>
-              <Center>
-                <Button color="link" tag={Link} to="/forget-password">
-                  忘記密碼
-                </Button>
-              </Center>
-
-              <hr />
-
-              <Center>
-                <Button color="link" tag={Link} to="/sign-up">
-                  註冊
-                </Button>
-              </Center>
-            </Form>
-          </SignUpCard>
-        </Fade>
+            </Center>
+          </Form>
+        </SignUpCard>
       </SignUpPageContainer>
     </div>
   )

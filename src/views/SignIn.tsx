@@ -67,64 +67,65 @@ const SignIn = () => {
   return (
     <div className="content">
       <SignInPageContainer>
-        <Fade in>
-          <SignInCard body>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-              <FormGroup>
-                <Label>電郵</Label>
-                <Input
-                  type="text"
-                  name="email"
-                  innerRef={register({
-                    required: '請輸入電郵',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: '錯誤的電郵格式',
-                    },
-                  })}
-                  invalid={!!errors.email}
-                />
-                {errors.email && (
-                  <FormFeedback>{errors.email?.message}</FormFeedback>
-                )}
-              </FormGroup>
-              <FormGroup>
-                <Label>密碼</Label>
-                <Input
-                  type="password"
-                  name="password"
-                  innerRef={register({
-                    required: '請輸入密碼',
-                  })}
-                  invalid={!!errors.password}
-                />
-                {errors.password && (
-                  <FormFeedback>{errors.password?.message}</FormFeedback>
-                )}
-              </FormGroup>
+        <SignInCard body>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <FormGroup>
+              <Label>電郵</Label>
+              <Input
+                type="text"
+                name="email"
+                innerRef={register({
+                  required: '請輸入電郵',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: '錯誤的電郵格式',
+                  },
+                })}
+                invalid={!!errors.email}
+              />
+              {errors.email && (
+                <FormFeedback>{errors.email?.message}</FormFeedback>
+              )}
+            </FormGroup>
+            <FormGroup>
+              <Label>密碼</Label>
+              <Input
+                type="password"
+                name="password"
+                innerRef={register({
+                  required: '請輸入密碼',
+                })}
+                invalid={!!errors.password}
+              />
+              {errors.password && (
+                <FormFeedback>{errors.password?.message}</FormFeedback>
+              )}
+            </FormGroup>
+
+            <div style={{ marginTop: 48 }}>
               <Button color="primary" type="submit" block isLoading={isLoading}>
                 登入
               </Button>
-              <Center>
-                <Button color="link" tag={Link} to="/forget-password">
-                  忘記密碼
-                </Button>
-              </Center>
+            </div>
+            <Center>
+              <Button color="link" tag={Link} to="/forget-password">
+                忘記密碼
+              </Button>
+            </Center>
 
-              <hr />
+            <hr />
 
-              <a href={getGoogleSignInLink()}>以 Google 帳號登入</a>
+            <a href={getGoogleSignInLink()}>以 Google 帳號登入</a>
 
-              <hr />
+            <hr />
 
-              <Center>
-                <Button color="link" tag={Link} to="/sign-up">
-                  註冊
-                </Button>
-              </Center>
-            </Form>
-          </SignInCard>
-        </Fade>
+            <Center>
+              <Button color="link" tag={Link} to="/sign-up">
+                註冊
+              </Button>
+            </Center>
+          </Form>
+        </SignInCard>
       </SignInPageContainer>
     </div>
   )

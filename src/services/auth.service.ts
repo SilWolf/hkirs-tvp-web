@@ -11,6 +11,17 @@ export const signIn = (identifier: string, password: string) => {
   })
 }
 
+export const signUp = (identifier: string, password: string) => {
+  return api.post<{
+    jwt: string
+    user: User
+  }>('/auth/local/register', {
+    username: identifier,
+    email: identifier,
+    password,
+  })
+}
+
 export const ssoSignIn = (providerName: string, query: string) => {
   return api.get<{
     jwt: string
@@ -20,5 +31,6 @@ export const ssoSignIn = (providerName: string, query: string) => {
 
 export default {
   signIn,
+  signUp,
   ssoSignIn,
 }
