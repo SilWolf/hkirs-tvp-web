@@ -11,15 +11,18 @@ export const signIn = (identifier: string, password: string) => {
   })
 }
 
-export const signUp = (identifier: string, password: string) => {
-  return api.post<{
-    jwt: string
-    user: User
-  }>('/auth/local/register', {
-    username: identifier,
-    email: identifier,
-    password,
-  })
+export const signUp = (email: string, password: string) => {
+  return api
+    .post('/auth/local/register', {
+      username: email,
+      email,
+      password,
+    })
+    .then(() => {
+      return api.post('/auth/send-email-confirmation', {
+        email,
+      })
+    })
 }
 
 export const forgetPassword = (email: string) => {
