@@ -17,7 +17,6 @@ import Button from '../components/Button'
 import authService from '../services/auth.service'
 import { getGoogleSignInLink } from '../services/api.service'
 import { Link } from 'react-router-dom'
-import icons from '../variables/icons'
 
 type FormData = {
   email: string
@@ -48,7 +47,7 @@ const SignUp = () => {
     FormData
   >()
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [isSignUpSuccess, setIsSignUpSuccess] = useState<boolean>(true)
+  const [isSignUpSuccess, setIsSignUpSuccess] = useState<boolean>(false)
 
   const onSubmit = (data: FormData) => {
     setIsLoading(true)

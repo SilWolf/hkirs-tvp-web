@@ -3,15 +3,7 @@ import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 
-import {
-  Card,
-  FormGroup,
-  Form,
-  Input,
-  Label,
-  FormFeedback,
-  Fade,
-} from 'reactstrap'
+import { Card, FormGroup, Form, Input, Label, FormFeedback } from 'reactstrap'
 import Button from '../components/Button'
 
 import { getGoogleSignInLink } from '../services/api.service'

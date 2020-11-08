@@ -29,7 +29,7 @@ import UpgradeToPro from './views/Upgrade'
 
 import SignIn from './views/SignIn'
 import SignUp from './views/SignUp'
-import ForgetPassword from './views/SignIn'
+import ForgetPassword from './views/ForgetPassword'
 import AfterSSOSignIn from './views/AfterSSOSignIn'
 
 export type RouteType = {
