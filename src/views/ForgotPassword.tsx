@@ -21,7 +21,7 @@ type FormData = {
   email: string
 }
 
-const ForgetPasswordPageContainer = styled.div`
+const ForgotPasswordPageContainer = styled.div`
   max-width: 400px;
   width: 100%;
   display: flex;
@@ -30,7 +30,7 @@ const ForgetPasswordPageContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
 `
-const ForgetPasswordCard = styled(Card)`
+const ForgotPasswordCard = styled(Card)`
   width: 400px;
   max-width: 100%;
   margin-top: 60px;
@@ -39,22 +39,22 @@ const Center = styled.div`
   text-align: center;
 `
 
-const ForgetPassword = () => {
+const ForgotPassword = () => {
   const { register, handleSubmit, errors } = useForm<FormData>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [isForgetPasswordEmailSent, setIsForgetPasswordEmailSent] = useState<
+  const [isForgotPasswordEmailSent, setIsForgotPasswordEmailSent] = useState<
     boolean
   >(false)
 
   const onSubmit = (data: FormData) => {
     setIsLoading(true)
     authService
-      .forgetPassword(data.email)
+      .forgotPassword(data.email)
       .then(() => {
-        setIsForgetPasswordEmailSent(true)
+        setIsForgotPasswordEmailSent(true)
       })
       .catch(() => {
-        setIsForgetPasswordEmailSent(true)
+        setIsForgotPasswordEmailSent(true)
       })
       .finally(() => {
         setIsLoading(false)
@@ -63,9 +63,9 @@ const ForgetPassword = () => {
 
   return (
     <div className="content">
-      <ForgetPasswordPageContainer>
-        <ForgetPasswordCard body>
-          {isForgetPasswordEmailSent && (
+      <ForgotPasswordPageContainer>
+        <ForgotPasswordCard body>
+          {isForgotPasswordEmailSent && (
             <Alert color="success" className="text-center">
               <i
                 className="nc-icon nc-email-85"
@@ -108,10 +108,10 @@ const ForgetPassword = () => {
               </Button>
             </Center>
           </Form>
-        </ForgetPasswordCard>
-      </ForgetPasswordPageContainer>
+        </ForgotPasswordCard>
+      </ForgotPasswordPageContainer>
     </div>
   )
 }
 
-export default ForgetPassword
+export default ForgotPassword

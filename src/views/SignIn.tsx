@@ -100,7 +100,7 @@ const SignIn = () => {
               </Button>
             </div>
             <Center>
-              <Button color="link" tag={Link} to="/forget-password">
+              <Button color="link" tag={Link} to="/forgot-password">
                 忘記密碼
               </Button>
             </Center>

@@ -29,7 +29,7 @@ import UpgradeToPro from './views/Upgrade'
 
 import SignIn from './views/SignIn'
 import SignUp from './views/SignUp'
-import ForgetPassword from './views/ForgetPassword'
+import ForgotPassword from './views/ForgotPassword'
 import AfterSSOSignIn from './views/AfterSSOSignIn'
 import ResetPassword from './views/ResetPassword'
 
@@ -58,10 +58,10 @@ var routes: RouteType[] = [
     layout: '',
   },
   {
-    path: '/forget-password',
-    name: 'Forget Password',
+    path: '/forgot-password',
+    name: 'Forgot Password',
     icon: '',
-    component: ForgetPassword,
+    component: ForgotPassword,
     layout: '',
   },
   {

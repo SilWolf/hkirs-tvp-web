@@ -12,21 +12,21 @@ export const signIn = (identifier: string, password: string) => {
 }
 
 export const signUp = (email: string, password: string) => {
-  return api
-    .post('/auth/local/register', {
-      username: email,
-      email,
-      password,
-    })
-    .then(() => {
-      return api.post('/auth/send-email-confirmation', {
-        email,
-      })
-    })
+  return api.post('/auth/local/register', {
+    username: email,
+    email,
+    password,
+  })
 }
 
-export const forgetPassword = (email: string) => {
-  return api.post('/auth/local/forget-password', {
+export const sendEmailConfirmation = (email: string) => {
+  return api.post('/auth/send-email-confirmation', {
+    email,
+  })
+}
+
+export const forgotPassword = (email: string) => {
+  return api.post('/auth/forgot-password', {
     email,
   })
 }
@@ -36,7 +36,7 @@ export const resetPassword = (
   password: string,
   passwordConfirmation: string
 ) => {
-  return api.post('/auth/local/reset-password', {
+  return api.post('/auth/reset-password', {
     code,
     password,
     passwordConfirmation,
@@ -54,6 +54,6 @@ export default {
   signIn,
   signUp,
   ssoSignIn,
-  forgetPassword,
+  forgotPassword,
   resetPassword,
 }
