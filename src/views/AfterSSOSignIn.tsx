@@ -24,7 +24,7 @@ const AfterSSOSignIn = () => {
           dispatch(
             authUserSlice.actions.login({
               jwt,
-              data: user,
+              user: user,
             })
           )
           setStatus(StatusEnum.Success)

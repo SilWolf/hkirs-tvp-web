@@ -58,9 +58,18 @@ const apis = {
   },
 }
 
+const setAuthorization = (authorization: string) => {
+  instance.defaults.headers.common['Authorization'] = authorization
+}
+const removeAuthorization = () => {
+  instance.defaults.headers.common['Authorization'] = undefined
+}
+
 const defaultExport = {
   ...instance,
   ...apis,
+  setAuthorization,
+  removeAuthorization,
 }
 export default defaultExport
 

@@ -50,10 +50,35 @@ export const ssoSignIn = (providerName: string, query: string) => {
   }>(`/auth/${providerName}/callback${query}`)
 }
 
+const AUTH_USER_LOCALSTORAGE_KEY = 'tocc-player-panel:authUser'
+type AuthUserInfo = {
+  isLogined: boolean
+  jwt?: string
+  user?: User
+}
+export const putAuthUserToLocalStorage = (authUserInfo: AuthUserInfo): void => {
+  localStorage.setItem(AUTH_USER_LOCALSTORAGE_KEY, JSON.stringify(authUserInfo))
+}
+
+export const getAuthUserFromLocalStorage = (): AuthUserInfo | null => {
+  const str = localStorage.getItem(AUTH_USER_LOCALSTORAGE_KEY)
+  if (str) {
+    return JSON.parse(str) as AuthUserInfo
+  }
+  return null
+}
+
+export const removeAuthUserFromLocalStorage = (): void => {
+  return localStorage.removeItem(AUTH_USER_LOCALSTORAGE_KEY)
+}
+
 export default {
   signIn,
   signUp,
   ssoSignIn,
   forgotPassword,
   resetPassword,
+  getAuthUserFromLocalStorage,
+  putAuthUserToLocalStorage,
+  removeAuthUserFromLocalStorage,
 }

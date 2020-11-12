@@ -4,7 +4,7 @@ import { User } from '../types/user.type'
 type SliceState = {
   isLogined: boolean
   jwt?: string
-  data?: User
+  user?: User
 }
 const initialState: SliceState = {
   isLogined: false,
@@ -17,10 +17,12 @@ const authUserSlice = createSlice({
     login: (_, action) => ({
       isLogined: true,
       jwt: action.payload.jwt,
-      data: action.payload.data,
+      user: action.payload.user,
     }),
     logout: () => ({
       isLogined: false,
+      jwt: undefined,
+      user: undefined,
     }),
   },
 })

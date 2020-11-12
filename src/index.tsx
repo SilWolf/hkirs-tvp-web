@@ -16,11 +16,11 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 import { createBrowserHistory } from 'history'
-import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import { Router, Route, Switch } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -32,19 +32,32 @@ import 'react-toastify/dist/ReactToastify.css'
 import PlainLayout from './layouts/Plain'
 import AdminLayout from './layouts/Admin'
 
+import authService from './services/auth.service'
 import store from './store'
+import authUserSlice from './slices/authUser.slice'
 
 const hist = createBrowserHistory()
 
-ReactDOM.render(
-  <ReduxProvider store={store}>
-    <Router history={hist}>
-      <Switch>
-        <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-        <Route path="/" render={(props) => <PlainLayout {...props} />} />
-      </Switch>
-    </Router>
-    <ToastContainer />
-  </ReduxProvider>,
-  document.getElementById('root')
-)
+const App = () => {
+  useEffect(() => {
+    // Try to get stored authUser and put it into redux
+    const authUser = authService.getAuthUserFromLocalStorage()
+    if (authUser) {
+      store.dispatch(authUserSlice.actions.login(authUser))
+    }
+  }, [])
+
+  return (
+    <ReduxProvider store={store}>
+      <Router history={hist}>
+        <Switch>
+          <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+          <Route path="/" render={(props) => <PlainLayout {...props} />} />
+        </Switch>
+      </Router>
+      <ToastContainer />
+    </ReduxProvider>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))

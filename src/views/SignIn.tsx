@@ -44,7 +44,7 @@ const SignIn = () => {
     authService
       .signIn(data.email, data.password)
       .then(({ jwt, user }) => {
-        dispatch(authUserSlice.actions.login({ jwt, data: user }))
+        dispatch(authUserSlice.actions.login({ jwt, user: user }))
       })
       .catch(() => {
         setError('email', {
