@@ -19,7 +19,7 @@
 import React from 'react'
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from 'perfect-scrollbar'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 
 import Footer from '../components/Footer/Footer'
@@ -98,6 +98,7 @@ class Plain extends React.Component<Props, State> {
               )
             })}
           </Switch>
+          <Redirect path="/" exact to="/sign-in" />
           <Footer fluid />
         </MainPanel>
         <FixedPlugin
