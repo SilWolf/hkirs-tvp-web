@@ -9,7 +9,7 @@ const getCharactersByUsernameFn = async ({ username }: any) => {
   return getCharactersByUsername(username)
 }
 const Characters = () => {
-  const characterAsync = useAsync<Character[]>({
+  const charactersAsync = useAsync<Character[]>({
     promiseFn: getCharactersByUsernameFn,
     username: 'foo',
   })
@@ -20,8 +20,8 @@ const Characters = () => {
         <div style={{ textAlign: 'right' }}>
           <Button color="primary">創建一個新角色</Button>
         </div>
-        {characterAsync.data &&
-          characterAsync.data.map((character) => (
+        {charactersAsync.data &&
+          charactersAsync.data.map((character) => (
             <CharacterBlock key={character.characterId} character={character} />
           ))}
       </div>

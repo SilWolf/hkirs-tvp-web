@@ -7,13 +7,12 @@ export const getCharactersByUsername = (username: string): Promise<Character[]> 
       'player.username': username
     }
   }).then((response) => {
-    console.log(response)
     return response
   })
 }
 
-export const getCharacterById = (characterId: string): Promise<Character[]> => {
-  return api.get<Character[]>(`/characters/${characterId}`).then((response) => {
+export const getCharacterById = (characterId: string): Promise<Character> => {
+  return api.get<Character>(`/characters/${characterId}`).then((response) => {
     console.log(response)
     return response
   })

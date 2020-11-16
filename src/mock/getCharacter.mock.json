@@ -1,0 +1,89 @@
+{
+  "type": "PC",
+  "_id": "5f9e4bd0b16afa136552c6cd",
+  "name": "卡洛特",
+  "description": "卡洛特",
+  "createdAt": "2020-11-01T05:46:56.890Z",
+  "updatedAt": "2020-11-01T10:22:28.142Z",
+  "__v": 0,
+  "race": {
+    "_id": "5f9e82a639c7372252dda5a0",
+    "mutations": null,
+    "__v": 0,
+    "race": {
+      "_id": "5f9e47d8b16afa136552c6ca",
+      "name": "Werewolf",
+      "raceId": "werewolf",
+      "render": {
+        "_id": "5f9e47d8b16afa136552c6cb",
+        "en": "Werewolf",
+        "zh": "狼人",
+        "__v": 0,
+        "id": "5f9e47d8b16afa136552c6cb"
+      },
+      "createdAt": "2020-11-01T05:30:00.884Z",
+      "updatedAt": "2020-11-01T05:30:01.213Z",
+      "__v": 1,
+      "id": "5f9e47d8b16afa136552c6ca"
+    },
+    "id": "5f9e82a639c7372252dda5a0"
+  },
+  "portrait": {
+    "_id": "5f9e4c4dc8a66413aed2fd2e",
+    "name": "1673bc2c92548df314e7bbd00c7b688c.png",
+    "alternativeText": "",
+    "caption": "",
+    "hash": "1673bc2c92548df314e7bbd00c7b688c_f79b457568",
+    "ext": ".png",
+    "mime": "image/png",
+    "size": 25.36,
+    "width": 180,
+    "height": 180,
+    "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/1673bc2c92548df314e7bbd00c7b688c_f79b457568.png",
+    "formats": {
+      "thumbnail": {
+        "name": "thumbnail_1673bc2c92548df314e7bbd00c7b688c.png",
+        "hash": "thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568",
+        "ext": ".png",
+        "mime": "image/png",
+        "width": 156,
+        "height": 156,
+        "size": 55.52,
+        "path": null,
+        "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568.png"
+      }
+    },
+    "provider": "aws-s3",
+    "related": ["5f9e4bd0b16afa136552c6cd"],
+    "createdAt": "2020-11-01T05:49:01.554Z",
+    "updatedAt": "2020-11-01T05:49:07.083Z",
+    "__v": 0,
+    "id": "5f9e4c4dc8a66413aed2fd2e"
+  },
+  "player": {
+    "confirmed": true,
+    "blocked": false,
+    "_id": "5f9e7ffd72e1021a60e6449a",
+    "username": "silwolf1121",
+    "email": "silwolf1121@gmail.com",
+    "provider": "google",
+    "createdAt": "2020-11-01T09:29:33.945Z",
+    "updatedAt": "2020-11-01T09:29:34.051Z",
+    "__v": 0,
+    "role": "5f9e3b17b524240a17b2924c",
+    "id": "5f9e7ffd72e1021a60e6449a"
+  },
+  "code": "DC-00001",
+  "city": {
+    "_id": "5f9e84c607c3cd227ee47c42",
+    "name": "鍚安城",
+    "shopName": "GamesOn",
+    "shopAbbr": "GO",
+    "createdAt": "2020-11-01T09:49:58.637Z",
+    "updatedAt": "2020-11-01T09:50:41.462Z",
+    "__v": 0,
+    "id": "5f9e84c607c3cd227ee47c42"
+  },
+  "characterId": "DC00001",
+  "id": "5f9e4bd0b16afa136552c6cd"
+}
