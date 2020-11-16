@@ -1,3 +1,4 @@
+import { City } from './city.type'
 import { Race } from './race.type'
 import { StrapiImage } from './strapi/strapiImage.type'
 import { User } from './user.type'
@@ -8,10 +9,13 @@ export type Character = {
   name: string
   description: string
   race: {
-    mutation: any,
+    mutation: any
     race: Race
   }
-  portrait: StrapiImage,
+  portrait: StrapiImage
+  coverImage: StrapiImage
   player: User
   characterId: string
+  motto: string
+  city: City
 }

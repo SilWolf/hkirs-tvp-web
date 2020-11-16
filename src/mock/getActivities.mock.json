@@ -1,0 +1,311 @@
+[
+  {
+    "inGameStartAt": "1262-01-01",
+    "inGameEndAt": "1262-01-01",
+    "characters": [
+      {
+        "type": "PC",
+        "_id": "5f9e4bd0b16afa136552c6cd",
+        "name": "卡洛特",
+        "description": "卡洛特",
+        "createdAt": "2020-11-01T05:46:56.890Z",
+        "updatedAt": "2020-11-16T15:06:32.377Z",
+        "__v": 0,
+        "race": {
+          "_id": "5f9e82a639c7372252dda5a0",
+          "mutations": null,
+          "__v": 0,
+          "race": {
+            "_id": "5f9e47d8b16afa136552c6ca",
+            "name": "Werewolf",
+            "raceId": "werewolf",
+            "render": {
+              "_id": "5f9e47d8b16afa136552c6cb",
+              "en": "Werewolf",
+              "zh": "狼人",
+              "__v": 0,
+              "id": "5f9e47d8b16afa136552c6cb"
+            },
+            "createdAt": "2020-11-01T05:30:00.884Z",
+            "updatedAt": "2020-11-01T05:30:01.213Z",
+            "__v": 1,
+            "id": "5f9e47d8b16afa136552c6ca"
+          },
+          "id": "5f9e82a639c7372252dda5a0"
+        },
+        "protrait": "5f9e4c4dc8a66413aed2fd2e",
+        "player": "5f9e7ffd72e1021a60e6449a",
+        "code": "DC-00001",
+        "city": "5f9e84c607c3cd227ee47c42",
+        "characterId": "DC00001",
+        "portrait": {
+          "_id": "5f9e4c4dc8a66413aed2fd2e",
+          "name": "1673bc2c92548df314e7bbd00c7b688c.png",
+          "alternativeText": "",
+          "caption": "",
+          "hash": "1673bc2c92548df314e7bbd00c7b688c_f79b457568",
+          "ext": ".png",
+          "mime": "image/png",
+          "size": 25.36,
+          "width": 180,
+          "height": 180,
+          "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/1673bc2c92548df314e7bbd00c7b688c_f79b457568.png",
+          "formats": {
+            "thumbnail": {
+              "name": "thumbnail_1673bc2c92548df314e7bbd00c7b688c.png",
+              "hash": "thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568",
+              "ext": ".png",
+              "mime": "image/png",
+              "width": 156,
+              "height": 156,
+              "size": 55.52,
+              "path": null,
+              "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568.png"
+            }
+          },
+          "provider": "aws-s3",
+          "related": ["5f9e4bd0b16afa136552c6cd", "5f9e4bd0b16afa136552c6cd"],
+          "createdAt": "2020-11-01T05:49:01.554Z",
+          "updatedAt": "2020-11-15T12:40:32.844Z",
+          "__v": 0,
+          "id": "5f9e4c4dc8a66413aed2fd2e"
+        },
+        "coverImage": {
+          "_id": "5fb292547b7fd82fbc93340f",
+          "name": "dnd_background_overlay2.jpg",
+          "alternativeText": "",
+          "caption": "",
+          "hash": "dnd_background_overlay2_aa396ff8f9",
+          "ext": ".jpg",
+          "mime": "image/jpeg",
+          "size": 60.56,
+          "width": 870,
+          "height": 490,
+          "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/dnd_background_overlay2_aa396ff8f9.jpg",
+          "formats": {
+            "thumbnail": {
+              "name": "thumbnail_dnd_background_overlay2.jpg",
+              "hash": "thumbnail_dnd_background_overlay2_aa396ff8f9",
+              "ext": ".jpg",
+              "mime": "image/jpeg",
+              "width": 245,
+              "height": 138,
+              "size": 7.32,
+              "path": null,
+              "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_dnd_background_overlay2_aa396ff8f9.jpg"
+            },
+            "medium": {
+              "name": "medium_dnd_background_overlay2.jpg",
+              "hash": "medium_dnd_background_overlay2_aa396ff8f9",
+              "ext": ".jpg",
+              "mime": "image/jpeg",
+              "width": 750,
+              "height": 422,
+              "size": 47.21,
+              "path": null,
+              "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/medium_dnd_background_overlay2_aa396ff8f9.jpg"
+            },
+            "small": {
+              "name": "small_dnd_background_overlay2.jpg",
+              "hash": "small_dnd_background_overlay2_aa396ff8f9",
+              "ext": ".jpg",
+              "mime": "image/jpeg",
+              "width": 500,
+              "height": 282,
+              "size": 23.97,
+              "path": null,
+              "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/small_dnd_background_overlay2_aa396ff8f9.jpg"
+            }
+          },
+          "provider": "aws-s3",
+          "related": ["5f9e4bd0b16afa136552c6cd"],
+          "createdAt": "2020-11-16T14:53:08.139Z",
+          "updatedAt": "2020-11-16T14:53:14.755Z",
+          "__v": 0,
+          "id": "5fb292547b7fd82fbc93340f"
+        },
+        "motto": "守護全部，就是我的全部。",
+        "id": "5f9e4bd0b16afa136552c6cd"
+      },
+      {
+        "type": "PC",
+        "_id": "5f9e8ca194090523c1d8832d",
+        "characterId": "00001-GT01",
+        "name": "薰",
+        "race": null,
+        "createdAt": "2020-11-01T10:23:29.602Z",
+        "updatedAt": "2020-11-01T10:23:29.602Z",
+        "__v": 0,
+        "id": "5f9e8ca194090523c1d8832d"
+      }
+    ],
+    "_id": "5fb2a9aa7db4c544606d3508",
+    "published_at": "2020-11-16T16:33:06.783Z",
+    "description": "AA00001-D 劇本獎勵",
+    "title": "AA00001-D 劇本獎勵",
+    "CharacterReward": [
+      {
+        "_id": "5fb2a9ab7db4c544606d350a",
+        "kind": "ComponentCharacterBlocksCharacterReward",
+        "ref": "5fb2a9aa7db4c544606d3509"
+      }
+    ],
+    "createdAt": "2020-11-16T16:32:42.866Z",
+    "updatedAt": "2020-11-16T16:46:12.115Z",
+    "__v": 1,
+    "characterRewards": [
+      {
+        "gp": 20,
+        "xp": 100,
+        "_id": "5fb2acd36597962e04133d14",
+        "rewards": [],
+        "__v": 0,
+        "character": {
+          "type": "PC",
+          "_id": "5f9e4bd0b16afa136552c6cd",
+          "name": "卡洛特",
+          "description": "卡洛特",
+          "createdAt": "2020-11-01T05:46:56.890Z",
+          "updatedAt": "2020-11-16T15:06:32.377Z",
+          "__v": 0,
+          "race": {
+            "_id": "5f9e82a639c7372252dda5a0",
+            "mutations": null,
+            "__v": 0,
+            "race": {
+              "_id": "5f9e47d8b16afa136552c6ca",
+              "name": "Werewolf",
+              "raceId": "werewolf",
+              "render": {
+                "_id": "5f9e47d8b16afa136552c6cb",
+                "en": "Werewolf",
+                "zh": "狼人",
+                "__v": 0,
+                "id": "5f9e47d8b16afa136552c6cb"
+              },
+              "createdAt": "2020-11-01T05:30:00.884Z",
+              "updatedAt": "2020-11-01T05:30:01.213Z",
+              "__v": 1,
+              "id": "5f9e47d8b16afa136552c6ca"
+            },
+            "id": "5f9e82a639c7372252dda5a0"
+          },
+          "protrait": "5f9e4c4dc8a66413aed2fd2e",
+          "player": "5f9e7ffd72e1021a60e6449a",
+          "code": "DC-00001",
+          "city": "5f9e84c607c3cd227ee47c42",
+          "characterId": "DC00001",
+          "portrait": {
+            "_id": "5f9e4c4dc8a66413aed2fd2e",
+            "name": "1673bc2c92548df314e7bbd00c7b688c.png",
+            "alternativeText": "",
+            "caption": "",
+            "hash": "1673bc2c92548df314e7bbd00c7b688c_f79b457568",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 25.36,
+            "width": 180,
+            "height": 180,
+            "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/1673bc2c92548df314e7bbd00c7b688c_f79b457568.png",
+            "formats": {
+              "thumbnail": {
+                "name": "thumbnail_1673bc2c92548df314e7bbd00c7b688c.png",
+                "hash": "thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568",
+                "ext": ".png",
+                "mime": "image/png",
+                "width": 156,
+                "height": 156,
+                "size": 55.52,
+                "path": null,
+                "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568.png"
+              }
+            },
+            "provider": "aws-s3",
+            "related": ["5f9e4bd0b16afa136552c6cd", "5f9e4bd0b16afa136552c6cd"],
+            "createdAt": "2020-11-01T05:49:01.554Z",
+            "updatedAt": "2020-11-15T12:40:32.844Z",
+            "__v": 0,
+            "id": "5f9e4c4dc8a66413aed2fd2e"
+          },
+          "coverImage": {
+            "_id": "5fb292547b7fd82fbc93340f",
+            "name": "dnd_background_overlay2.jpg",
+            "alternativeText": "",
+            "caption": "",
+            "hash": "dnd_background_overlay2_aa396ff8f9",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 60.56,
+            "width": 870,
+            "height": 490,
+            "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/dnd_background_overlay2_aa396ff8f9.jpg",
+            "formats": {
+              "thumbnail": {
+                "name": "thumbnail_dnd_background_overlay2.jpg",
+                "hash": "thumbnail_dnd_background_overlay2_aa396ff8f9",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "width": 245,
+                "height": 138,
+                "size": 7.32,
+                "path": null,
+                "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_dnd_background_overlay2_aa396ff8f9.jpg"
+              },
+              "medium": {
+                "name": "medium_dnd_background_overlay2.jpg",
+                "hash": "medium_dnd_background_overlay2_aa396ff8f9",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "width": 750,
+                "height": 422,
+                "size": 47.21,
+                "path": null,
+                "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/medium_dnd_background_overlay2_aa396ff8f9.jpg"
+              },
+              "small": {
+                "name": "small_dnd_background_overlay2.jpg",
+                "hash": "small_dnd_background_overlay2_aa396ff8f9",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "width": 500,
+                "height": 282,
+                "size": 23.97,
+                "path": null,
+                "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/small_dnd_background_overlay2_aa396ff8f9.jpg"
+              }
+            },
+            "provider": "aws-s3",
+            "related": ["5f9e4bd0b16afa136552c6cd"],
+            "createdAt": "2020-11-16T14:53:08.139Z",
+            "updatedAt": "2020-11-16T14:53:14.755Z",
+            "__v": 0,
+            "id": "5fb292547b7fd82fbc93340f"
+          },
+          "motto": "守護全部，就是我的全部。",
+          "id": "5f9e4bd0b16afa136552c6cd"
+        },
+        "id": "5fb2acd36597962e04133d14"
+      },
+      {
+        "gp": 30,
+        "xp": 0,
+        "_id": "5fb2acd36597962e04133d15",
+        "rewards": [],
+        "__v": 0,
+        "character": {
+          "type": "PC",
+          "_id": "5f9e8ca194090523c1d8832d",
+          "characterId": "00001-GT01",
+          "name": "薰",
+          "race": null,
+          "createdAt": "2020-11-01T10:23:29.602Z",
+          "updatedAt": "2020-11-01T10:23:29.602Z",
+          "__v": 0,
+          "id": "5f9e8ca194090523c1d8832d"
+        },
+        "id": "5fb2acd36597962e04133d15"
+      }
+    ],
+    "id": "5fb2a9aa7db4c544606d3508"
+  }
+]

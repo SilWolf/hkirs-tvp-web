@@ -4,7 +4,7 @@
   "name": "卡洛特",
   "description": "卡洛特",
   "createdAt": "2020-11-01T05:46:56.890Z",
-  "updatedAt": "2020-11-01T10:22:28.142Z",
+  "updatedAt": "2020-11-16T15:06:32.377Z",
   "__v": 0,
   "race": {
     "_id": "5f9e82a639c7372252dda5a0",
@@ -28,6 +28,32 @@
     },
     "id": "5f9e82a639c7372252dda5a0"
   },
+  "protrait": "5f9e4c4dc8a66413aed2fd2e",
+  "player": {
+    "confirmed": true,
+    "blocked": false,
+    "_id": "5f9e7ffd72e1021a60e6449a",
+    "username": "silwolf1121",
+    "email": "silwolf1121@gmail.com",
+    "provider": "google",
+    "createdAt": "2020-11-01T09:29:33.945Z",
+    "updatedAt": "2020-11-01T09:29:34.051Z",
+    "__v": 0,
+    "role": "5f9e3b17b524240a17b2924c",
+    "id": "5f9e7ffd72e1021a60e6449a"
+  },
+  "code": "DC-00001",
+  "city": {
+    "_id": "5f9e84c607c3cd227ee47c42",
+    "name": "鍚安城",
+    "shopName": "GamesOn",
+    "shopAbbr": "GO",
+    "createdAt": "2020-11-01T09:49:58.637Z",
+    "updatedAt": "2020-11-01T09:50:41.462Z",
+    "__v": 0,
+    "id": "5f9e84c607c3cd227ee47c42"
+  },
+  "characterId": "DC00001",
   "portrait": {
     "_id": "5f9e4c4dc8a66413aed2fd2e",
     "name": "1673bc2c92548df314e7bbd00c7b688c.png",
@@ -54,36 +80,66 @@
       }
     },
     "provider": "aws-s3",
-    "related": ["5f9e4bd0b16afa136552c6cd"],
+    "related": ["5f9e4bd0b16afa136552c6cd", "5f9e4bd0b16afa136552c6cd"],
     "createdAt": "2020-11-01T05:49:01.554Z",
-    "updatedAt": "2020-11-01T05:49:07.083Z",
+    "updatedAt": "2020-11-15T12:40:32.844Z",
     "__v": 0,
     "id": "5f9e4c4dc8a66413aed2fd2e"
   },
-  "player": {
-    "confirmed": true,
-    "blocked": false,
-    "_id": "5f9e7ffd72e1021a60e6449a",
-    "username": "silwolf1121",
-    "email": "silwolf1121@gmail.com",
-    "provider": "google",
-    "createdAt": "2020-11-01T09:29:33.945Z",
-    "updatedAt": "2020-11-01T09:29:34.051Z",
+  "coverImage": {
+    "_id": "5fb292547b7fd82fbc93340f",
+    "name": "dnd_background_overlay2.jpg",
+    "alternativeText": "",
+    "caption": "",
+    "hash": "dnd_background_overlay2_aa396ff8f9",
+    "ext": ".jpg",
+    "mime": "image/jpeg",
+    "size": 60.56,
+    "width": 870,
+    "height": 490,
+    "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/dnd_background_overlay2_aa396ff8f9.jpg",
+    "formats": {
+      "thumbnail": {
+        "name": "thumbnail_dnd_background_overlay2.jpg",
+        "hash": "thumbnail_dnd_background_overlay2_aa396ff8f9",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "width": 245,
+        "height": 138,
+        "size": 7.32,
+        "path": null,
+        "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_dnd_background_overlay2_aa396ff8f9.jpg"
+      },
+      "medium": {
+        "name": "medium_dnd_background_overlay2.jpg",
+        "hash": "medium_dnd_background_overlay2_aa396ff8f9",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "width": 750,
+        "height": 422,
+        "size": 47.21,
+        "path": null,
+        "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/medium_dnd_background_overlay2_aa396ff8f9.jpg"
+      },
+      "small": {
+        "name": "small_dnd_background_overlay2.jpg",
+        "hash": "small_dnd_background_overlay2_aa396ff8f9",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "width": 500,
+        "height": 282,
+        "size": 23.97,
+        "path": null,
+        "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/small_dnd_background_overlay2_aa396ff8f9.jpg"
+      }
+    },
+    "provider": "aws-s3",
+    "related": ["5f9e4bd0b16afa136552c6cd"],
+    "createdAt": "2020-11-16T14:53:08.139Z",
+    "updatedAt": "2020-11-16T14:53:14.755Z",
     "__v": 0,
-    "role": "5f9e3b17b524240a17b2924c",
-    "id": "5f9e7ffd72e1021a60e6449a"
+    "id": "5fb292547b7fd82fbc93340f"
   },
-  "code": "DC-00001",
-  "city": {
-    "_id": "5f9e84c607c3cd227ee47c42",
-    "name": "鍚安城",
-    "shopName": "GamesOn",
-    "shopAbbr": "GO",
-    "createdAt": "2020-11-01T09:49:58.637Z",
-    "updatedAt": "2020-11-01T09:50:41.462Z",
-    "__v": 0,
-    "id": "5f9e84c607c3cd227ee47c42"
-  },
-  "characterId": "DC00001",
+  "motto": "守護全部，就是我的全部。",
   "id": "5f9e4bd0b16afa136552c6cd"
 }
