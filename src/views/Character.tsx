@@ -67,6 +67,9 @@ const CharacteDetail = () => {
   }
 
   const character = characterAsync.data as Character
+  const classesString = character.classConfigs
+    .map((classConfig) => `${classConfig.class.render.zh} ${classConfig.level}`)
+    .join(' / ')
 
   return (
     <>
@@ -90,6 +93,7 @@ const CharacteDetail = () => {
                   <p className="description">@{character.player.username}</p>
                 </div>
                 <p className="description text-center">{character.motto}</p>
+                <p className="description text-center">{classesString}</p>
               </CardBody>
               <CardFooter>
                 <hr />
@@ -97,7 +101,7 @@ const CharacteDetail = () => {
                   <Row>
                     <Col className="ml-auto" lg="3" md="6" xs="6">
                       <h5>
-                        {character.race.race.render.zh} <br />
+                        {character.race.render.zh} <br />
                         <small>種族</small>
                       </h5>
                     </Col>

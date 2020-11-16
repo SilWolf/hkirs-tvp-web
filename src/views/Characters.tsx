@@ -4,6 +4,7 @@ import CharacterBlock from '../components/Character/CharacterBlock'
 import { Character } from '../types/character.type'
 import { getCharactersByUsername } from '../helpers/api.helper'
 import { Button } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 const getCharactersByUsernameFn = async ({ username }: any) => {
   return getCharactersByUsername(username)
@@ -22,7 +23,9 @@ const Characters = () => {
         </div>
         {charactersAsync.data &&
           charactersAsync.data.map((character) => (
-            <CharacterBlock key={character.characterId} character={character} />
+            <Link to={`/admin/characters/${character.id}`}>
+              <CharacterBlock key={character.id} character={character} />
+            </Link>
           ))}
       </div>
     </>

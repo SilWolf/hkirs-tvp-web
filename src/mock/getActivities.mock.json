@@ -5,14 +5,16 @@
     "characters": [
       {
         "type": "PC",
-        "_id": "5f9e4bd0b16afa136552c6cd",
-        "name": "卡洛特",
+        "level": 3,
+        "xp": 0,
+        "classes": ["5fb2c859515dc33cbc33c6f5", "5fb2c874515dc33cbc33c6f8"],
+        "_id": "5fb2c7ea515dc33cbc33c6f0",
+        "motto": "守護一切，就是我的一切。",
+        "characterId": "DC00001",
         "description": "卡洛特",
-        "createdAt": "2020-11-01T05:46:56.890Z",
-        "updatedAt": "2020-11-16T15:06:32.377Z",
-        "__v": 0,
-        "race": {
-          "_id": "5f9e82a639c7372252dda5a0",
+        "name": "卡洛特",
+        "raceConfig": {
+          "_id": "5fb2c7eb515dc33cbc33c6f1",
           "mutations": null,
           "__v": 0,
           "race": {
@@ -31,45 +33,58 @@
             "__v": 1,
             "id": "5f9e47d8b16afa136552c6ca"
           },
-          "id": "5f9e82a639c7372252dda5a0"
+          "id": "5fb2c7eb515dc33cbc33c6f1"
         },
-        "protrait": "5f9e4c4dc8a66413aed2fd2e",
-        "player": "5f9e7ffd72e1021a60e6449a",
-        "code": "DC-00001",
-        "city": "5f9e84c607c3cd227ee47c42",
-        "characterId": "DC00001",
-        "portrait": {
-          "_id": "5f9e4c4dc8a66413aed2fd2e",
-          "name": "1673bc2c92548df314e7bbd00c7b688c.png",
-          "alternativeText": "",
-          "caption": "",
-          "hash": "1673bc2c92548df314e7bbd00c7b688c_f79b457568",
-          "ext": ".png",
-          "mime": "image/png",
-          "size": 25.36,
-          "width": 180,
-          "height": 180,
-          "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/1673bc2c92548df314e7bbd00c7b688c_f79b457568.png",
-          "formats": {
-            "thumbnail": {
-              "name": "thumbnail_1673bc2c92548df314e7bbd00c7b688c.png",
-              "hash": "thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568",
-              "ext": ".png",
-              "mime": "image/png",
-              "width": 156,
-              "height": 156,
-              "size": 55.52,
-              "path": null,
-              "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568.png"
-            }
+        "classConfigs": [
+          {
+            "level": 1,
+            "_id": "5fb2c8eff91d614214696c1c",
+            "mutations": null,
+            "__v": 0,
+            "class": {
+              "_id": "5fb2c859515dc33cbc33c6f5",
+              "name": " Fighter",
+              "render": {
+                "_id": "5fb2c859515dc33cbc33c6f6",
+                "en": "FIghter",
+                "zh": "戰士",
+                "__v": 0,
+                "id": "5fb2c859515dc33cbc33c6f6"
+              },
+              "createdAt": "2020-11-16T18:43:37.056Z",
+              "updatedAt": "2020-11-16T18:43:37.393Z",
+              "__v": 1,
+              "id": "5fb2c859515dc33cbc33c6f5"
+            },
+            "id": "5fb2c8eff91d614214696c1c"
           },
-          "provider": "aws-s3",
-          "related": ["5f9e4bd0b16afa136552c6cd", "5f9e4bd0b16afa136552c6cd"],
-          "createdAt": "2020-11-01T05:49:01.554Z",
-          "updatedAt": "2020-11-15T12:40:32.844Z",
-          "__v": 0,
-          "id": "5f9e4c4dc8a66413aed2fd2e"
-        },
+          {
+            "level": 2,
+            "_id": "5fb2c8eff91d614214696c1d",
+            "mutations": null,
+            "__v": 0,
+            "class": {
+              "_id": "5fb2c874515dc33cbc33c6f8",
+              "name": "Barbarian",
+              "render": {
+                "_id": "5fb2c874515dc33cbc33c6f9",
+                "en": "Barbarian",
+                "zh": "野蠻人",
+                "__v": 0,
+                "id": "5fb2c874515dc33cbc33c6f9"
+              },
+              "createdAt": "2020-11-16T18:44:04.391Z",
+              "updatedAt": "2020-11-16T18:44:04.704Z",
+              "__v": 1,
+              "id": "5fb2c874515dc33cbc33c6f8"
+            },
+            "id": "5fb2c8eff91d614214696c1d"
+          }
+        ],
+        "createdAt": "2020-11-16T18:41:46.967Z",
+        "updatedAt": "2020-11-16T18:46:08.642Z",
+        "__v": 1,
+        "city": "5f9e84c607c3cd227ee47c42",
         "coverImage": {
           "_id": "5fb292547b7fd82fbc93340f",
           "name": "dnd_background_overlay2.jpg",
@@ -118,24 +133,61 @@
             }
           },
           "provider": "aws-s3",
-          "related": ["5f9e4bd0b16afa136552c6cd"],
+          "related": ["5fb2c7ea515dc33cbc33c6f0"],
           "createdAt": "2020-11-16T14:53:08.139Z",
-          "updatedAt": "2020-11-16T14:53:14.755Z",
+          "updatedAt": "2020-11-16T18:41:47.564Z",
           "__v": 0,
           "id": "5fb292547b7fd82fbc93340f"
         },
-        "motto": "守護全部，就是我的全部。",
-        "id": "5f9e4bd0b16afa136552c6cd"
+        "player": "5f9e7ffd72e1021a60e6449a",
+        "portrait": {
+          "_id": "5f9e4c4dc8a66413aed2fd2e",
+          "name": "1673bc2c92548df314e7bbd00c7b688c.png",
+          "alternativeText": "",
+          "caption": "",
+          "hash": "1673bc2c92548df314e7bbd00c7b688c_f79b457568",
+          "ext": ".png",
+          "mime": "image/png",
+          "size": 25.36,
+          "width": 180,
+          "height": 180,
+          "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/1673bc2c92548df314e7bbd00c7b688c_f79b457568.png",
+          "formats": {
+            "thumbnail": {
+              "name": "thumbnail_1673bc2c92548df314e7bbd00c7b688c.png",
+              "hash": "thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568",
+              "ext": ".png",
+              "mime": "image/png",
+              "width": 156,
+              "height": 156,
+              "size": 55.52,
+              "path": null,
+              "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568.png"
+            }
+          },
+          "provider": "aws-s3",
+          "related": ["5f9e4bd0b16afa136552c6cd", "5fb2c7ea515dc33cbc33c6f0"],
+          "createdAt": "2020-11-01T05:49:01.554Z",
+          "updatedAt": "2020-11-16T18:41:47.564Z",
+          "__v": 0,
+          "id": "5f9e4c4dc8a66413aed2fd2e"
+        },
+        "race": "5f9e47d8b16afa136552c6ca",
+        "id": "5fb2c7ea515dc33cbc33c6f0"
       },
       {
         "type": "PC",
+        "level": 0,
+        "xp": 0,
+        "classes": [],
         "_id": "5f9e8ca194090523c1d8832d",
         "characterId": "00001-GT01",
         "name": "薰",
-        "race": null,
         "createdAt": "2020-11-01T10:23:29.602Z",
         "updatedAt": "2020-11-01T10:23:29.602Z",
         "__v": 0,
+        "raceConfig": null,
+        "classConfigs": [],
         "id": "5f9e8ca194090523c1d8832d"
       }
     ],
@@ -151,7 +203,7 @@
       }
     ],
     "createdAt": "2020-11-16T16:32:42.866Z",
-    "updatedAt": "2020-11-16T16:46:12.115Z",
+    "updatedAt": "2020-11-16T18:50:51.499Z",
     "__v": 1,
     "characterRewards": [
       {
@@ -162,14 +214,16 @@
         "__v": 0,
         "character": {
           "type": "PC",
-          "_id": "5f9e4bd0b16afa136552c6cd",
-          "name": "卡洛特",
+          "level": 3,
+          "xp": 0,
+          "classes": ["5fb2c859515dc33cbc33c6f5", "5fb2c874515dc33cbc33c6f8"],
+          "_id": "5fb2c7ea515dc33cbc33c6f0",
+          "motto": "守護一切，就是我的一切。",
+          "characterId": "DC00001",
           "description": "卡洛特",
-          "createdAt": "2020-11-01T05:46:56.890Z",
-          "updatedAt": "2020-11-16T15:06:32.377Z",
-          "__v": 0,
-          "race": {
-            "_id": "5f9e82a639c7372252dda5a0",
+          "name": "卡洛特",
+          "raceConfig": {
+            "_id": "5fb2c7eb515dc33cbc33c6f1",
             "mutations": null,
             "__v": 0,
             "race": {
@@ -188,45 +242,58 @@
               "__v": 1,
               "id": "5f9e47d8b16afa136552c6ca"
             },
-            "id": "5f9e82a639c7372252dda5a0"
+            "id": "5fb2c7eb515dc33cbc33c6f1"
           },
-          "protrait": "5f9e4c4dc8a66413aed2fd2e",
-          "player": "5f9e7ffd72e1021a60e6449a",
-          "code": "DC-00001",
-          "city": "5f9e84c607c3cd227ee47c42",
-          "characterId": "DC00001",
-          "portrait": {
-            "_id": "5f9e4c4dc8a66413aed2fd2e",
-            "name": "1673bc2c92548df314e7bbd00c7b688c.png",
-            "alternativeText": "",
-            "caption": "",
-            "hash": "1673bc2c92548df314e7bbd00c7b688c_f79b457568",
-            "ext": ".png",
-            "mime": "image/png",
-            "size": 25.36,
-            "width": 180,
-            "height": 180,
-            "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/1673bc2c92548df314e7bbd00c7b688c_f79b457568.png",
-            "formats": {
-              "thumbnail": {
-                "name": "thumbnail_1673bc2c92548df314e7bbd00c7b688c.png",
-                "hash": "thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568",
-                "ext": ".png",
-                "mime": "image/png",
-                "width": 156,
-                "height": 156,
-                "size": 55.52,
-                "path": null,
-                "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568.png"
-              }
+          "classConfigs": [
+            {
+              "level": 1,
+              "_id": "5fb2c8eff91d614214696c1c",
+              "mutations": null,
+              "__v": 0,
+              "class": {
+                "_id": "5fb2c859515dc33cbc33c6f5",
+                "name": " Fighter",
+                "render": {
+                  "_id": "5fb2c859515dc33cbc33c6f6",
+                  "en": "FIghter",
+                  "zh": "戰士",
+                  "__v": 0,
+                  "id": "5fb2c859515dc33cbc33c6f6"
+                },
+                "createdAt": "2020-11-16T18:43:37.056Z",
+                "updatedAt": "2020-11-16T18:43:37.393Z",
+                "__v": 1,
+                "id": "5fb2c859515dc33cbc33c6f5"
+              },
+              "id": "5fb2c8eff91d614214696c1c"
             },
-            "provider": "aws-s3",
-            "related": ["5f9e4bd0b16afa136552c6cd", "5f9e4bd0b16afa136552c6cd"],
-            "createdAt": "2020-11-01T05:49:01.554Z",
-            "updatedAt": "2020-11-15T12:40:32.844Z",
-            "__v": 0,
-            "id": "5f9e4c4dc8a66413aed2fd2e"
-          },
+            {
+              "level": 2,
+              "_id": "5fb2c8eff91d614214696c1d",
+              "mutations": null,
+              "__v": 0,
+              "class": {
+                "_id": "5fb2c874515dc33cbc33c6f8",
+                "name": "Barbarian",
+                "render": {
+                  "_id": "5fb2c874515dc33cbc33c6f9",
+                  "en": "Barbarian",
+                  "zh": "野蠻人",
+                  "__v": 0,
+                  "id": "5fb2c874515dc33cbc33c6f9"
+                },
+                "createdAt": "2020-11-16T18:44:04.391Z",
+                "updatedAt": "2020-11-16T18:44:04.704Z",
+                "__v": 1,
+                "id": "5fb2c874515dc33cbc33c6f8"
+              },
+              "id": "5fb2c8eff91d614214696c1d"
+            }
+          ],
+          "createdAt": "2020-11-16T18:41:46.967Z",
+          "updatedAt": "2020-11-16T18:46:08.642Z",
+          "__v": 1,
+          "city": "5f9e84c607c3cd227ee47c42",
           "coverImage": {
             "_id": "5fb292547b7fd82fbc93340f",
             "name": "dnd_background_overlay2.jpg",
@@ -275,14 +342,47 @@
               }
             },
             "provider": "aws-s3",
-            "related": ["5f9e4bd0b16afa136552c6cd"],
+            "related": ["5fb2c7ea515dc33cbc33c6f0"],
             "createdAt": "2020-11-16T14:53:08.139Z",
-            "updatedAt": "2020-11-16T14:53:14.755Z",
+            "updatedAt": "2020-11-16T18:41:47.564Z",
             "__v": 0,
             "id": "5fb292547b7fd82fbc93340f"
           },
-          "motto": "守護全部，就是我的全部。",
-          "id": "5f9e4bd0b16afa136552c6cd"
+          "player": "5f9e7ffd72e1021a60e6449a",
+          "portrait": {
+            "_id": "5f9e4c4dc8a66413aed2fd2e",
+            "name": "1673bc2c92548df314e7bbd00c7b688c.png",
+            "alternativeText": "",
+            "caption": "",
+            "hash": "1673bc2c92548df314e7bbd00c7b688c_f79b457568",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 25.36,
+            "width": 180,
+            "height": 180,
+            "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/1673bc2c92548df314e7bbd00c7b688c_f79b457568.png",
+            "formats": {
+              "thumbnail": {
+                "name": "thumbnail_1673bc2c92548df314e7bbd00c7b688c.png",
+                "hash": "thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568",
+                "ext": ".png",
+                "mime": "image/png",
+                "width": 156,
+                "height": 156,
+                "size": 55.52,
+                "path": null,
+                "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568.png"
+              }
+            },
+            "provider": "aws-s3",
+            "related": ["5f9e4bd0b16afa136552c6cd", "5fb2c7ea515dc33cbc33c6f0"],
+            "createdAt": "2020-11-01T05:49:01.554Z",
+            "updatedAt": "2020-11-16T18:41:47.564Z",
+            "__v": 0,
+            "id": "5f9e4c4dc8a66413aed2fd2e"
+          },
+          "race": "5f9e47d8b16afa136552c6ca",
+          "id": "5fb2c7ea515dc33cbc33c6f0"
         },
         "id": "5fb2acd36597962e04133d14"
       },
@@ -294,13 +394,17 @@
         "__v": 0,
         "character": {
           "type": "PC",
+          "level": 0,
+          "xp": 0,
+          "classes": [],
           "_id": "5f9e8ca194090523c1d8832d",
           "characterId": "00001-GT01",
           "name": "薰",
-          "race": null,
           "createdAt": "2020-11-01T10:23:29.602Z",
           "updatedAt": "2020-11-01T10:23:29.602Z",
           "__v": 0,
+          "raceConfig": null,
+          "classConfigs": [],
           "id": "5f9e8ca194090523c1d8832d"
         },
         "id": "5fb2acd36597962e04133d15"
