@@ -11,3 +11,10 @@ export const getCharactersByUsername = (username: string): Promise<Character[]> 
     return response
   })
 }
+
+export const getCharacterById = (characterId: string): Promise<Character[]> => {
+  return api.get<Character[]>(`/characters/${characterId}`).then((response) => {
+    console.log(response)
+    return response
+  })
+}

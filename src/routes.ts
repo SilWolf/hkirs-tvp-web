@@ -33,6 +33,7 @@ import ForgotPassword from './views/ForgotPassword'
 import AfterSSOSignIn from './views/AfterSSOSignIn'
 import ResetPassword from './views/ResetPassword'
 import Characters from './views/Characters'
+import Character from './views/Character'
 
 export type RouteType = {
   path: string
@@ -85,6 +86,13 @@ var routes: RouteType[] = [
     icon: 'nc-icon nc-bank',
     component: Dashboard,
     layout: '/admin',
+  },
+  {
+    path: '/characters/:characterId',
+    name: 'Character Detail',
+    icon: 'nc-icon nc-diamond',
+    component: Character,
+    layout: '/admin'
   },
   {
     path: '/characters',

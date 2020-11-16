@@ -101,8 +101,10 @@ class Dashboard extends React.Component<Props, State> {
                 />
               )
             })}
+            <Route path="*">
+              <Redirect to="/admin/dashboard" />
+            </Route>
           </Switch>
-          <Redirect path="/admin/" exact to="/admin/dashboard" />
           <Footer fluid />
         </div>
         <FixedPlugin
