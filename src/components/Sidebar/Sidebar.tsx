@@ -84,31 +84,33 @@ class Sidebar extends React.Component<Props> {
             href="https://www.creative-tim.com"
             className="simple-text logo-normal"
           >
-            Creative Tim
+            TOCC Player Panel
           </a>
         </div>
         <div className="sidebar-wrapper" ref={this.sidebar}>
           <Nav>
-            {this.props.routes.map((prop, key) => {
-              return (
-                <li
-                  className={
-                    this.activeRoute(prop.path) +
-                    (prop.pro ? ' active-pro' : '')
-                  }
-                  key={key}
-                >
-                  <NavLink
-                    to={prop.layout + prop.path}
-                    className="nav-link"
-                    activeClassName="active"
+            {this.props.routes
+              .filter((route) => route.layout === '/admin')
+              .map((prop, key) => {
+                return (
+                  <li
+                    className={
+                      this.activeRoute(prop.path) +
+                      (prop.pro ? ' active-pro' : '')
+                    }
+                    key={key}
                   >
-                    <i className={prop.icon} />
-                    <p>{prop.name}</p>
-                  </NavLink>
-                </li>
-              )
-            })}
+                    <NavLink
+                      to={prop.layout + prop.path}
+                      className="nav-link"
+                      activeClassName="active"
+                    >
+                      <i className={prop.icon} />
+                      <p>{prop.name}</p>
+                    </NavLink>
+                  </li>
+                )
+              })}
           </Nav>
         </div>
       </div>
