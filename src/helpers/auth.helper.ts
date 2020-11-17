@@ -95,11 +95,13 @@ export const removeAuthUserFromLocalStorage = (): void => {
   return localStorage.removeItem(AUTH_USER_LOCALSTORAGE_KEY)
 }
 
-export const tryAutoSignIn = (): void => {
+export const tryAutoSignIn = (): boolean => {
   const authUser = getAuthUserFromLocalStorage()
   if (authUser) {
     resolveSignIn(authUser)
+    return true
   }
+  return false
 }
 
 export default {

@@ -18,6 +18,7 @@
 */
 import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
+import { useAsync } from 'react-async'
 import { Provider as ReduxProvider } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import { Router, Route, Switch } from 'react-router-dom'
@@ -34,14 +35,22 @@ import AdminLayout from './layouts/Admin'
 
 import authHelper from './helpers/auth.helper'
 import store from './store'
+import { Spinner } from 'reactstrap'
 
 const hist = createBrowserHistory()
 
+const tryAutoSignInFn = async () => {
+  return authHelper.tryAutoSignIn()
+}
+
 const App = () => {
-  useEffect(() => {
-    // Try to get stored authUser and put it into redux
-    authHelper.tryAutoSignIn()
-  }, [])
+  const tryAutoSignInAsync = useAsync({
+    promiseFn: tryAutoSignInFn,
+  })
+
+  if (tryAutoSignInAsync.isLoading) {
+    return <Spinner />
+  }
 
   return (
     <ReduxProvider store={store}>

@@ -11,7 +11,7 @@ const clientMock = (axios: AxiosInstance): void => {
 
   mock.onPost('/auth/local').reply(200, signInRes)
 
-  mock.onGet('/characters/foo').reply(200, getCharacterRes)
+  mock.onGet(/\/characters\/\w+/).reply(200, getCharacterRes)
   mock.onGet('/characters').reply(200, getCharactersRes)
 
   mock.onGet('/activities').reply(200, getActivitiesRes)

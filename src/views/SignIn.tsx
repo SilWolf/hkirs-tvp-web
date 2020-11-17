@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useAsync } from 'react-async'
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 
@@ -6,8 +7,9 @@ import { Card, FormGroup, Form, Input, Label, FormFeedback } from 'reactstrap'
 import Button from '../components/Button'
 
 import { getGoogleSignInLink } from '../services/api.service'
-import authHelper from '../helpers/auth.helper'
-import { Link } from 'react-router-dom'
+import authHelper, { signIn } from '../helpers/auth.helper'
+import { Link, Redirect } from 'react-router-dom'
+import { User } from '../types/user.type'
 
 type FormData = {
   email: string
@@ -31,26 +33,31 @@ const SignInCard = styled(Card)`
 const Center = styled.div`
   text-align: center;
 `
+const signInFn = async ([{ identifier, password }]: any) => {
+  return authHelper.signIn(identifier, password)
+}
+const signInFnOnReject = () => {}
 
 const SignIn = () => {
   const { register, handleSubmit, errors, setError } = useForm<FormData>()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const signInAsync = useAsync<{ jwt: string; user: User }>({
+    deferFn: signInFn,
+    onReject: () => {
+      setError('email', {
+        message: '電郵或密碼錯誤，請檢查後再試一次。',
+      })
+    },
+  })
 
   const onSubmit = (data: FormData) => {
-    setIsLoading(true)
-    authHelper
-      .signIn(data.email, data.password)
-      .then(() => {
-        // TODO: redirect once
-      })
-      .catch(() => {
-        setError('email', {
-          message: '電郵或密碼錯誤，請檢查後再試一次。',
-        })
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
+    signInAsync.run({
+      identifier: data.email,
+      password: data.password,
+    })
+  }
+
+  if (signInAsync.data) {
+    return <Redirect to="/admin" />
   }
 
   return (
@@ -92,7 +99,12 @@ const SignIn = () => {
             </FormGroup>
 
             <div style={{ marginTop: 48 }}>
-              <Button color="primary" type="submit" block isLoading={isLoading}>
+              <Button
+                color="primary"
+                type="submit"
+                block
+                isLoading={signInAsync.isLoading}
+              >
                 登入
               </Button>
             </div>
