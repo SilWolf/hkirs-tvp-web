@@ -40,7 +40,7 @@ const AfterSSOSignIn = () => {
   }
 
   if (status === StatusEnum.Success) {
-    return <Redirect to="/admin/dashboard" />
+    return <Redirect to="/admin" />
   }
 
   if (status === StatusEnum.Failure) {

@@ -17,6 +17,7 @@
 
 */
 import React from 'react'
+import { RouteType } from './types/system/route.type'
 
 import Dashboard from './views/Dashboard'
 import Notifications from './views/Notifications'
@@ -35,121 +36,96 @@ import ResetPassword from './views/ResetPassword'
 import Characters from './views/Characters'
 import Character from './views/Character'
 
-export type RouteType = {
-  path: string
-  name: string
-  icon: string
-  component: typeof React.Component | React.FC
-  layout: string
-  pro?: boolean
-}
-
 var routes: RouteType[] = [
   {
     path: '/sign-in',
     name: 'SignIn',
     icon: '',
     component: SignIn,
-    layout: '',
   },
   {
     path: '/sign-up',
     name: 'SignUp',
     icon: '',
     component: SignUp,
-    layout: '',
   },
   {
     path: '/forgot-password',
     name: 'Forgot Password',
     icon: '',
     component: ForgotPassword,
-    layout: '',
   },
   {
     path: '/reset-password',
     name: 'Reset Password',
     icon: '',
     component: ResetPassword,
-    layout: '',
   },
   {
     path: '/connect/:provider/redirect',
     name: 'AfterSSOSignIn',
     icon: '',
     component: AfterSSOSignIn,
-    layout: '',
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
     icon: 'nc-icon nc-bank',
     component: Dashboard,
-    layout: '/admin',
   },
   {
     path: '/characters/:characterId',
     name: 'Character Detail',
     icon: 'nc-icon nc-diamond',
-    component: Character,
-    layout: '/admin'
+    component: Character
   },
   {
     path: '/characters',
     name: 'Characters',
     icon: 'nc-icon nc-diamond',
-    component: Characters,
-    layout: '/admin'
+    component: Characters
   },
   {
     path: '/icons',
     name: 'Icons',
     icon: 'nc-icon nc-diamond',
     component: Icons,
-    layout: '/admin',
   },
   {
     path: '/maps',
     name: 'Maps',
     icon: 'nc-icon nc-pin-3',
     component: Maps,
-    layout: '/admin',
   },
   {
     path: '/notifications',
     name: 'Notifications',
     icon: 'nc-icon nc-bell-55',
     component: Notifications,
-    layout: '/admin',
   },
   {
     path: '/user-page',
     name: 'User Profile',
     icon: 'nc-icon nc-single-02',
     component: UserPage,
-    layout: '/admin',
   },
   {
     path: '/tables',
     name: 'Table List',
     icon: 'nc-icon nc-tile-56',
     component: TableList,
-    layout: '/admin',
   },
   {
     path: '/typography',
     name: 'Typography',
     icon: 'nc-icon nc-caps-small',
     component: Typography,
-    layout: '/admin',
   },
   {
-    pro: true,
     path: '/upgrade',
     name: 'Upgrade to PRO',
     icon: 'nc-icon nc-spaceship',
     component: UpgradeToPro,
-    layout: '/admin',
   },
 ]
 export default routes

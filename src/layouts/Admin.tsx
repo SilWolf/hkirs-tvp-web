@@ -26,7 +26,7 @@ import Footer from '../components/Footer/Footer'
 import Sidebar from '../components/Sidebar/Sidebar'
 import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 
-import routes from '../routes'
+import routes from '../routes/admin.route'
 import { History, Location } from 'history'
 import store from '../store'
 
@@ -99,11 +99,7 @@ class Dashboard extends React.Component<Props, State> {
           <Switch>
             {routes.map((prop, key) => {
               return (
-                <Route
-                  path={prop.layout + prop.path}
-                  component={prop.component}
-                  key={key}
-                />
+                <Route path={prop.path} component={prop.component} key={key} />
               )
             })}
             <Route path="*">

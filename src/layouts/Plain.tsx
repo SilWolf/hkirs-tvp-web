@@ -25,7 +25,7 @@ import styled from 'styled-components'
 import Footer from '../components/Footer/Footer'
 import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 
-import routes from '../routes'
+import routes from '../routes/public.route'
 import { History, Location } from 'history'
 import store from '../store'
 
@@ -95,11 +95,7 @@ class Plain extends React.Component<Props, State> {
           <Switch>
             {routes.map((prop, key) => {
               return (
-                <Route
-                  path={prop.layout + prop.path}
-                  component={prop.component}
-                  key={key}
-                />
+                <Route path={prop.path} component={prop.component} key={key} />
               )
             })}
           </Switch>

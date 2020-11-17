@@ -24,7 +24,7 @@ import PerfectScrollbar from 'perfect-scrollbar'
 
 import logo from '../../logo.svg'
 import { Location } from 'history'
-import { RouteType } from '../../routes'
+import { RouteType } from '../../types/system/route.type'
 
 var ps: PerfectScrollbar
 
@@ -89,28 +89,20 @@ class Sidebar extends React.Component<Props> {
         </div>
         <div className="sidebar-wrapper" ref={this.sidebar}>
           <Nav>
-            {this.props.routes
-              .filter((route) => route.layout === '/admin')
-              .map((prop, key) => {
-                return (
-                  <li
-                    className={
-                      this.activeRoute(prop.path) +
-                      (prop.pro ? ' active-pro' : '')
-                    }
-                    key={key}
+            {this.props.routes.map((prop, key) => {
+              return (
+                <li key={key}>
+                  <NavLink
+                    to={prop.path}
+                    className="nav-link"
+                    activeClassName="active"
                   >
-                    <NavLink
-                      to={prop.layout + prop.path}
-                      className="nav-link"
-                      activeClassName="active"
-                    >
-                      <i className={prop.icon} />
-                      <p>{prop.name}</p>
-                    </NavLink>
-                  </li>
-                )
-              })}
+                    <i className={prop.icon} />
+                    <p>{prop.name}</p>
+                  </NavLink>
+                </li>
+              )
+            })}
           </Nav>
         </div>
       </div>
