@@ -14,7 +14,7 @@ import {
 } from 'reactstrap'
 import Button from '../components/Button'
 
-import authService from '../services/auth.service'
+import authHelper from '../helpers/auth.helper'
 import { Link } from 'react-router-dom'
 
 type FormData = {
@@ -48,7 +48,7 @@ const ForgotPassword = () => {
 
   const onSubmit = (data: FormData) => {
     setIsLoading(true)
-    authService
+    authHelper
       .forgotPassword(data.email)
       .then(() => {
         setIsForgotPasswordEmailSent(true)

@@ -14,7 +14,7 @@ import {
 } from 'reactstrap'
 import Button from '../components/Button'
 
-import authService from '../services/auth.service'
+import authHelper from '../helpers/auth.helper'
 import { getGoogleSignInLink } from '../services/api.service'
 import { Link } from 'react-router-dom'
 
@@ -51,7 +51,7 @@ const SignUp = () => {
 
   const onSubmit = (data: FormData) => {
     setIsLoading(true)
-    authService
+    authHelper
       .signUp(data.email, data.password)
       .then(() => {
         setIsSignUpSuccess(true)

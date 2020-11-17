@@ -15,8 +15,7 @@ import {
 } from 'reactstrap'
 import Button from '../components/Button'
 
-import authService from '../services/auth.service'
-import { getGoogleSignInLink } from '../services/api.service'
+import authHelper from '../helpers/auth.helper'
 import { Link, useLocation } from 'react-router-dom'
 
 type FormData = {
@@ -58,7 +57,7 @@ const ResetPassword = () => {
     setIsResetPasswordSuccess(false)
     setIsLoading(true)
 
-    authService
+    authHelper
       .resetPassword(
         query.get('code') as string,
         data.password,

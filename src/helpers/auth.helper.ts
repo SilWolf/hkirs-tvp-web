@@ -1,5 +1,5 @@
 import { User } from '../types/user.type'
-import api from './api.service'
+import api from '../services/api.service'
 
 export const signIn = (identifier: string, password: string) => {
   return api.post<{

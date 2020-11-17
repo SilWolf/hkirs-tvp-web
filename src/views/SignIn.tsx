@@ -7,7 +7,7 @@ import { Card, FormGroup, Form, Input, Label, FormFeedback } from 'reactstrap'
 import Button from '../components/Button'
 
 import { getGoogleSignInLink } from '../services/api.service'
-import authService from '../services/auth.service'
+import authHelper from '../helpers/auth.helper'
 import authUserSlice from '../slices/authUser.slice'
 import { Link } from 'react-router-dom'
 
@@ -41,10 +41,15 @@ const SignIn = () => {
 
   const onSubmit = (data: FormData) => {
     setIsLoading(true)
-    authService
+    authHelper
       .signIn(data.email, data.password)
       .then(({ jwt, user }) => {
         dispatch(authUserSlice.actions.login({ jwt, user: user }))
+        authHelper.putAuthUserToLocalStorage({
+          isLogined: true,
+          jwt,
+          user,
+        })
       })
       .catch(() => {
         setError('email', {

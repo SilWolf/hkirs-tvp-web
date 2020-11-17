@@ -32,7 +32,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import PlainLayout from './layouts/Plain'
 import AdminLayout from './layouts/Admin'
 
-import authService from './services/auth.service'
+import authHelper from './helpers/auth.helper'
 import store from './store'
 import authUserSlice from './slices/authUser.slice'
 
@@ -41,7 +41,7 @@ const hist = createBrowserHistory()
 const App = () => {
   useEffect(() => {
     // Try to get stored authUser and put it into redux
-    const authUser = authService.getAuthUserFromLocalStorage()
+    const authUser = authHelper.getAuthUserFromLocalStorage()
     if (authUser) {
       store.dispatch(authUserSlice.actions.login(authUser))
     }

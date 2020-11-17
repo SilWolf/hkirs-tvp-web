@@ -28,6 +28,7 @@ import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 
 import routes from '../routes'
 import { History, Location } from 'history'
+import store from '../store'
 
 var ps: PerfectScrollbar
 
@@ -81,6 +82,10 @@ class Dashboard extends React.Component<Props, State> {
     this.setState({ backgroundColor: color })
   }
   render() {
+    if (!store.getState().authUser.isLogined) {
+      return <Redirect to="/sign-in" />
+    }
+
     return (
       <div className="wrapper">
         <Sidebar

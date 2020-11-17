@@ -27,6 +27,7 @@ import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 
 import routes from '../routes'
 import { History, Location } from 'history'
+import store from '../store'
 
 var ps: PerfectScrollbar
 
@@ -84,6 +85,10 @@ class Plain extends React.Component<Props, State> {
     this.setState({ backgroundColor: color })
   }
   render() {
+    if (store.getState().authUser.isLogined) {
+      return <Redirect to="/admin" />
+    }
+
     return (
       <div className="wrapper">
         <MainPanel className="main-panel" ref={this.mainPanel}>
