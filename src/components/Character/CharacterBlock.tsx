@@ -27,6 +27,10 @@ type Props = {
 }
 
 const CharacterBlock = ({ character }: Props) => {
+  const classesString = character.classConfigs
+    .map((classConfig) => `${classConfig.class.render.zh} ${classConfig.level}`)
+    .join(' / ')
+
   return (
     <Wrapper>
       <div>
@@ -34,7 +38,9 @@ const CharacterBlock = ({ character }: Props) => {
       </div>
       <MainContent>
         <Name>{character.name}</Name>
-        <Sub>{character.race?.race.render.zh}</Sub>
+        <Sub>
+          {character.race?.render.zh} {classesString}
+        </Sub>
       </MainContent>
     </Wrapper>
   )
