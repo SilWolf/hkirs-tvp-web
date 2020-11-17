@@ -71,7 +71,7 @@ class Upgrade extends React.Component {
                         <td className="text-center">27</td>
                       </tr>
                       <tr>
-                        <td>Login, Register, Pricing, Lock Pages</td>
+                        <td>SignIn, Register, Pricing, Lock Pages</td>
                         <td className="text-center">
                           <i className="nc-icon nc-simple-remove text-danger" />
                         </td>

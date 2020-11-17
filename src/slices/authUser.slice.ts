@@ -2,25 +2,25 @@ import { createSlice } from '@reduxjs/toolkit'
 import { User } from '../types/user.type'
 
 type SliceState = {
-  isLogined: boolean
+  isSignIned: boolean
   jwt?: string
   user?: User
 }
 const initialState: SliceState = {
-  isLogined: false,
+  isSignIned: false,
 }
 
 const authUserSlice = createSlice({
   name: 'user',
   initialState: initialState,
   reducers: {
-    login: (_, action) => ({
-      isLogined: true,
+    signIn: (_, action) => ({
+      isSignIned: true,
       jwt: action.payload.jwt,
       user: action.payload.user,
     }),
-    logout: () => ({
-      isLogined: false,
+    signOut: () => ({
+      isSignIned: false,
       jwt: undefined,
       user: undefined,
     }),

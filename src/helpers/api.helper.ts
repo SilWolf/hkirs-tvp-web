@@ -25,3 +25,6 @@ export const getActivitiesByCharacterId = (
     },
   })
 }
+
+export const setAuthorization = api.setAuthorization
+export const removeAuthorization = api.removeAuthorization

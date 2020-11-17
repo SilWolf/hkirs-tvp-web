@@ -1,14 +1,50 @@
 import { User } from '../types/user.type'
 import api from '../services/api.service'
+import store from '../store'
+import authUserSlice from '../slices/authUser.slice'
+
+const AUTH_USER_LOCALSTORAGE_KEY = 'tocc-player-panel:authUser'
+type AuthUserInfo = {
+  jwt?: string
+  user?: User
+  isSignIned: boolean
+}
 
 export const signIn = (identifier: string, password: string) => {
-  return api.post<{
-    jwt: string
-    user: User
-  }>('/auth/local', {
-    identifier,
-    password,
-  })
+  return api
+    .post<{
+      jwt: string
+      user: User
+    }>('/auth/local', {
+      identifier,
+      password,
+    })
+    .then((authUserData) => {
+      resolveSignIn({ ...authUserData, isSignIned: true })
+      return authUserData
+    })
+}
+
+export const ssoSignIn = (providerName: string, query: string) => {
+  return api
+    .get<{
+      jwt: string
+      user: User
+    }>(`/auth/${providerName}/callback${query}`)
+    .then((authUserData) => {
+      resolveSignIn({ ...authUserData, isSignIned: true })
+      return authUserData
+    })
+}
+
+export const resolveSignIn = (authUserData: AuthUserInfo) => {
+  store.dispatch(authUserSlice.actions.signIn(authUserData))
+  putAuthUserToLocalStorage(authUserData)
+}
+
+export const signOut = () => {
+  store.dispatch(authUserSlice.actions.signOut())
+  removeAuthUserFromLocalStorage()
 }
 
 export const signUp = (email: string, password: string) => {
@@ -43,19 +79,6 @@ export const resetPassword = (
   })
 }
 
-export const ssoSignIn = (providerName: string, query: string) => {
-  return api.get<{
-    jwt: string
-    user: User
-  }>(`/auth/${providerName}/callback${query}`)
-}
-
-const AUTH_USER_LOCALSTORAGE_KEY = 'tocc-player-panel:authUser'
-type AuthUserInfo = {
-  isLogined: boolean
-  jwt?: string
-  user?: User
-}
 export const putAuthUserToLocalStorage = (authUserInfo: AuthUserInfo): void => {
   localStorage.setItem(AUTH_USER_LOCALSTORAGE_KEY, JSON.stringify(authUserInfo))
 }
@@ -72,6 +95,13 @@ export const removeAuthUserFromLocalStorage = (): void => {
   return localStorage.removeItem(AUTH_USER_LOCALSTORAGE_KEY)
 }
 
+export const tryAutoSignIn = (): void => {
+  const authUser = getAuthUserFromLocalStorage()
+  if (authUser) {
+    resolveSignIn(authUser)
+  }
+}
+
 export default {
   signIn,
   signUp,
@@ -81,4 +111,5 @@ export default {
   getAuthUserFromLocalStorage,
   putAuthUserToLocalStorage,
   removeAuthUserFromLocalStorage,
+  tryAutoSignIn,
 }

@@ -20,13 +20,7 @@ const AfterSSOSignIn = () => {
   useEffect(() => {
     if (dispatch && provider && search) {
       ssoSignIn(provider, search)
-        .then(({ jwt, user }) => {
-          dispatch(
-            authUserSlice.actions.login({
-              jwt,
-              user: user,
-            })
-          )
+        .then(() => {
           setStatus(StatusEnum.Success)
         })
         .catch(() => {
@@ -44,7 +38,7 @@ const AfterSSOSignIn = () => {
   }
 
   if (status === StatusEnum.Failure) {
-    return <Redirect to="/login" />
+    return <Redirect to="/sign-in" />
   }
 
   return <></>

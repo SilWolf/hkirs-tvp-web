@@ -82,7 +82,7 @@ class Dashboard extends React.Component<Props, State> {
     this.setState({ backgroundColor: color })
   }
   render() {
-    if (!store.getState().authUser.isLogined) {
+    if (!store.getState().authUser.isSignIned) {
       return <Redirect to="/sign-in" />
     }
 

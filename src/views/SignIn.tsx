@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 
@@ -8,7 +7,6 @@ import Button from '../components/Button'
 
 import { getGoogleSignInLink } from '../services/api.service'
 import authHelper from '../helpers/auth.helper'
-import authUserSlice from '../slices/authUser.slice'
 import { Link } from 'react-router-dom'
 
 type FormData = {
@@ -35,7 +33,6 @@ const Center = styled.div`
 `
 
 const SignIn = () => {
-  const dispatch = useDispatch()
   const { register, handleSubmit, errors, setError } = useForm<FormData>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -43,13 +40,8 @@ const SignIn = () => {
     setIsLoading(true)
     authHelper
       .signIn(data.email, data.password)
-      .then(({ jwt, user }) => {
-        dispatch(authUserSlice.actions.login({ jwt, user: user }))
-        authHelper.putAuthUserToLocalStorage({
-          isLogined: true,
-          jwt,
-          user,
-        })
+      .then(() => {
+        // TODO: redirect once
       })
       .catch(() => {
         setError('email', {
