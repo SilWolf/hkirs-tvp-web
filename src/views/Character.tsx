@@ -40,6 +40,7 @@ import {
 } from '../helpers/api.helper'
 import { Activity } from '../types/activity.type'
 import { Character } from '../types/character.type'
+import CharacterLevelAndXpProgress from '../components/Character/CharacterLevelAndXpProgress'
 
 const getCharacterByIdFn = ({ characterId }: any) => {
   return getCharacterById(characterId || 'foo')
@@ -98,6 +99,11 @@ const CharacteDetail = () => {
                 </div>
                 <p className="description text-center">{character.motto}</p>
                 <p className="description text-center">{classesString}</p>
+
+                <CharacterLevelAndXpProgress
+                  xp={character.xp}
+                  level={character.level}
+                />
               </CardBody>
               <CardFooter>
                 <hr />

@@ -25,10 +25,6 @@ class PageTitle extends React.PureComponent<Props, State> {
       </Helmet>
     )
   }
-
-  shouldComponentUpdate(nextProps: Props) {
-    return nextProps.children !== this.state.children
-  }
 }
 
 export default PageTitle

@@ -26,4 +26,6 @@ export type Character = {
   characterId: string
   motto: string
   city: City
+  level: number
+  xp: number
 }

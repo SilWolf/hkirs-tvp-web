@@ -23,10 +23,6 @@ class PageBrandname extends React.PureComponent<Props, State> {
     store.dispatch(pageSlice.actions.brandName(this.state.brandname))
     return <></>
   }
-
-  shouldComponentUpdate(nextProps: Props) {
-    return nextProps.children !== this.state.children
-  }
 }
 
 export default PageBrandname
