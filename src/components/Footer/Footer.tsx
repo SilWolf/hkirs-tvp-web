@@ -27,6 +27,8 @@ type Props = {
   fluid?: boolean
 }
 
+const { REACT_APP_WORLD_ANVIL_HOMEPAGE } = process.env
+
 class Footer extends React.Component<Props> {
   render() {
     return (
@@ -43,8 +45,8 @@ class Footer extends React.Component<Props> {
                   </a>
                 </li>
                 <li>
-                  <a href="https://blog.creative-tim.com" target="_blank">
-                    Blog
+                  <a href={REACT_APP_WORLD_ANVIL_HOMEPAGE} target="_blank">
+                    World Anvil
                   </a>
                 </li>
                 <li>

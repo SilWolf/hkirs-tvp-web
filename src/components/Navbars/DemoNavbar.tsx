@@ -20,7 +20,6 @@ import { History, Location } from 'history'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import store from '../../store'
-import pageSlice from '../../slices/page.slice'
 
 import {
   Collapse,
