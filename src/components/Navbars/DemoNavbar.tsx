@@ -37,8 +37,6 @@ import {
   Input,
 } from 'reactstrap'
 
-import routes from '../../routes'
-
 type Props = {
   location: Location
   history: History
@@ -85,12 +83,6 @@ class Header extends React.Component<Props, State> {
   }
   getBrand() {
     let brandName = 'Default Brand'
-    routes.map((prop, key) => {
-      if (window.location.href.indexOf(prop.path) !== -1) {
-        brandName = prop.name
-      }
-      return null
-    })
     return brandName
   }
   openSidebar() {
