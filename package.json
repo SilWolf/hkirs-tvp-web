@@ -30,6 +30,7 @@
     "react-chartjs-2": "2.9.0",
     "react-dom": "16.13.1",
     "react-google-maps": "9.4.5",
+    "react-helmet": "^6.1.0",
     "react-hook-form": "^6.11.0",
     "react-redux": "^7.2.2",
     "react-router": "5.2.0",
@@ -82,6 +83,7 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@types/react-helmet": "^6.1.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "husky": "^4.3.0",

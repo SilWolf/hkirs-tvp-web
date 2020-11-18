@@ -32,6 +32,8 @@ import {
   Col,
   Spinner,
 } from 'reactstrap'
+import PageBrandname from '../components/Page/PageBrand'
+import PageTitle from '../components/Page/PageTitle'
 import {
   getActivitiesByCharacterId,
   getCharacterById,
@@ -73,6 +75,8 @@ const CharacteDetail = () => {
 
   return (
     <>
+      <PageTitle>{character.name}</PageTitle>
+      <PageBrandname>{character.name}</PageBrandname>
       <div className="content">
         <Row>
           <Col md="4">

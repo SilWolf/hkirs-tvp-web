@@ -19,6 +19,9 @@
 import { History, Location } from 'history'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import store from '../../store'
+import pageSlice from '../../slices/page.slice'
+
 import {
   Collapse,
   Navbar,
@@ -83,7 +86,7 @@ class Header extends React.Component<Props, State> {
   }
   getBrand() {
     let brandName = 'Default Brand'
-    return brandName
+    return store.getState().page.brandName || brandName
   }
   openSidebar() {
     document.documentElement.classList.toggle('nav-open')
