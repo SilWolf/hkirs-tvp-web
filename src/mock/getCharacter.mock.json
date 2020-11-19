@@ -107,6 +107,24 @@
       "id": "5fb2c8eff91d614214696c1d"
     }
   ],
+  "background": {
+    "id": "1",
+    "name": "Outlander",
+    "render": {
+      "zh": "遠行者",
+      "en": "Outlander"
+    }
+  },
+  "backgroundConfig": {
+    "background": {
+      "id": "1",
+      "name": "Outlander",
+      "render": {
+        "zh": "遠行者",
+        "en": "Outlander"
+      }
+    }
+  },
   "createdAt": "2020-11-16T18:41:46.967Z",
   "updatedAt": "2020-11-16T18:46:08.642Z",
   "__v": 1,
@@ -242,8 +260,8 @@
       "characters": ["5f9e8ca194090523c1d8832d", "5fb2c7ea515dc33cbc33c6f0"],
       "_id": "5fb2a9aa7db4c544606d3508",
       "published_at": "2020-11-16T16:33:06.783Z",
-      "description": "AA00001-D 劇本獎勵",
-      "title": "AA00001-D 劇本獎勵",
+      "description": "AA00001-D 哥布林要塞",
+      "title": "AA00001-D 哥布林要塞",
       "CharacterReward": [
         {
           "_id": "5fb2a9ab7db4c544606d350a",

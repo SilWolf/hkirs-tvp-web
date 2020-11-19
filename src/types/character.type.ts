@@ -1,3 +1,4 @@
+import { Background } from './background.type'
 import { City } from './city.type'
 import { Cls } from './class.type'
 import { Race } from './race.type'
@@ -20,6 +21,11 @@ export type Character = {
     level: number
     mutations: any
   }[]
+  background: Background
+  backgroundConfig: {
+    background: Background
+    mutations: any
+  }
   portrait: StrapiImage
   coverImage: StrapiImage
   player: User

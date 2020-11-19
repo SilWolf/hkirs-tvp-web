@@ -41,6 +41,7 @@ import {
 import { Activity } from '../types/activity.type'
 import { Character } from '../types/character.type'
 import CharacterLevelAndXpProgress from '../components/Character/CharacterLevelAndXpProgress'
+import ActivityRow from '../components/Activity/ActivityRow'
 
 const getCharacterByIdFn = ({ characterId }: any) => {
   return getCharacterById(characterId || 'foo')
@@ -117,7 +118,7 @@ const CharacteDetail = () => {
                     </Col>
                     <Col className="ml-auto mr-auto" lg="4" md="6" xs="6">
                       <h5>
-                        {character.city.name} <br />
+                        {character.background.render.zh} <br />
                         <small>背景</small>
                       </h5>
                     </Col>
@@ -243,13 +244,13 @@ const CharacteDetail = () => {
                       (_) => _.character.id === characterId
                     )
                     return (
-                      <div key={activity.id}>
-                        <div>{activity.title}</div>
-                        <div>
-                          <span>{reward?.xp || '--'} XP</span>{' '}
-                          <span>{reward?.gp || '--'} GP</span>
-                        </div>
-                      </div>
+                      <ActivityRow
+                        title={activity.title}
+                        inGameStartAt={activity.inGameStartAt}
+                        gp={reward?.gp || null}
+                        xp={reward?.xp || null}
+                        rewards={reward?.rewards || []}
+                      />
                     )
                   })}
               </CardBody>
