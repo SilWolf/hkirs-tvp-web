@@ -21,6 +21,7 @@ import { RouteType } from '../types/system/route.type'
 import Dashboard from '../views/Dashboard'
 import Characters from '../views/Characters'
 import Character from '../views/Character'
+import CharacterBuilder from '../views/CharacterBuilder'
 
 var routes: RouteType[] = [
   {
@@ -29,6 +30,12 @@ var routes: RouteType[] = [
     icon: 'nc-icon nc-bank',
     component: Dashboard,
     inSidebar: true,
+  },
+  {
+    path: '/admin/characters/builder',
+    name: 'Characters',
+    icon: 'nc-icon nc-diamond',
+    component: CharacterBuilder,
   },
   {
     path: '/admin/characters/:characterId',

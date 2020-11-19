@@ -19,7 +19,9 @@ const Characters = () => {
     <>
       <div className="content">
         <div style={{ textAlign: 'right' }}>
-          <Button color="primary">創建一個新角色</Button>
+          <Link to="/admin/characters/builder">
+            <Button color="primary">創建一個新角色</Button>
+          </Link>
         </div>
         {charactersAsync.data &&
           charactersAsync.data.map((character) => (

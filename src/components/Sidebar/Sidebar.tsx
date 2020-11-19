@@ -89,20 +89,22 @@ class Sidebar extends React.Component<Props> {
         </div>
         <div className="sidebar-wrapper" ref={this.sidebar}>
           <Nav>
-            {this.props.routes.map((prop, key) => {
-              return (
-                <li key={key}>
-                  <NavLink
-                    to={prop.path}
-                    className="nav-link"
-                    activeClassName="active"
-                  >
-                    <i className={prop.icon} />
-                    <p>{prop.name}</p>
-                  </NavLink>
-                </li>
-              )
-            })}
+            {this.props.routes
+              .filter((route) => route.inSidebar)
+              .map((prop, key) => {
+                return (
+                  <li key={key}>
+                    <NavLink
+                      to={prop.path}
+                      className="nav-link"
+                      activeClassName="active"
+                    >
+                      <i className={prop.icon} />
+                      <p>{prop.name}</p>
+                    </NavLink>
+                  </li>
+                )
+              })}
           </Nav>
         </div>
       </div>

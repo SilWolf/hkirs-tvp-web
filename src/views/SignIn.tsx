@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useAsync } from 'react-async'
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
@@ -36,7 +36,6 @@ const Center = styled.div`
 const signInFn = async ([{ identifier, password }]: any) => {
   return authHelper.signIn(identifier, password)
 }
-const signInFnOnReject = () => {}
 
 const SignIn = () => {
   const { register, handleSubmit, errors, setError } = useForm<FormData>()
