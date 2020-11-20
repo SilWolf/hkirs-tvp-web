@@ -7,9 +7,10 @@ import { Card, FormGroup, Form, Input, Label, FormFeedback } from 'reactstrap'
 import Button from '../components/Button'
 
 import { getGoogleSignInLink } from '../services/api.service'
-import authHelper, { signIn } from '../helpers/auth.helper'
+import authHelper from '../helpers/auth.helper'
 import { Link, Redirect } from 'react-router-dom'
 import { User } from '../types/user.type'
+import Recaptcha from '../components/Recaptcha'
 
 type FormData = {
   email: string
@@ -98,6 +99,7 @@ const SignIn = () => {
             </FormGroup>
 
             <div style={{ marginTop: 48 }}>
+              <Recaptcha />
               <Button
                 color="primary"
                 type="submit"
