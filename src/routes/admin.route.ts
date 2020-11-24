@@ -22,6 +22,7 @@ import Dashboard from '../views/Dashboard'
 import Characters from '../views/Characters'
 import Character from '../views/Character'
 import CharacterBuilder from '../views/CharacterBuilder'
+import RandomNpc from '../views/RandomNpc'
 
 var routes: RouteType[] = [
   {
@@ -48,6 +49,13 @@ var routes: RouteType[] = [
     name: 'Characters',
     icon: 'nc-icon nc-diamond',
     component: Characters,
+    inSidebar: true,
+  },
+  {
+    path: '/admin/npc',
+    name: 'NPC Randomize',
+    icon: 'nc-icon nc-diamond',
+    component: RandomNpc,
     inSidebar: true,
   },
 ]
