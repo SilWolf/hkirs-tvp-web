@@ -11,6 +11,8 @@ import {
   Row,
   Col,
   FormFeedback,
+  InputGroup,
+  InputGroupAddon,
 } from 'reactstrap'
 
 enum FormStep {
@@ -51,6 +53,8 @@ const CharacterBuilder = () => {
     const onSubmit = () => {
       setFormStep(FormStep.BIO)
     }
+
+    const handleRandomName = () => {}
 
     content = (
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -99,17 +103,22 @@ const CharacterBuilder = () => {
           <Col sm={6}>
             <FormGroup>
               <Label>角色全名</Label>
-              <Input
-                type="text"
-                name="name"
-                innerRef={register({
-                  required: {
-                    value: true,
-                    message: '必須填寫角色名字',
-                  },
-                })}
-                invalid={!!errors.name}
-              />
+              <InputGroup>
+                <Input
+                  type="text"
+                  name="name"
+                  innerRef={register({
+                    required: {
+                      value: true,
+                      message: '必須填寫角色名字',
+                    },
+                  })}
+                  invalid={!!errors.name}
+                />
+                <InputGroupAddon addonType="append">
+                  <Button onClick={handleRandomName}>隨機</Button>
+                </InputGroupAddon>
+              </InputGroup>
               <FormText color="muted">
                 根據種族及性別的不同，角色的名字可以有很大的差異，按通用語慣常的表達方式，一般在名字後面會跟隨代表其家族的姓氏。
                 <br />
