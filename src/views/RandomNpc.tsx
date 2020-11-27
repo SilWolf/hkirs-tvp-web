@@ -10,8 +10,8 @@ const randomNpcFn = () => {
 const RandomNpc = () => {
   const npcAsync = useAsync<Character_NPC>({
     deferFn: randomNpcFn,
-    onReject: () => {
-      console.error('something wrong!')
+    onReject: (e) => {
+      console.error('something wrong!', e)
     },
   })
 

@@ -8,13 +8,15 @@ const CATEGORY_KEYS = [
   'firstName',
   'lastName'
 ] as const
-type CategoryKeyType = typeof CATEGORY_KEYS[number];
-type RandomResult = {
+export type CategoryKeyType = typeof CATEGORY_KEYS[number];
+export type RandomResult = {
   category: CategoryKeyType
+  _condition: { [x in CategoryKeyType]?: string | number }
   _seed: string
+  _index: number
   value: string | number
 }
-type RawNPC = { [x in CategoryKeyType]: string | number }
+export type RawNPC = { [x in CategoryKeyType]: string | number | undefined }
 
 export const random = async (): Promise<Character_NPC> => {
   const results = CATEGORY_KEYS.map((category: CategoryKeyType) => randomByCategory(category))
@@ -33,13 +35,17 @@ export const random = async (): Promise<Character_NPC> => {
 }
 
 const randomByCategory = (category: CategoryKeyType): RandomResult => {
-  const source = require(`../constants/randomNpc/${category}.json`)
-  if (source && source.length > 0) {
-    let items = source[0].items
+  const source = require(`./randomNpc/sources/${category}.json`)
+  if (source && source.groups && source.groups.length > 0) {
+    const group = source.groups.find(() => true)
+    const {condition, items} = group
     const rndN = Math.floor(Math.random() * items.length)
+
     return {
       category,
+      _index: rndN,
       _seed: rndN.toString(),
+      _condition: condition,
       value: items[rndN]
     }
   } else {

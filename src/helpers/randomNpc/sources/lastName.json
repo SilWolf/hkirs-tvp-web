@@ -1,0 +1,12 @@
+{
+  "dependencies": ["race", "gender"],
+  "groups": [
+    {
+      "condition": {
+        "race": "human",
+        "gender": "M"
+      },
+      "items": ["北弗", "德萊卡", "鑄途", "翠根"]
+    }
+  ]
+}
