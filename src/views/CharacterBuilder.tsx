@@ -11,9 +11,8 @@ import {
   Row,
   Col,
   FormFeedback,
-  InputGroup,
-  InputGroupAddon,
 } from 'reactstrap'
+import randomNpcHelper from '../helpers/randomNpc.helepr'
 
 enum FormStep {
   BASIC = 0,
@@ -45,7 +44,9 @@ const Wrapper = styled.div`
 
 const CharacterBuilder = () => {
   const [formStep, setFormStep] = useState<FormStep>(FormStep.BASIC)
-  const { register, handleSubmit, getValues, errors } = useForm<FormData>()
+  const { register, handleSubmit, getValues, setValue, errors } = useForm<
+    FormData
+  >()
 
   let content = <></>
 
@@ -54,7 +55,11 @@ const CharacterBuilder = () => {
       setFormStep(FormStep.BIO)
     }
 
-    const handleRandomName = () => {}
+    const handleRandomName = () => {
+      const firstNameObj = randomNpcHelper.randomByCategory('firstName')
+      const lastNameObj = randomNpcHelper.randomByCategory('lastName')
+      setValue('name', `${firstNameObj.value}．${lastNameObj.value}`)
+    }
 
     content = (
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -103,22 +108,31 @@ const CharacterBuilder = () => {
           <Col sm={6}>
             <FormGroup>
               <Label>角色全名</Label>
-              <InputGroup>
-                <Input
-                  type="text"
-                  name="name"
-                  innerRef={register({
-                    required: {
-                      value: true,
-                      message: '必須填寫角色名字',
-                    },
-                  })}
-                  invalid={!!errors.name}
-                />
-                <InputGroupAddon addonType="append">
-                  <Button onClick={handleRandomName}>隨機</Button>
-                </InputGroupAddon>
-              </InputGroup>
+              <div style={{ display: 'flex' }}>
+                <div style={{ flex: 1 }}>
+                  <Input
+                    type="text"
+                    name="name"
+                    innerRef={register({
+                      required: {
+                        value: true,
+                        message: '必須填寫角色名字',
+                      },
+                    })}
+                    invalid={!!errors.name}
+                  />
+                </div>
+                <div>
+                  <Button
+                    className="btn btn-primary btn-neutral"
+                    style={{ margin: 0, marginLeft: 8 }}
+                    onClick={handleRandomName}
+                  >
+                    隨機
+                  </Button>
+                </div>
+              </div>
+
               <FormText color="muted">
                 根據種族及性別的不同，角色的名字可以有很大的差異，按通用語慣常的表達方式，一般在名字後面會跟隨代表其家族的姓氏。
                 <br />

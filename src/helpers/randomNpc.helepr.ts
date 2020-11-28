@@ -34,7 +34,7 @@ export const random = async (): Promise<Character_NPC> => {
   return npc
 }
 
-const randomByCategory = (category: CategoryKeyType): RandomResult => {
+export const randomByCategory = (category: CategoryKeyType): RandomResult => {
   const source = require(`./randomNpc/sources/${category}.json`)
   if (source && source.groups && source.groups.length > 0) {
     const group = source.groups.find(() => true)
@@ -53,10 +53,6 @@ const randomByCategory = (category: CategoryKeyType): RandomResult => {
   }
 }
 
-const fns = {
-  random,
-}
-
 export default {
-  random
+  random,randomByCategory
 }
