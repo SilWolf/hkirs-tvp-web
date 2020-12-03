@@ -19,7 +19,7 @@
 import { RouteType } from '../types/system/route.type'
 
 import Dashboard from '../views/Dashboard'
-import RandomNpc from '../views/RandomNpc'
+import CoursePurchase from '../views/CoursePurchase'
 
 var routes: RouteType[] = [
   {
@@ -30,11 +30,10 @@ var routes: RouteType[] = [
     inSidebar: true,
   },
   {
-    path: '/admin/npc',
-    name: 'NPC Randomize',
+    path: '/admin/course-purchase/:courseId',
+    name: '報名課程',
     icon: 'nc-icon nc-diamond',
-    component: RandomNpc,
-    inSidebar: true,
+    component: CoursePurchase,
   },
 ]
 export default routes
