@@ -1,8 +1,9 @@
 export type Cls = {
-  id: string
-  name: string
-  render: {
-    en: string
-    zh: string
-  }
+  price: number
+  capacity: number
+  code: string
+  startDate: string
+  endDate: string
+  createdAt: string
+  updatedAt: string
 }
