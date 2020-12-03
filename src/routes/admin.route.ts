@@ -19,6 +19,7 @@
 import { RouteType } from '../types/system/route.type'
 
 import Dashboard from '../views/Dashboard'
+import AdminCourses from '../views/AdminCourses'
 import CoursePurchase from '../views/CoursePurchase'
 
 var routes: RouteType[] = [
@@ -27,6 +28,13 @@ var routes: RouteType[] = [
     name: '首頁',
     icon: 'nc-icon nc-bank',
     component: Dashboard,
+    inSidebar: true,
+  },
+  {
+    path: '/admin/courses',
+    name: '我的課程',
+    icon: 'nc-icon nc-bank',
+    component: AdminCourses,
     inSidebar: true,
   },
   {

@@ -1,97 +1,127 @@
 {
   "confirmed": true,
   "blocked": false,
-  "_id": "5f9e7ffd72e1021a60e6449a",
-  "username": "silwolf1121",
-  "email": "silwolf1121@gmail.com",
-  "provider": "google",
-  "createdAt": "2020-11-01T09:29:33.945Z",
-  "updatedAt": "2020-11-01T09:29:34.051Z",
+  "user_registered_classes": [
+    {
+      "price": 480,
+      "capcity": 48,
+      "user_profiles": ["5f9134e24ea6222ebe921b80", "5f9135594ea6222ebe921b8c"],
+      "_id": "5f912d8c0cd49126d8cd77fb",
+      "code": "小童跳繩班(A班)",
+      "startDate": "2020-12-02",
+      "endDate": "2020-12-23",
+      "published_at": "2020-10-22T08:02:19.786Z",
+      "createdAt": "2020-10-22T06:58:20.336Z",
+      "updatedAt": "2020-12-03T09:40:49.034Z",
+      "__v": 0,
+      "course": "5f912d0d0cd49126d8cd77f9",
+      "id": "5f912d8c0cd49126d8cd77fb"
+    }
+  ],
+  "_id": "5f9136244ea6222ebe921b94",
+  "username": "Benjamin",
+  "email": "benjamin@gmail.com",
+  "provider": "local",
+  "createdAt": "2020-10-22T07:35:00.526Z",
+  "updatedAt": "2020-12-03T09:42:56.411Z",
   "__v": 0,
   "role": {
-    "_id": "5f9e3b17b524240a17b2924c",
-    "name": "Authenticated",
-    "description": "Default role given to authenticated user.",
-    "type": "authenticated",
+    "_id": "5f9133640cd49126d8cd780f",
+    "name": "Staff",
+    "description": "Staff can access to courses, classes and lessons.",
+    "type": "staff",
     "__v": 0,
-    "id": "5f9e3b17b524240a17b2924c"
+    "id": "5f9133640cd49126d8cd780f"
   },
-  "characters": [
+  "user_events": [
     {
-      "type": "PC",
-      "_id": "5f9e4bd0b16afa136552c6cd",
-      "name": "卡洛特",
-      "description": "卡洛特",
-      "createdAt": "2020-11-01T05:46:56.890Z",
-      "updatedAt": "2020-11-01T10:22:28.142Z",
+      "type": "attendence",
+      "_id": "5f913e3f6d28e53020482884",
+      "startAt": "2020-12-02T04:00:00.000Z",
+      "description": "Benjamin attended lesson 小童跳繩班(A班) - L1.",
+      "createdAt": "2020-10-22T08:09:35.570Z",
+      "updatedAt": "2020-12-03T09:42:56.352Z",
       "__v": 0,
-      "created_by": "5f9e3b3ab524240a17b2935a",
-      "race": {
-        "_id": "5f9e82a639c7372252dda5a0",
-        "mutations": null,
-        "__v": 0,
-        "race": {
-          "_id": "5f9e47d8b16afa136552c6ca",
-          "name": "Werewolf",
-          "raceId": "werewolf",
-          "render": {
-            "_id": "5f9e47d8b16afa136552c6cb",
-            "en": "Werewolf",
-            "zh": "狼人",
-            "__v": 0,
-            "id": "5f9e47d8b16afa136552c6cb"
-          },
-          "createdAt": "2020-11-01T05:30:00.884Z",
-          "updatedAt": "2020-11-01T05:30:01.213Z",
-          "__v": 1,
-          "created_by": "5f9e3b3ab524240a17b2935a",
-          "updated_by": "5f9e3b3ab524240a17b2935a",
-          "id": "5f9e47d8b16afa136552c6ca"
-        },
-        "id": "5f9e82a639c7372252dda5a0"
-      },
-      "updated_by": "5f9e3b3ab524240a17b2935a",
-      "protrait": {
-        "_id": "5f9e4c4dc8a66413aed2fd2e",
-        "name": "1673bc2c92548df314e7bbd00c7b688c.png",
+      "users_permissions_user": "5f9136244ea6222ebe921b94",
+      "endAt": "2020-10-05T04:00:00.000Z",
+      "id": "5f913e3f6d28e53020482884"
+    }
+  ],
+  "user_profiles": [
+    {
+      "_id": "5f91358e4ea6222ebe921b8f",
+      "name": "Benjamin",
+      "createdAt": "2020-10-22T07:32:30.375Z",
+      "updatedAt": "2020-12-03T09:42:56.347Z",
+      "__v": 0,
+      "portrait": {
+        "_id": "5f915fc0b5700700179070b7",
+        "name": "pexels-canva-studio-3153203.jpg",
         "alternativeText": "",
         "caption": "",
-        "hash": "1673bc2c92548df314e7bbd00c7b688c_f79b457568",
-        "ext": ".png",
-        "mime": "image/png",
-        "size": 25.36,
-        "width": 180,
-        "height": 180,
-        "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/1673bc2c92548df314e7bbd00c7b688c_f79b457568.png",
+        "hash": "pexels_canva_studio_3153203_afd07c8da3",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "size": 5712.83,
+        "width": 5304,
+        "height": 7952,
+        "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/pexels_canva_studio_3153203_afd07c8da3.jpg",
         "formats": {
           "thumbnail": {
-            "name": "thumbnail_1673bc2c92548df314e7bbd00c7b688c.png",
-            "hash": "thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568",
-            "ext": ".png",
-            "mime": "image/png",
-            "width": 156,
+            "name": "thumbnail_pexels-canva-studio-3153203.jpg",
+            "hash": "thumbnail_pexels_canva_studio_3153203_afd07c8da3",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 104,
             "height": 156,
-            "size": 55.52,
+            "size": 4.37,
             "path": null,
-            "url": "https://tocc-cms-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_1673bc2c92548df314e7bbd00c7b688c_f79b457568.png"
+            "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_pexels_canva_studio_3153203_afd07c8da3.jpg"
+          },
+          "large": {
+            "name": "large_pexels-canva-studio-3153203.jpg",
+            "hash": "large_pexels_canva_studio_3153203_afd07c8da3",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 667,
+            "height": 1000,
+            "size": 112.35,
+            "path": null,
+            "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/large_pexels_canva_studio_3153203_afd07c8da3.jpg"
+          },
+          "medium": {
+            "name": "medium_pexels-canva-studio-3153203.jpg",
+            "hash": "medium_pexels_canva_studio_3153203_afd07c8da3",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 500,
+            "height": 750,
+            "size": 67.48,
+            "path": null,
+            "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/medium_pexels_canva_studio_3153203_afd07c8da3.jpg"
+          },
+          "small": {
+            "name": "small_pexels-canva-studio-3153203.jpg",
+            "hash": "small_pexels_canva_studio_3153203_afd07c8da3",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 334,
+            "height": 500,
+            "size": 33.5,
+            "path": null,
+            "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/small_pexels_canva_studio_3153203_afd07c8da3.jpg"
           }
         },
         "provider": "aws-s3",
-        "related": ["5f9e4bd0b16afa136552c6cd"],
-        "createdAt": "2020-11-01T05:49:01.554Z",
-        "updatedAt": "2020-11-01T05:49:07.083Z",
+        "related": ["5f91358e4ea6222ebe921b8f"],
+        "createdAt": "2020-10-22T10:32:32.132Z",
+        "updatedAt": "2020-10-22T10:32:40.564Z",
         "__v": 0,
-        "created_by": "5f9e3b3ab524240a17b2935a",
-        "updated_by": "5f9e3b3ab524240a17b2935a",
-        "id": "5f9e4c4dc8a66413aed2fd2e"
+        "id": "5f915fc0b5700700179070b7"
       },
-      "player": "5f9e7ffd72e1021a60e6449a",
-      "code": "DC-00001",
-      "city": "5f9e84c607c3cd227ee47c42",
-      "characterId": "DC00001",
-      "id": "5f9e4bd0b16afa136552c6cd"
+      "users_permissions_user": "5f9136244ea6222ebe921b94",
+      "id": "5f91358e4ea6222ebe921b8f"
     }
   ],
-  "id": "5f9e7ffd72e1021a60e6449a",
-  "created_by": {}
+  "id": "5f9136244ea6222ebe921b94"
 }
