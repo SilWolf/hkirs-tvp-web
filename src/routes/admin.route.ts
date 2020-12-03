@@ -24,7 +24,7 @@ import CoursePurchase from '../views/CoursePurchase'
 var routes: RouteType[] = [
   {
     path: '/admin/dashboard',
-    name: 'Dashboard',
+    name: '首頁',
     icon: 'nc-icon nc-bank',
     component: Dashboard,
     inSidebar: true,

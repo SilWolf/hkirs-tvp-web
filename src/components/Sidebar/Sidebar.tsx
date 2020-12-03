@@ -84,7 +84,7 @@ class Sidebar extends React.Component<Props> {
             href="https://www.creative-tim.com"
             className="simple-text logo-normal"
           >
-            TOCC Player Panel
+            HKIRS學生平台
           </a>
         </div>
         <div className="sidebar-wrapper" ref={this.sidebar}>

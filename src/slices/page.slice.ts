@@ -5,7 +5,7 @@ type SliceState = {
   brandName: string
 }
 const initialState: SliceState = {
-  title: 'TOCC Player Panel',
+  title: ' HKIRS學生平台',
   brandName: 'Default Brandname',
 }
 
