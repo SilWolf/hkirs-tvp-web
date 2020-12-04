@@ -19,44 +19,29 @@
 import { RouteType } from '../types/system/route.type'
 
 import Dashboard from '../views/Dashboard'
-import Characters from '../views/Characters'
-import Character from '../views/Character'
-import CharacterBuilder from '../views/CharacterBuilder'
-import RandomNpc from '../views/RandomNpc'
+import AdminCourses from '../views/AdminCourses'
+import CoursePurchase from '../views/CoursePurchase'
 
 var routes: RouteType[] = [
   {
     path: '/admin/dashboard',
-    name: 'Dashboard',
+    name: '首頁',
     icon: 'nc-icon nc-bank',
     component: Dashboard,
     inSidebar: true,
   },
   {
-    path: '/admin/characters/builder',
-    name: 'Characters',
-    icon: 'nc-icon nc-diamond',
-    component: CharacterBuilder,
-  },
-  {
-    path: '/admin/characters/:characterId',
-    name: 'Character Detail',
-    icon: 'nc-icon nc-diamond',
-    component: Character,
-  },
-  {
-    path: '/admin/characters',
-    name: 'Characters',
-    icon: 'nc-icon nc-diamond',
-    component: Characters,
+    path: '/admin/courses',
+    name: '我的課程',
+    icon: 'nc-icon nc-bank',
+    component: AdminCourses,
     inSidebar: true,
   },
   {
-    path: '/admin/npc',
-    name: 'NPC Randomize',
+    path: '/admin/course-purchase/:courseId',
+    name: '報名課程',
     icon: 'nc-icon nc-diamond',
-    component: RandomNpc,
-    inSidebar: true,
+    component: CoursePurchase,
   },
 ]
 export default routes

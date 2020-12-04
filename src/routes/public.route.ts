@@ -16,7 +16,6 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from 'react'
 import { RouteType } from '../types/system/route.type'
 
 import SignIn from '../views/SignIn'
@@ -24,7 +23,7 @@ import SignUp from '../views/SignUp'
 import ForgotPassword from '../views/ForgotPassword'
 import AfterSSOSignIn from '../views/AfterSSOSignIn'
 import ResetPassword from '../views/ResetPassword'
-
+import CourseDetail from '../views/CourseDetail'
 
 var routes: RouteType[] = [
   {
@@ -51,6 +50,11 @@ var routes: RouteType[] = [
     path: '/connect/:provider/redirect',
     name: 'AfterSSOSignIn',
     component: AfterSSOSignIn,
+  },
+  {
+    path: '/courses/:courseId',
+    name: 'Course Detail',
+    component: CourseDetail,
   },
 ]
 export default routes
