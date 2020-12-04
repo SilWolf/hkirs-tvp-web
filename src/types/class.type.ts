@@ -1,3 +1,5 @@
+import { Course } from './course.type';
+
 export type Cls = {
   price: number
   capacity: number
@@ -6,4 +8,6 @@ export type Cls = {
   endDate: string
   createdAt: string
   updatedAt: string
+
+  course: Course
 }

@@ -1,6 +1,7 @@
 import { StrapiImage } from './strapi/strapiImage.type'
 
 export type User = {
+  id: string
   username: string
   email: string
   provider: string
