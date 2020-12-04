@@ -107,6 +107,7 @@ export const tryAutoSignIn = (): boolean => {
 export default {
   signIn,
   signUp,
+  signOut,
   ssoSignIn,
   forgotPassword,
   resetPassword,

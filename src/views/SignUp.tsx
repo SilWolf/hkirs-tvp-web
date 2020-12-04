@@ -178,13 +178,13 @@ const SignUp = () => {
                 提交
               </Button>
             </div>
-
+            {/* 
             <hr />
 
             <Center>
               <CardText>或者你可以選擇</CardText>
               <a href={getGoogleSignInLink()}>以 Google 帳號登入</a>
-            </Center>
+            </Center> */}
 
             <hr />
 

@@ -78,7 +78,14 @@ const CourseDetail = () => {
                 ${course.priceMin.toFixed(2)} - ${course.priceMax.toFixed(2)}
               </CoursePrice>
 
-              <Button color="primary" size="lg" block>
+              <Button
+                color="primary"
+                size="lg"
+                block
+                onClick={() => {
+                  alert('在試用版中不開放此功能。')
+                }}
+              >
                 立即報名
               </Button>
             </Col>

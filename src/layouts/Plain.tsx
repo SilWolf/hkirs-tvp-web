@@ -85,9 +85,9 @@ class Plain extends React.Component<Props, State> {
     this.setState({ backgroundColor: color })
   }
   render() {
-    // if (store.getState().authUser.isSignIned) {
-    //   return <Redirect to="/admin" />
-    // }
+    if (store.getState().authUser.isSignIned) {
+      return <Redirect to="/admin" />
+    }
 
     return (
       <div className="wrapper">
@@ -98,8 +98,10 @@ class Plain extends React.Component<Props, State> {
                 <Route path={prop.path} component={prop.component} key={key} />
               )
             })}
+            <Route path="*">
+              <Redirect to="/sign-in" />
+            </Route>
           </Switch>
-          {/* <Redirect path="/" exact to="/sign-in" /> */}
           <Footer fluid />
         </MainPanel>
         <FixedPlugin

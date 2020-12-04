@@ -115,9 +115,9 @@ const SignIn = () => {
               </Button>
             </Center>
 
-            <hr />
+            {/* <hr />
 
-            <a href={getGoogleSignInLink()}>以 Google 帳號登入</a>
+            <a href={getGoogleSignInLink()}>以 Google 帳號登入</a> */}
 
             <hr />
 

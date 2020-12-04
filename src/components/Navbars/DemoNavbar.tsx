@@ -18,7 +18,6 @@
 */
 import { History, Location } from 'history'
 import React from 'react'
-import { Link } from 'react-router-dom'
 import store from '../../store'
 
 import {
@@ -27,17 +26,13 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   Container,
-  InputGroup,
-  InputGroupText,
-  InputGroupAddon,
-  Input,
 } from 'reactstrap'
+import authHelper from '../../helpers/auth.helper'
 
 type Props = {
   location: Location
@@ -63,6 +58,7 @@ class Header extends React.Component<Props, State> {
     this.toggle = this.toggle.bind(this)
     this.dropdownToggle = this.dropdownToggle.bind(this)
     this.sidebarToggle = React.createRef()
+    this.handleClickSignOut = this.handleClickSignOut.bind(this)
   }
   toggle() {
     if (this.state.isOpen) {
@@ -104,6 +100,10 @@ class Header extends React.Component<Props, State> {
         color: 'transparent',
       })
     }
+  }
+  handleClickSignOut() {
+    authHelper.signOut()
+    window.location.href = '/'
   }
   componentDidMount() {
     window.addEventListener('resize', this.updateColor.bind(this))
@@ -163,50 +163,21 @@ class Header extends React.Component<Props, State> {
             navbar
             className="justify-content-end"
           >
-            <form>
-              <InputGroup className="no-border">
-                <Input placeholder="Search..." />
-                <InputGroupAddon addonType="append">
-                  <InputGroupText>
-                    <i className="nc-icon nc-zoom-split" />
-                  </InputGroupText>
-                </InputGroupAddon>
-              </InputGroup>
-            </form>
             <Nav navbar>
-              <NavItem>
-                <Link to="#pablo" className="nav-link btn-magnify">
-                  <i className="nc-icon nc-layout-11" />
-                  <p>
-                    <span className="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </Link>
-              </NavItem>
               <Dropdown
                 nav
                 isOpen={this.state.dropdownOpen}
                 toggle={this.dropdownToggle}
               >
                 <DropdownToggle caret nav>
-                  <i className="nc-icon nc-bell-55" />
-                  <p>
-                    <span className="d-lg-none d-md-block">Some Actions</span>
-                  </p>
+                  <i className="nc-icon nc-settings-gear-65" />
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem tag="a">Action</DropdownItem>
-                  <DropdownItem tag="a">Another Action</DropdownItem>
-                  <DropdownItem tag="a">Something else here</DropdownItem>
+                  <DropdownItem tag="a" onClick={this.handleClickSignOut}>
+                    登出
+                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-              <NavItem>
-                <Link to="#pablo" className="nav-link btn-rotate">
-                  <i className="nc-icon nc-settings-gear-65" />
-                  <p>
-                    <span className="d-lg-none d-md-block">Account</span>
-                  </p>
-                </Link>
-              </NavItem>
             </Nav>
           </Collapse>
         </Container>
