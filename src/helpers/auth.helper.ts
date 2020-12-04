@@ -3,7 +3,7 @@ import api from '../services/api.service'
 import store from '../store'
 import authUserSlice from '../slices/authUser.slice'
 
-const AUTH_USER_LOCALSTORAGE_KEY = 'tocc-player-panel:authUser'
+const AUTH_USER_LOCALSTORAGE_KEY = 'hkirs-tvp-web:authUser'
 type AuthUserInfo = {
   jwt?: string
   user?: User
