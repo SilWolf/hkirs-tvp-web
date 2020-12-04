@@ -39,7 +39,7 @@ class Footer extends React.Component<Props> {
           <Row>
             <nav className="footer-nav">
               <ul>
-                <li>
+                {/* <li>
                   <a href="https://www.creative-tim.com" target="_blank">
                     Creative Tim
                   </a>
@@ -56,7 +56,7 @@ class Footer extends React.Component<Props> {
                   >
                     Licenses
                   </a>
-                </li>
+                </li> */}
               </ul>
             </nav>
             <div className="credits ml-auto">

@@ -6,7 +6,7 @@ type SliceState = {
 }
 const initialState: SliceState = {
   title: ' HKIRS學生平台',
-  brandName: 'Default Brandname',
+  brandName: '我的課程',
 }
 
 const pageSlice = createSlice({
