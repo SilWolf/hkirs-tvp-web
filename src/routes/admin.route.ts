@@ -24,13 +24,13 @@ import CoursePurchase from '../views/CoursePurchase'
 import AdminClassDetail from '../views/AdminClassDetail'
 
 var routes: RouteType[] = [
-  {
-    path: '/admin/dashboard',
-    name: '首頁',
-    icon: 'nc-icon nc-bank',
-    component: Dashboard,
-    inSidebar: true,
-  },
+  // {
+  //   path: '/admin/dashboard',
+  //   name: '首頁',
+  //   icon: 'nc-icon nc-bank',
+  //   component: Dashboard,
+  //   inSidebar: true,
+  // },
   {
     path: '/admin/classes/:classId',
     name: '我的課程',

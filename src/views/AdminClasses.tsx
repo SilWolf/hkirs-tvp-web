@@ -8,24 +8,7 @@ import { getClassesByUserId } from '../helpers/api.helper'
 import { Cls } from '../types/class.type'
 
 import store from '../store'
-import ClsRow from '../components/Cls/ClsRow'
-
-const UpperWrapper = styled.div`
-  max-width: 480px;
-  width: 100%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-`
-
-const CourseCoverImage = styled.img`
-  width: 100%;
-  margin-bottom: 16px;
-`
-
-const CoursePrice = styled.div`
-  font-size: 24px;
-`
+import { Link } from 'react-router-dom'
 
 const getClassesFn = ({ userId }: any) => {
   return getClassesByUserId(userId || 'foo')
@@ -57,10 +40,24 @@ const AdminClasses = () => {
       <div className="content">
         {classes.map((cls) => {
           return (
-            <>
-              <ClsRow cls={cls} />
+            <div key={cls.id}>
+              <div>
+                <div>
+                  <Link to={`/admin/classes/${cls.id}`}>
+                    <a href="#">{cls.code}</a>
+                  </Link>
+                </div>
+                <div>
+                  <span className="text-mute">
+                    {cls.startDate} - {cls.endDate}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-mute">{cls.course.name}</span>
+                </div>
+              </div>
               <hr />
-            </>
+            </div>
           )
         })}
       </div>

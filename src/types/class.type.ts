@@ -1,6 +1,7 @@
 import { Course } from './course.type';
 
 export type Cls = {
+  id: string
   price: number
   capacity: number
   code: string

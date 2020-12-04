@@ -103,7 +103,7 @@ class Dashboard extends React.Component<Props, State> {
               )
             })}
             <Route path="*">
-              <Redirect to="/admin/dashboard" />
+              <Redirect to="/admin/classes" />
             </Route>
           </Switch>
           <Footer fluid />
