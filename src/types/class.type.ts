@@ -10,4 +10,12 @@ export type Cls = {
   updatedAt: string
 
   course: Course
+  lessons: ClsLesson[]
+}
+
+export type ClsLesson = {
+  id: string
+  title: string
+  startAt: string
+  endAt: string
 }

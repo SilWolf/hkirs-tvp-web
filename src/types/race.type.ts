@@ -1,4 +1,4 @@
-import { StrapiImage } from './strapi/strapiImage.type'
+import { StrapiFile } from './strapi/StrapiFile.type'
 
 export type Race = {
   id: string

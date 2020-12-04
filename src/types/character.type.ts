@@ -2,7 +2,7 @@ import { Background } from './background.type'
 import { City } from './city.type'
 import { Cls } from './class.type'
 import { Race } from './race.type'
-import { StrapiImage } from './strapi/strapiImage.type'
+import { StrapiFile } from './strapi/StrapiFile.type'
 import { User } from './user.type'
 
 export type Character = {
@@ -26,8 +26,8 @@ export type Character = {
     background: Background
     mutations: any
   }
-  portrait: StrapiImage
-  coverImage: StrapiImage
+  portrait: StrapiFile
+  coverImage: StrapiFile
   player: User
   characterId: string
   motto: string

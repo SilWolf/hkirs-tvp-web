@@ -1,4 +1,4 @@
-import { StrapiImage } from './strapi/strapiImage.type'
+import { StrapiFile } from './strapi/StrapiFile.type'
 
 export type User = {
   id: string
@@ -17,4 +17,4 @@ export type UserRole = {
   type: string
 }
 
-export type UserProtrait = StrapiImage
+export type UserProtrait = StrapiFile

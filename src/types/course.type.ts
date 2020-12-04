@@ -1,5 +1,5 @@
 import { Cls } from './class.type'
-import { StrapiImage } from './strapi/strapiImage.type'
+import { StrapiFile } from './strapi/StrapiFile.type'
 
 export type Course = {
   id: string
@@ -7,7 +7,7 @@ export type Course = {
   description?: string
   createdAt: string
   updatedAt: string
-  coverImage: StrapiImage
+  coverImage: StrapiFile
   classes: Cls[]
 
   rating: number

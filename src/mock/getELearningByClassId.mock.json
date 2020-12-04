@@ -1,0 +1,186 @@
+[
+  {
+    "files": [
+      {
+        "_id": "5fc9f0e6357063c5f02d0f2d",
+        "name": "圖片.pdf",
+        "alternativeText": "",
+        "caption": "圖片",
+        "hash": "_ee3ac71d25",
+        "ext": ".pdf",
+        "mime": "application/pdf",
+        "size": 570.65,
+        "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/_ee3ac71d25.pdf",
+        "provider": "aws-s3",
+        "width": null,
+        "height": null,
+        "related": ["5f91414701386930983fe96b"],
+        "createdAt": "2020-12-04T08:18:46.970Z",
+        "updatedAt": "2020-12-04T08:19:12.918Z",
+        "__v": 0,
+        "id": "5fc9f0e6357063c5f02d0f2d"
+      },
+      {
+        "_id": "5f9162b1b5700700179070d8",
+        "name": "images.jpeg",
+        "alternativeText": "",
+        "caption": "",
+        "hash": "images_6e3c85ee60",
+        "ext": ".jpeg",
+        "mime": "image/jpeg",
+        "size": 13.57,
+        "width": 336,
+        "height": 336,
+        "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/images_6e3c85ee60.jpeg",
+        "formats": {
+          "thumbnail": {
+            "name": "thumbnail_images.jpeg",
+            "hash": "thumbnail_images_6e3c85ee60",
+            "ext": ".jpeg",
+            "mime": "image/jpeg",
+            "width": 156,
+            "height": 156,
+            "size": 4.63,
+            "path": null,
+            "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_images_6e3c85ee60.jpeg"
+          }
+        },
+        "provider": "aws-s3",
+        "related": ["5f91414701386930983fe96b"],
+        "createdAt": "2020-10-22T10:45:05.569Z",
+        "updatedAt": "2020-10-22T16:32:04.200Z",
+        "__v": 0,
+        "id": "5f9162b1b5700700179070d8"
+      },
+      {
+        "_id": "5f9162b1b5700700179070d9",
+        "name": "download (4).jpeg",
+        "alternativeText": "",
+        "caption": "",
+        "hash": "download_4_b1cf9662c7",
+        "ext": ".jpeg",
+        "mime": "image/jpeg",
+        "size": 4.9,
+        "width": 225,
+        "height": 225,
+        "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/download_4_b1cf9662c7.jpeg",
+        "formats": {
+          "thumbnail": {
+            "name": "thumbnail_download (4).jpeg",
+            "hash": "thumbnail_download_4_b1cf9662c7",
+            "ext": ".jpeg",
+            "mime": "image/jpeg",
+            "width": 156,
+            "height": 156,
+            "size": 2.9,
+            "path": null,
+            "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_download_4_b1cf9662c7.jpeg"
+          }
+        },
+        "provider": "aws-s3",
+        "related": ["5f91414701386930983fe96b"],
+        "createdAt": "2020-10-22T10:45:05.603Z",
+        "updatedAt": "2020-10-22T16:32:04.200Z",
+        "__v": 0,
+        "id": "5f9162b1b5700700179070d9"
+      },
+      {
+        "_id": "5f9162b2b5700700179070da",
+        "name": "download (5).jpeg",
+        "alternativeText": "",
+        "caption": "",
+        "hash": "download_5_755ba9ea07",
+        "ext": ".jpeg",
+        "mime": "image/jpeg",
+        "size": 5.67,
+        "width": 224,
+        "height": 224,
+        "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/download_5_755ba9ea07.jpeg",
+        "formats": {
+          "thumbnail": {
+            "name": "thumbnail_download (5).jpeg",
+            "hash": "thumbnail_download_5_755ba9ea07",
+            "ext": ".jpeg",
+            "mime": "image/jpeg",
+            "width": 156,
+            "height": 156,
+            "size": 3.44,
+            "path": null,
+            "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_download_5_755ba9ea07.jpeg"
+          }
+        },
+        "provider": "aws-s3",
+        "related": ["5f91414701386930983fe96b"],
+        "createdAt": "2020-10-22T10:45:06.492Z",
+        "updatedAt": "2020-10-22T16:32:04.200Z",
+        "__v": 0,
+        "id": "5f9162b2b5700700179070da"
+      },
+      {
+        "_id": "5f9162b2b5700700179070db",
+        "name": "images (1).jpeg",
+        "alternativeText": "",
+        "caption": "",
+        "hash": "images_1_5b92a497b1",
+        "ext": ".jpeg",
+        "mime": "image/jpeg",
+        "size": 5.59,
+        "width": 215,
+        "height": 215,
+        "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/images_1_5b92a497b1.jpeg",
+        "formats": {
+          "thumbnail": {
+            "name": "thumbnail_images (1).jpeg",
+            "hash": "thumbnail_images_1_5b92a497b1",
+            "ext": ".jpeg",
+            "mime": "image/jpeg",
+            "width": 156,
+            "height": 156,
+            "size": 4.08,
+            "path": null,
+            "url": "https://hkirs-tvp-strapi-bucket.s3.ap-southeast-1.amazonaws.com/thumbnail_images_1_5b92a497b1.jpeg"
+          }
+        },
+        "provider": "aws-s3",
+        "related": ["5f91414701386930983fe96b"],
+        "createdAt": "2020-10-22T10:45:06.500Z",
+        "updatedAt": "2020-10-22T16:32:04.200Z",
+        "__v": 0,
+        "id": "5f9162b2b5700700179070db"
+      }
+    ],
+    "_id": "5f91414701386930983fe96b",
+    "name": "跳繩班通知群",
+    "ELearningPost": [
+      {
+        "_id": "5f993f59e4beb20017bbb314",
+        "kind": "ComponentELearningBlockELearningPost",
+        "ref": "5f9142478df9ea30a2ad0b3f"
+      },
+      {
+        "_id": "5f993f59e4beb20017bbb315",
+        "kind": "ComponentELearningBlockELearningPost",
+        "ref": "5f993f57e4beb20017bbb313"
+      }
+    ],
+    "createdAt": "2020-10-22T08:22:31.329Z",
+    "updatedAt": "2020-12-04T08:19:13.055Z",
+    "__v": 0,
+    "e_learning_posts": [
+      {
+        "files": [],
+        "e_learnings": ["5f91414701386930983fe96b"],
+        "_id": "5fc9e77d3888fdc5e3b2bdb7",
+        "title": "停課通知",
+        "content": "由於疲情關係，下週課堂暫停直至另行通告，敬請學生及家長注意。",
+        "published_at": "2020-12-04T07:39:16.710Z",
+        "createdAt": "2020-12-04T07:38:37.048Z",
+        "updatedAt": "2020-12-04T08:19:12.991Z",
+        "__v": 0,
+        "e_learning": "5f91414701386930983fe96b",
+        "id": "5fc9e77d3888fdc5e3b2bdb7"
+      }
+    ],
+    "id": "5f91414701386930983fe96b"
+  }
+]

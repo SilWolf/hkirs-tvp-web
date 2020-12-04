@@ -1,14 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useAsync } from 'react-async'
-import { useParams } from 'react-router-dom'
 import Spinner from 'reactstrap/lib/Spinner'
 import PageBrandname from '../components/Page/PageBrand'
 import PageTitle from '../components/Page/PageTitle'
 import { getClassesByUserId } from '../helpers/api.helper'
-import { Course } from '../types/course.type'
-import { Button, Card, CardBody, Col, Container, Row } from 'reactstrap'
-import ReactMarkdown from 'react-markdown'
 import { Cls } from '../types/class.type'
 
 import store from '../store'
@@ -35,7 +31,7 @@ const getClassesFn = ({ userId }: any) => {
   return getClassesByUserId(userId || 'foo')
 }
 
-const CourseDetail = () => {
+const AdminClasses = () => {
   // Assume the user id is here
   const userId = store.getState().authUser.user?.id as string
 
@@ -72,4 +68,4 @@ const CourseDetail = () => {
   )
 }
 
-export default CourseDetail
+export default AdminClasses

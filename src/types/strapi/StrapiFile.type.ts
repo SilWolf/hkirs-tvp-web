@@ -1,4 +1,4 @@
-export interface StrapiImageThumbnail {
+export interface StrapiFileThumbnail {
   name: string
   hash: string
   ext: string
@@ -10,11 +10,11 @@ export interface StrapiImageThumbnail {
   url: string
 }
 
-export interface StrapiImageFormats {
-  thumbnail: StrapiImageThumbnail
+export interface StrapiFileFormats {
+  thumbnail: StrapiFileThumbnail
 }
 
-export interface StrapiImage {
+export interface StrapiFile {
   _id: string
   name: string
   alternativeText: string
@@ -23,10 +23,10 @@ export interface StrapiImage {
   ext: string
   mime: string
   size: number
-  width: number
-  height: number
+  width?: number
+  height?: number
   url: string
-  formats: StrapiImageFormats
+  formats?: StrapiFileFormats
   provider: string
   related: string[]
   createdAt: Date
