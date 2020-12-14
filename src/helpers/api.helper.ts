@@ -2,6 +2,7 @@ import api from '../services/api.service'
 import { Cls } from '../types/class.type'
 import { Course } from '../types/course.type'
 import { ELearning } from '../types/elearning.type'
+import { UserEvent } from '../types/user-event.type'
 import { UserSchedule } from '../types/user-schedule.type'
 
 export const getCourseById = (courseId: string): Promise<Course> => {
@@ -34,6 +35,14 @@ export const getUserSchedulesByUserId = (
   userId: string
 ): Promise<UserSchedule[]> => {
   return api.get<UserSchedule[]>(`/user-schedules`, {
+    params: {
+      user: userId,
+    },
+  })
+}
+
+export const getUserEventsByUserId = (userId: string): Promise<UserEvent[]> => {
+  return api.get<UserEvent[]>(`/user-events`, {
     params: {
       user: userId,
     },

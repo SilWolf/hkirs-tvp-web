@@ -21,6 +21,7 @@ import { RouteType } from '../types/system/route.type'
 import Classes from '../views/Classes'
 import ClassDetail from '../views/ClassDetail'
 import UserSchedules from '../views/UserSchedules'
+import UserEvents from '../views/UserEvents'
 
 var routes: RouteType[] = [
   // {
@@ -48,6 +49,13 @@ var routes: RouteType[] = [
     name: '行事歷',
     icon: 'nc-icon nc-bank',
     component: UserSchedules,
+    inSidebar: true,
+  },
+  {
+    path: '/staff/user-events',
+    name: '活動',
+    icon: 'nc-icon nc-bank',
+    component: UserEvents,
     inSidebar: true,
   },
 ]
