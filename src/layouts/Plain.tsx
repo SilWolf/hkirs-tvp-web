@@ -86,7 +86,7 @@ class Plain extends React.Component<Props, State> {
   }
   render() {
     if (store.getState().authUser.isSignIned) {
-      return <Redirect to="/admin" />
+      return <Redirect to="/student" />
     }
 
     return (

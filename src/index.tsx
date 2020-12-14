@@ -31,7 +31,7 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import 'react-toastify/dist/ReactToastify.css'
 
 import PlainLayout from './layouts/Plain'
-import AdminLayout from './layouts/Admin'
+import StudentLayout from './layouts/Student'
 
 import authHelper from './helpers/auth.helper'
 import store from './store'
@@ -56,7 +56,10 @@ const App = () => {
     <ReduxProvider store={store}>
       <Router history={hist}>
         <Switch>
-          <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+          <Route
+            path="/student"
+            render={(props) => <StudentLayout {...props} />}
+          />
           <Route path="/" render={(props) => <PlainLayout {...props} />} />
         </Switch>
       </Router>

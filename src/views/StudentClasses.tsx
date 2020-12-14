@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useAsync } from 'react-async'
 import Spinner from 'reactstrap/lib/Spinner'
 import PageBrandname from '../components/Page/PageBrand'
@@ -14,7 +13,7 @@ const getClassesFn = ({ userId }: any) => {
   return getClassesByUserId(userId || 'foo')
 }
 
-const AdminClasses = () => {
+const StudentClasses = () => {
   // Assume the user id is here
   const userId = store.getState().authUser.user?.id as string
 
@@ -43,7 +42,7 @@ const AdminClasses = () => {
             <div key={cls.id}>
               <div>
                 <div>
-                  <Link to={`/admin/classes/${cls.id}`}>
+                  <Link to={`/student/classes/${cls.id}`}>
                     <a href="#">{cls.code}</a>
                   </Link>
                 </div>
@@ -65,4 +64,4 @@ const AdminClasses = () => {
   )
 }
 
-export default AdminClasses
+export default StudentClasses

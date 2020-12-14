@@ -19,33 +19,33 @@
 import { RouteType } from '../types/system/route.type'
 
 import Dashboard from '../views/Dashboard'
-import AdminClasses from '../views/AdminClasses'
+import StudentClasses from '../views/StudentClasses'
 import CoursePurchase from '../views/CoursePurchase'
-import AdminClassDetail from '../views/AdminClassDetail'
+import StudentClassDetail from '../views/StudentClassDetail'
 
 var routes: RouteType[] = [
   // {
-  //   path: '/admin/dashboard',
+  //   path: '/student/dashboard',
   //   name: '首頁',
   //   icon: 'nc-icon nc-bank',
   //   component: Dashboard,
   //   inSidebar: true,
   // },
   {
-    path: '/admin/classes/:classId',
+    path: '/student/classes/:classId',
     name: '我的課程',
     icon: 'nc-icon nc-bank',
-    component: AdminClassDetail,
+    component: StudentClassDetail,
   },
   {
-    path: '/admin/classes',
+    path: '/student/classes',
     name: '我的課程',
     icon: 'nc-icon nc-bank',
-    component: AdminClasses,
+    component: StudentClasses,
     inSidebar: true,
   },
   {
-    path: '/admin/course-purchase/:courseId',
+    path: '/student/course-purchase/:courseId',
     name: '報名課程',
     icon: 'nc-icon nc-diamond',
     component: CoursePurchase,

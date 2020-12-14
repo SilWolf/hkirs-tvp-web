@@ -34,7 +34,7 @@ const AfterSSOSignIn = () => {
   }
 
   if (status === StatusEnum.Success) {
-    return <Redirect to="/admin" />
+    return <Redirect to="/student" />
   }
 
   if (status === StatusEnum.Failure) {

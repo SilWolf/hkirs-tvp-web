@@ -26,7 +26,7 @@ import Footer from '../components/Footer/Footer'
 import Sidebar from '../components/Sidebar/Sidebar'
 import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 
-import routes from '../routes/admin.route'
+import routes from '../routes/student.route'
 import { History, Location } from 'history'
 import store from '../store'
 
@@ -103,7 +103,7 @@ class Dashboard extends React.Component<Props, State> {
               )
             })}
             <Route path="*">
-              <Redirect to="/admin/classes" />
+              <Redirect to="/student/classes" />
             </Route>
           </Switch>
           <Footer fluid />

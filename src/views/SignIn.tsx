@@ -57,7 +57,7 @@ const SignIn = () => {
   }
 
   if (signInAsync.data) {
-    return <Redirect to="/admin" />
+    return <Redirect to="/student" />
   }
 
   return (
