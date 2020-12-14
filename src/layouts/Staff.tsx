@@ -20,12 +20,13 @@ import React from 'react'
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from 'perfect-scrollbar'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import styled from 'styled-components'
 
+import DemoNavbar from '../components/Navbars/DemoNavbar'
 import Footer from '../components/Footer/Footer'
+import Sidebar from '../components/Sidebar/Sidebar'
 import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 
-import routes from '../routes/public.route'
+import routes from '../routes/staff.route'
 import { History, Location } from 'history'
 import store from '../store'
 
@@ -41,11 +42,7 @@ type State = {
   backgroundColor: string
 }
 
-const MainPanel = styled.div`
-  width: 100% !important;
-`
-
-class Plain extends React.Component<Props, State> {
+class Dashboard extends React.Component<Props, State> {
   mainPanel: React.RefObject<HTMLDivElement>
 
   constructor(props: Props) {
@@ -86,18 +83,20 @@ class Plain extends React.Component<Props, State> {
   }
   render() {
     const authUser = store.getState().authUser
-    if (authUser?.isSignIned && authUser?.user?.role?.type) {
-      const roleType = authUser?.user?.role?.type
-      if (roleType === 'staff') {
-        return <Redirect to={`/staff`} />
-      } else if (roleType === 'authenticated') {
-        return <Redirect to={`/student`} />
-      }
+    if (!authUser?.isSignIned || authUser?.user?.role?.type !== 'staff') {
+      return <Redirect to="/sign-in" />
     }
 
     return (
       <div className="wrapper">
-        <MainPanel className="main-panel" ref={this.mainPanel}>
+        <Sidebar
+          {...this.props}
+          routes={routes}
+          bgColor={this.state.backgroundColor}
+          activeColor={this.state.activeColor}
+        />
+        <div className="main-panel" ref={this.mainPanel}>
+          <DemoNavbar {...this.props} />
           <Switch>
             {routes.map((prop, key) => {
               return (
@@ -105,11 +104,11 @@ class Plain extends React.Component<Props, State> {
               )
             })}
             <Route path="*">
-              <Redirect to="/sign-in" />
+              <Redirect to="/staff/classes" />
             </Route>
           </Switch>
           <Footer fluid />
-        </MainPanel>
+        </div>
         <FixedPlugin
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
@@ -121,4 +120,4 @@ class Plain extends React.Component<Props, State> {
   }
 }
 
-export default Plain
+export default Dashboard

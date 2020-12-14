@@ -14,7 +14,7 @@ export type User = {
 export type UserRole = {
   name: string
   description: string
-  type: string
+  type: 'staff' | 'authenticated'
 }
 
 export type UserProtrait = StrapiFile

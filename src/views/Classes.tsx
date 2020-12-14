@@ -13,7 +13,7 @@ const getClassesFn = ({ userId }: any) => {
   return getClassesByUserId(userId || 'foo')
 }
 
-const StudentClasses = () => {
+const Classes = () => {
   // Assume the user id is here
   const userId = store.getState().authUser.user?.id as string
 
@@ -64,4 +64,4 @@ const StudentClasses = () => {
   )
 }
 
-export default StudentClasses
+export default Classes

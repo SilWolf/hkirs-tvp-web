@@ -18,9 +18,8 @@
 */
 import { RouteType } from '../types/system/route.type'
 
-import StudentClasses from '../views/Classes'
-import CoursePurchase from '../views/CoursePurchase'
-import StudentClassDetail from '../views/ClassDetail'
+import Classes from '../views/Classes'
+import ClassDetail from '../views/ClassDetail'
 
 var routes: RouteType[] = [
   // {
@@ -31,23 +30,17 @@ var routes: RouteType[] = [
   //   inSidebar: true,
   // },
   {
-    path: '/student/classes/:classId',
+    path: '/staff/classes/:classId',
     name: '我的課程',
     icon: 'nc-icon nc-bank',
-    component: StudentClassDetail,
+    component: ClassDetail,
   },
   {
-    path: '/student/classes',
+    path: '/staff/classes',
     name: '我的課程',
     icon: 'nc-icon nc-bank',
-    component: StudentClasses,
+    component: Classes,
     inSidebar: true,
-  },
-  {
-    path: '/student/course-purchase/:courseId',
-    name: '報名課程',
-    icon: 'nc-icon nc-diamond',
-    component: CoursePurchase,
   },
 ]
 export default routes

@@ -57,7 +57,12 @@ const SignIn = () => {
   }
 
   if (signInAsync.data) {
-    return <Redirect to="/student" />
+    const signInRes = signInAsync.data
+    if (signInRes.user.role?.type === 'staff') {
+      return <Redirect to="/staff" />
+    } else {
+      return <Redirect to="/student" />
+    }
   }
 
   return (

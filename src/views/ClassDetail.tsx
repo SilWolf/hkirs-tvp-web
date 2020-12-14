@@ -38,7 +38,7 @@ const getELearningFn = ({ classId }: any) => {
   return getELearningByClassId(classId || 'foo')
 }
 
-const StudentClassDetail = () => {
+const ClassDetail = () => {
   const [activeTab, setActiveTab] = useState<TAB_INDEX>(TAB_INDEX.ANNOUNCEMENTS)
   const { classId } = useParams<{ classId: string }>()
 
@@ -206,4 +206,4 @@ const StudentClassDetail = () => {
   )
 }
 
-export default StudentClassDetail
+export default ClassDetail

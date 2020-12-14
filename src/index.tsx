@@ -31,6 +31,7 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import 'react-toastify/dist/ReactToastify.css'
 
 import PlainLayout from './layouts/Plain'
+import StaffLayout from './layouts/Staff'
 import StudentLayout from './layouts/Student'
 
 import authHelper from './helpers/auth.helper'
@@ -60,6 +61,7 @@ const App = () => {
             path="/student"
             render={(props) => <StudentLayout {...props} />}
           />
+          <Route path="/staff" render={(props) => <StaffLayout {...props} />} />
           <Route path="/" render={(props) => <PlainLayout {...props} />} />
         </Switch>
       </Router>
