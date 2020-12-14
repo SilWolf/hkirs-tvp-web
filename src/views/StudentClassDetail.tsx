@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react'
-import styled from 'styled-components'
 import { useAsync } from 'react-async'
 import { useParams } from 'react-router-dom'
 import Spinner from 'reactstrap/lib/Spinner'
@@ -9,19 +8,14 @@ import { getClassByClassId, getELearningByClassId } from '../helpers/api.helper'
 import classnames from 'classnames'
 import { ELearning } from '../types/elearning.type'
 import {
-  Button,
   Card,
   CardBody,
-  Col,
-  Container,
   Nav,
   NavLink,
   NavItem,
-  Row,
   TabContent,
   TabPane,
   CardTitle,
-  CardText,
 } from 'reactstrap'
 import ReactMarkdown from 'react-markdown'
 import TimeAgo from 'timeago-react'
@@ -30,28 +24,12 @@ import TimeSpan from '../components/DateTime/TimeSpan'
 
 import { Cls } from '../types/class.type'
 
-import store from '../store'
-import ClsRow from '../components/Cls/ClsRow'
-
 enum TAB_INDEX {
   ANNOUNCEMENTS = 0,
   FILES,
   LESSONS,
   DESCRIPTION,
 }
-
-const UpperWrapper = styled.div`
-  display: flex;
-`
-
-const CourseCoverImage = styled.img`
-  width: 100%;
-  margin-bottom: 16px;
-`
-
-const CoursePrice = styled.div`
-  font-size: 24px;
-`
 
 const getClassFn = ({ classId }: any) => {
   return getClassByClassId(classId || 'foo')
@@ -188,7 +166,12 @@ const StudentClassDetail = () => {
                 <ul>
                   {eLearning.files.map((file) => (
                     <li>
-                      <a key={file.id} href={file.url} target="_blank">
+                      <a
+                        key={file.id}
+                        href={file.url}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
                         {file.name}
                       </a>{' '}
                       ({file.size}KB)
