@@ -45,6 +45,7 @@ export const getUserEventsByUserId = (userId: string): Promise<UserEvent[]> => {
   return api.get<UserEvent[]>(`/user-events`, {
     params: {
       user: userId,
+      _sort: 'createdAt:DESC',
     },
   })
 }

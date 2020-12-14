@@ -42,7 +42,7 @@ const Classes = () => {
             <div key={cls.id}>
               <div>
                 <div>
-                  <Link to={`/student/classes/${cls.id}`}>
+                  <Link to={`./classes/${cls.id}`}>
                     <a href="#">{cls.code}</a>
                   </Link>
                 </div>

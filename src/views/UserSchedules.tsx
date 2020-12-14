@@ -11,9 +11,6 @@ import { getUserSchedulesByUserId } from '../helpers/api.helper'
 import { UserSchedule } from '../types/user-schedule.type'
 
 import store from '../store'
-import { Link } from 'react-router-dom'
-import DateSpan from '../components/DateTime/DateSpan'
-import TimeSpan from '../components/DateTime/TimeSpan'
 
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
@@ -53,8 +50,6 @@ const UserSchedules = () => {
       </div>
     )
   }
-
-  const userSchedules = (userSchedulesAsync.data as UserSchedule[]) || []
 
   return (
     <>
