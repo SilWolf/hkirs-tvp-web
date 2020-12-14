@@ -2,6 +2,7 @@ import { User } from '../types/user.type'
 import api from '../services/api.service'
 import store from '../store'
 import authUserSlice from '../slices/authUser.slice'
+import { removeAuthorization, setAuthorization } from './api.helper'
 
 const AUTH_USER_LOCALSTORAGE_KEY = 'hkirs-tvp-web:authUser'
 type AuthUserInfo = {
@@ -40,11 +41,13 @@ export const ssoSignIn = (providerName: string, query: string) => {
 export const resolveSignIn = (authUserData: AuthUserInfo) => {
   store.dispatch(authUserSlice.actions.signIn(authUserData))
   putAuthUserToLocalStorage(authUserData)
+  setAuthorization(authUserData.jwt as string)
 }
 
 export const signOut = () => {
   store.dispatch(authUserSlice.actions.signOut())
   removeAuthUserFromLocalStorage()
+  removeAuthorization()
 }
 
 export const signUp = (email: string, password: string) => {

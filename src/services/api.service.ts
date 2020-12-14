@@ -59,7 +59,7 @@ const apis = {
 }
 
 const setAuthorization = (authorization: string) => {
-  instance.defaults.headers.common['Authorization'] = authorization
+  instance.defaults.headers.common['Authorization'] = `Bearer ${authorization}`
 }
 const removeAuthorization = () => {
   instance.defaults.headers.common['Authorization'] = undefined

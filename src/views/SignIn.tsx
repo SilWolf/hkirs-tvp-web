@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form'
 import { Card, FormGroup, Form, Input, Label, FormFeedback } from 'reactstrap'
 import Button from '../components/Button'
 
-import { getGoogleSignInLink } from '../services/api.service'
 import authHelper from '../helpers/auth.helper'
 import { Link, Redirect } from 'react-router-dom'
 import { User } from '../types/user.type'
