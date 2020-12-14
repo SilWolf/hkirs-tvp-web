@@ -18,7 +18,7 @@
 */
 import { History, Location } from 'history'
 import React from 'react'
-import store from '../../store'
+import { connect } from 'react-redux'
 
 import {
   Collapse,
@@ -33,10 +33,12 @@ import {
   Container,
 } from 'reactstrap'
 import authHelper from '../../helpers/auth.helper'
+import { RootState } from '../../store'
 
 type Props = {
   location: Location
   history: History
+  brandName: string
 }
 
 type State = {
@@ -78,10 +80,6 @@ class Header extends React.Component<Props, State> {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen,
     })
-  }
-  getBrand() {
-    let brandName = 'Default Brand'
-    return store.getState().page.brandName || brandName
   }
   openSidebar() {
     document.documentElement.classList.toggle('nav-open')
@@ -151,7 +149,7 @@ class Header extends React.Component<Props, State> {
                 <span className="navbar-toggler-bar bar3" />
               </button>
             </div>
-            <NavbarBrand href="/">{this.getBrand()}</NavbarBrand>
+            <NavbarBrand href="/">{this.props.brandName}</NavbarBrand>
           </div>
           <NavbarToggler onClick={this.toggle}>
             <span className="navbar-toggler-bar navbar-kebab" />
@@ -186,4 +184,8 @@ class Header extends React.Component<Props, State> {
   }
 }
 
-export default Header
+const mapStateToProps = (state: RootState) => ({
+  brandName: state.page.brandName,
+})
+
+export default connect(mapStateToProps)(Header)
