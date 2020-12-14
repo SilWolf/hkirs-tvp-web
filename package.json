@@ -1,8 +1,7 @@
 {
-  "name": "paper-dashboard-react",
+  "name": "hkirs-tvp-web",
   "version": "1.2.0",
   "private": true,
-  "homepage": "https://demos.creative-tim.com/paper-dashboard-react/#/dashboard",
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "@types/googlemaps": "3.39.6",
