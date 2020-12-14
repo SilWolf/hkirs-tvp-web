@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAsync } from 'react-async'
+import BigCalendar, {
+  BigCalendarEvent,
+} from '../components/BigCalendar/BigCalednar'
+
 import Spinner from 'reactstrap/lib/Spinner'
 import PageBrandname from '../components/Page/PageBrand'
 import PageTitle from '../components/Page/PageTitle'
@@ -11,6 +15,8 @@ import { Link } from 'react-router-dom'
 import DateSpan from '../components/DateTime/DateSpan'
 import TimeSpan from '../components/DateTime/TimeSpan'
 
+import 'react-big-calendar/lib/css/react-big-calendar.css'
+
 const getUserSchedulesFn = ({ userId }: any) => {
   return getUserSchedulesByUserId(userId || 'foo')
 }
@@ -19,9 +25,25 @@ const UserSchedules = () => {
   // Assume the user id is here
   const userId = store.getState().authUser.user?.id as string
 
+  const [events, setEvents] = useState<BigCalendarEvent[]>([])
+
   const userSchedulesAsync = useAsync<UserSchedule[]>({
     promiseFn: getUserSchedulesFn,
     userId,
+    onResolve: async (data) => {
+      setEvents((prevs) => [
+        ...prevs,
+        ...data.map((item) => ({
+          title: item.subject,
+          start: new Date(item.startAt),
+          end: new Date(item.endAt),
+          allDay: false,
+          resource: {
+            content: item.content,
+          },
+        })),
+      ])
+    },
   })
 
   if (userSchedulesAsync.isLoading) {
@@ -39,31 +61,7 @@ const UserSchedules = () => {
       <PageTitle>行事曆</PageTitle>
       <PageBrandname>行事曆</PageBrandname>
       <div className="content">
-        {userSchedules.map((userSchedule) => {
-          return (
-            <div key={userSchedule.id}>
-              <div>
-                <div>
-                  <Link to={`/student/user-schedules/${userSchedule.id}`}>
-                    <a href="#">{userSchedule.subject}</a>
-                  </Link>
-                </div>
-                <div>
-                  <span className="text-mute">
-                    <DateSpan date={userSchedule.startAt} />{' '}
-                    <TimeSpan date={userSchedule.startAt} /> -
-                    <DateSpan date={userSchedule.endAt} />{' '}
-                    <TimeSpan date={userSchedule.endAt} />
-                  </span>
-                </div>
-                <div>
-                  <span className="text-mute">{userSchedule.content}</span>
-                </div>
-              </div>
-              <hr />
-            </div>
-          )
-        })}
+        <BigCalendar events={events} />
       </div>
     </>
   )
