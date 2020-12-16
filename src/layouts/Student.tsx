@@ -87,7 +87,7 @@ class Dashboard extends React.Component<Props, State> {
       !authUser?.isSignIned ||
       authUser?.user?.role?.type !== 'authenticated'
     ) {
-      return <Redirect to="/sign-in" />
+      return <Redirect to="/auth/sign-in" />
     }
 
     return (

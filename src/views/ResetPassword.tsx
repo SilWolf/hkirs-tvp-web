@@ -92,7 +92,7 @@ const ResetPassword = () => {
 
             <hr />
 
-            <Button color="link" tag={Link} to="/sign-in">
+            <Button color="link" tag={Link} to="/auth/sign-in">
               登入
             </Button>
           </ResetPasswordCard>
@@ -110,7 +110,7 @@ const ResetPassword = () => {
 
             <hr />
 
-            <Button color="link" tag={Link} to="/sign-in">
+            <Button color="link" tag={Link} to="/auth/sign-in">
               登入
             </Button>
           </ResetPasswordCard>

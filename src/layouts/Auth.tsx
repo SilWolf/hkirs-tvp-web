@@ -25,7 +25,7 @@ import styled from 'styled-components'
 import Footer from '../components/Footer/Footer'
 import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 
-import routes from '../routes/public.route'
+import routes from '../routes/auth.route'
 import { History, Location } from 'history'
 import store from '../store'
 
@@ -45,7 +45,7 @@ const MainPanel = styled.div`
   width: 100% !important;
 `
 
-class Plain extends React.Component<Props, State> {
+class Auth extends React.Component<Props, State> {
   mainPanel: React.RefObject<HTMLDivElement>
 
   constructor(props: Props) {
@@ -105,7 +105,7 @@ class Plain extends React.Component<Props, State> {
               )
             })}
             <Route path="*">
-              <Redirect to="/sign-in" />
+              <Redirect to="/auth/sign-in" />
             </Route>
           </Switch>
           <Footer fluid />
@@ -121,4 +121,4 @@ class Plain extends React.Component<Props, State> {
   }
 }
 
-export default Plain
+export default Auth

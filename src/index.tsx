@@ -16,7 +16,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { useEffect } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { useAsync } from 'react-async'
 import { Provider as ReduxProvider } from 'react-redux'
@@ -30,7 +30,8 @@ import './assets/demo/demo.css'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import 'react-toastify/dist/ReactToastify.css'
 
-import PlainLayout from './layouts/Plain'
+import PublicLayout from './layouts/Public'
+import AuthLayout from './layouts/Auth'
 import StaffLayout from './layouts/Staff'
 import StudentLayout from './layouts/Student'
 
@@ -62,7 +63,8 @@ const App = () => {
             render={(props) => <StudentLayout {...props} />}
           />
           <Route path="/staff" render={(props) => <StaffLayout {...props} />} />
-          <Route path="/" render={(props) => <PlainLayout {...props} />} />
+          <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
+          <Route path="/" render={(props) => <PublicLayout {...props} />} />
         </Switch>
       </Router>
       <ToastContainer />

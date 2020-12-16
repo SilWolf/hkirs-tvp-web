@@ -18,19 +18,31 @@
 */
 import { RouteType } from '../types/system/route.type'
 
-import AfterSSOSignIn from '../views/AfterSSOSignIn'
-import CourseDetail from '../views/CourseDetail'
+import SignIn from '../views/SignIn'
+import SignUp from '../views/SignUp'
+import ForgotPassword from '../views/ForgotPassword'
+import ResetPassword from '../views/ResetPassword'
 
 var routes: RouteType[] = [
   {
-    path: '/connect/:provider/redirect',
-    name: 'AfterSSOSignIn',
-    component: AfterSSOSignIn,
+    path: '/auth/sign-in',
+    name: 'SignIn',
+    component: SignIn,
   },
   {
-    path: '/courses/:courseId',
-    name: 'Course Detail',
-    component: CourseDetail,
+    path: '/auth/sign-up',
+    name: 'SignUp',
+    component: SignUp,
+  },
+  {
+    path: '/auth/forgot-password',
+    name: 'Forgot Password',
+    component: ForgotPassword,
+  },
+  {
+    path: '/auth/reset-password',
+    name: 'Reset Password',
+    component: ResetPassword,
   },
 ]
 export default routes

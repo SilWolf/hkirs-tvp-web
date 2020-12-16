@@ -20,13 +20,12 @@ import React from 'react'
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from 'perfect-scrollbar'
 import { Redirect, Route, Switch } from 'react-router-dom'
+import styled from 'styled-components'
 
-import DemoNavbar from '../components/Navbars/DemoNavbar'
 import Footer from '../components/Footer/Footer'
-import Sidebar from '../components/Sidebar/Sidebar'
 import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 
-import routes from '../routes/staff.route'
+import routes from '../routes/public.route'
 import { History, Location } from 'history'
 import store from '../store'
 
@@ -42,7 +41,11 @@ type State = {
   backgroundColor: string
 }
 
-class Dashboard extends React.Component<Props, State> {
+const MainPanel = styled.div`
+  width: 100% !important;
+`
+
+class Public extends React.Component<Props, State> {
   mainPanel: React.RefObject<HTMLDivElement>
 
   constructor(props: Props) {
@@ -82,21 +85,9 @@ class Dashboard extends React.Component<Props, State> {
     this.setState({ backgroundColor: color })
   }
   render() {
-    const authUser = store.getState().authUser
-    if (!authUser?.isSignIned || authUser?.user?.role?.type !== 'staff') {
-      return <Redirect to="/auth/sign-in" />
-    }
-
     return (
       <div className="wrapper">
-        <Sidebar
-          {...this.props}
-          routes={routes}
-          bgColor={this.state.backgroundColor}
-          activeColor={this.state.activeColor}
-        />
-        <div className="main-panel" ref={this.mainPanel}>
-          <DemoNavbar {...this.props} />
+        <MainPanel className="main-panel" ref={this.mainPanel}>
           <Switch>
             {routes.map((prop, key) => {
               return (
@@ -104,11 +95,11 @@ class Dashboard extends React.Component<Props, State> {
               )
             })}
             <Route path="*">
-              <Redirect to="/staff/classes" />
+              <Redirect to="/auth/sign-in" />
             </Route>
           </Switch>
           <Footer fluid />
-        </div>
+        </MainPanel>
         <FixedPlugin
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
@@ -120,4 +111,4 @@ class Dashboard extends React.Component<Props, State> {
   }
 }
 
-export default Dashboard
+export default Public

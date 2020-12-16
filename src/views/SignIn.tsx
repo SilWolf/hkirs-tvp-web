@@ -114,7 +114,7 @@ const SignIn = () => {
               </Button>
             </div>
             <Center>
-              <Button color="link" tag={Link} to="/forgot-password">
+              <Button color="link" tag={Link} to="/auth/forgot-password">
                 忘記密碼
               </Button>
             </Center>
@@ -126,7 +126,7 @@ const SignIn = () => {
             <hr />
 
             <Center>
-              <Button color="link" tag={Link} to="/sign-up">
+              <Button color="link" tag={Link} to="/auth/sign-up">
                 註冊
               </Button>
             </Center>

@@ -38,7 +38,7 @@ const AfterSSOSignIn = () => {
   }
 
   if (status === StatusEnum.Failure) {
-    return <Redirect to="/sign-in" />
+    return <Redirect to="/auth/sign-in" />
   }
 
   return <></>

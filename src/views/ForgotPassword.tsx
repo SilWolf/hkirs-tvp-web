@@ -103,7 +103,7 @@ const ForgotPassword = () => {
             </Button>
 
             <Center>
-              <Button color="link" tag={Link} to="/sign-in">
+              <Button color="link" tag={Link} to="/auth/sign-in">
                 登入
               </Button>
             </Center>
