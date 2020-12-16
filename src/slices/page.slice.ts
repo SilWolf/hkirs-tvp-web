@@ -5,7 +5,7 @@ type SliceState = {
   brandName: string
 }
 const initialState: SliceState = {
-  title: ' HKIRS學生平台',
+  title: ' HKIRS師生平台',
   brandName: '我的課程',
 }
 

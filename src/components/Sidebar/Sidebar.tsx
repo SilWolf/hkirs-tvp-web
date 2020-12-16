@@ -78,7 +78,7 @@ class Sidebar extends React.Component<Props> {
             </div>
           </a>
           <a href="/" className="simple-text logo-normal">
-            HKIRS學生平台
+            HKIRS師生平台
           </a>
         </div>
         <div className="sidebar-wrapper" ref={this.sidebar}>

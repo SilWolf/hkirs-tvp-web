@@ -15,9 +15,9 @@ instance.interceptors.response.use(
   }
 )
 
-if (process.env.NODE_ENV && process.env.NODE_ENV !== 'production') {
-  require('./apiMock.service').default(instance)
-}
+// if (process.env.NODE_ENV && process.env.NODE_ENV !== 'production') {
+//   require('./apiMock.service').default(instance)
+// }
 
 const apis = {
   request: <T>(config: AxiosRequestConfig): Promise<T> => {

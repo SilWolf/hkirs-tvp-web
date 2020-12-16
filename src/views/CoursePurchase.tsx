@@ -42,7 +42,7 @@ const CoursePrice = styled.div`
 `
 
 const getCourseByIdFn = ({ courseId }: any) => {
-  return getCourseById(courseId || 'foo')
+  return getCourseById(courseId)
 }
 
 const CoursePurchase = () => {

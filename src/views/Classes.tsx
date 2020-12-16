@@ -10,7 +10,7 @@ import store from '../store'
 import { Link } from 'react-router-dom'
 
 const getClassesFn = ({ userId }: any) => {
-  return getClassesByUserId(userId || 'foo')
+  return getClassesByUserId(userId)
 }
 
 const Classes = () => {

@@ -12,7 +12,7 @@ import DatetimeSpan from '../components/DateTime/DatetimeSpan'
 import Badge from 'reactstrap/lib/Badge'
 
 const getUserEventsFn = ({ userId }: any) => {
-  return getUserEventsByUserId(userId || 'foo')
+  return getUserEventsByUserId(userId)
 }
 
 const UserEvents = () => {

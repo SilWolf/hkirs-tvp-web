@@ -51,6 +51,7 @@
     "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build && gulp licenses",
+    "deploy": "yarn build && firebase deploy",
     "lint": "lint",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

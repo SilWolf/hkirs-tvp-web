@@ -32,10 +32,10 @@ enum TAB_INDEX {
 }
 
 const getClassFn = ({ classId }: any) => {
-  return getClassByClassId(classId || 'foo')
+  return getClassByClassId(classId)
 }
 const getELearningFn = ({ classId }: any) => {
-  return getELearningByClassId(classId || 'foo')
+  return getELearningByClassId(classId)
 }
 
 const ClassDetail = () => {

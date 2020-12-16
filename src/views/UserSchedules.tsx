@@ -15,7 +15,7 @@ import store from '../store'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 const getUserSchedulesFn = ({ userId }: any) => {
-  return getUserSchedulesByUserId(userId || 'foo')
+  return getUserSchedulesByUserId(userId)
 }
 
 const UserSchedules = () => {
