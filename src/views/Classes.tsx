@@ -42,9 +42,7 @@ const Classes = () => {
             <div key={cls.id}>
               <div>
                 <div>
-                  <Link to={`./classes/${cls.id}`}>
-                    <a href="#">{cls.code}</a>
-                  </Link>
+                  <Link to={`./classes/${cls.id}`}>{cls.code}</Link>
                 </div>
                 <div>
                   <span className="text-mute">

@@ -37,9 +37,6 @@ const ResetPasswordCard = styled(Card)`
   max-width: 100%;
   margin-top: 60px;
 `
-const Center = styled.div`
-  text-align: center;
-`
 
 const ResetPassword = () => {
   const location = useLocation<{ code: string }>()

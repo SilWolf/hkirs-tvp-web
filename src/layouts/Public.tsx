@@ -27,7 +27,6 @@ import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 
 import routes from '../routes/public.route'
 import { History, Location } from 'history'
-import store from '../store'
 
 var ps: PerfectScrollbar
 

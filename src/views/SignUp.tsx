@@ -15,7 +15,6 @@ import {
 import Button from '../components/Button'
 
 import authHelper from '../helpers/auth.helper'
-import { getGoogleSignInLink } from '../services/api.service'
 import { Link } from 'react-router-dom'
 
 type FormData = {

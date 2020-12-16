@@ -7,7 +7,6 @@ import { getUserEventsByUserId } from '../helpers/api.helper'
 import { UserEvent } from '../types/user-event.type'
 
 import store from '../store'
-import { Link } from 'react-router-dom'
 import DatetimeSpan from '../components/DateTime/DatetimeSpan'
 import Badge from 'reactstrap/lib/Badge'
 

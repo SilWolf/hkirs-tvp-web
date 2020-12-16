@@ -37,17 +37,13 @@ const CourseCoverImage = styled.img`
   margin-bottom: 16px;
 `
 
-const CoursePrice = styled.div`
-  font-size: 24px;
-`
-
 const getCourseByIdFn = ({ courseId }: any) => {
   return getCourseById(courseId)
 }
 
 const CoursePurchase = () => {
   const { courseId } = useParams<{ courseId: string }>()
-  const { register, handleSubmit, errors, setError } = useForm<FormData>()
+  const { register } = useForm<FormData>()
 
   const courseAsync = useAsync<Course>({
     promiseFn: getCourseByIdFn,

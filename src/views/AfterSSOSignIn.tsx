@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useStore } from 'react-redux'
 import { useParams, useLocation, Redirect } from 'react-router-dom'
 import { ssoSignIn } from '../helpers/auth.helper'
-import authUserSlice from '../slices/authUser.slice'
 
 enum StatusEnum {
   Verifying = 0,
