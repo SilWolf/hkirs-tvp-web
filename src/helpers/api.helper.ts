@@ -1,10 +1,10 @@
-import { Cls } from '../types/class.type'
+import { Cls, ClsLesson } from '../types/cls.type'
 import { Course } from '../types/course.type'
 import { ELearning } from '../types/elearning.type'
 import { UserEvent } from '../types/user-event.type'
 import { UserSchedule } from '../types/user-schedule.type'
 
-import api from '../services/api.service'
+import api, { ExtendedAxiosRequestConfig } from '../services/api.service'
 
 export const getCourseById = (courseId: string): Promise<Course> => {
 	return api.get<Course>(`/courses/${courseId}`)
@@ -17,9 +17,22 @@ export const getClassesByUserId = (userId: string): Promise<Cls[]> => {
 		},
 	})
 }
-
 export const getClassByClassId = (classId: string): Promise<Cls> => {
 	return api.get<Cls>(`/classes/${classId}`)
+}
+
+export const getClsLessonsByDateRange = (
+	start: Date,
+	end: Date,
+	config: ExtendedAxiosRequestConfig = {}
+): Promise<ClsLesson[]> => {
+	return api.get<ClsLesson[]>(`/lessons`, {
+		params: {
+			startAt_gte: start.toISOString(),
+			startAt_lte: end.toISOString(),
+		},
+		...config,
+	})
 }
 
 export const getELearningByClassId = (classId: string): Promise<ELearning> => {

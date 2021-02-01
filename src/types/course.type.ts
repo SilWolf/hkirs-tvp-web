@@ -1,4 +1,4 @@
-import { Cls } from './class.type'
+import { Cls } from './cls.type'
 import { StrapiFile } from './strapi/StrapiFile.type'
 
 export type Course = {

@@ -1,18 +1,11 @@
 import React from 'react'
-import { DateTime } from 'luxon'
+import lightFormat from 'date-fns/lightFormat'
 
 type Props = {
-  date: string
+	dateOrDateString: string
 }
-const DateSpan = ({ date }: Props) => {
-  return (
-    <span>
-      {DateTime.fromISO(date)
-        .toLocal()
-        .setLocale('zh-TW')
-        .toLocaleString(DateTime.TIME_24_SIMPLE)}
-    </span>
-  )
+const DateSpan = ({ dateOrDateString }: Props) => {
+	return <span>{lightFormat(new Date(dateOrDateString), 'HH:mm')}</span>
 }
 
 export default React.memo(DateSpan)

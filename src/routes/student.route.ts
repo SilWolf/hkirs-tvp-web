@@ -19,7 +19,7 @@
 import { RouteType } from '../types/system/route.type'
 
 import StudentClassDetail from '../views/ClassDetail'
-import StudentClasses from '../views/Classes'
+import StudentClsLessons from '../views/ClsLessons'
 import CoursePurchase from '../views/CoursePurchase'
 
 const routes: RouteType[] = [
@@ -31,16 +31,16 @@ const routes: RouteType[] = [
 	//   inSidebar: true,
 	// },
 	{
-		path: '/student/classes/:classId',
+		path: '/student/clses/:classId',
 		name: '我的課程',
 		icon: 'nc-icon nc-bank',
 		component: StudentClassDetail,
 	},
 	{
-		path: '/student/classes',
+		path: '/student/clses',
 		name: '我的課程',
 		icon: 'nc-icon nc-bank',
-		component: StudentClasses,
+		component: StudentClsLessons,
 		inSidebar: true,
 	},
 	{

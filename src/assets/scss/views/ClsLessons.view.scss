@@ -1,0 +1,21 @@
+.event-clsLesson {
+
+  &.event-clsLesson-status-draft {
+    background: #51bcda;
+  }
+  &.event-clsLesson-status-published {
+    background: #6bd098;
+  }
+  &.event-clsLesson-status-completed {
+    background: #ccc;
+  }
+
+  .event-clsLesson-code {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .event-clsLesson-title {
+    font-size: 12px;
+  }
+}

@@ -47,7 +47,7 @@ const UserEvents = () => {
 							<Badge color='primary'>{userEvent.type}</Badge>
 							<div>
 								<strong className='text-mute'>
-									<DatetimeSpan date={userEvent.startAt} />
+									<DatetimeSpan dateOrDateString={userEvent.startAt} />
 								</strong>
 							</div>
 							<div>

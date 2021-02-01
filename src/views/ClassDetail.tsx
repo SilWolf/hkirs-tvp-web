@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import { useParams } from 'react-router-dom'
 import classnames from 'classnames'
 
-import { Cls } from '../types/class.type'
+import { Cls } from '../types/cls.type'
 import { ELearning } from '../types/elearning.type'
 
 import { getClassByClassId, getELearningByClassId } from '../helpers/api.helper'
@@ -188,9 +188,9 @@ const ClassDetail = () => {
 								{cls.lessons &&
 									cls.lessons.map((lesson) => (
 										<li style={{ marginBottom: 16 }}>
-											<DateSpan date={lesson.startAt} />{' '}
-											<TimeSpan date={lesson.startAt} />-
-											<TimeSpan date={lesson.endAt} />
+											<DateSpan dateOrDateString={lesson.startAt} />{' '}
+											<TimeSpan dateOrDateString={lesson.startAt} />-
+											<TimeSpan dateOrDateString={lesson.endAt} />
 											<br />
 											{lesson.title}
 										</li>

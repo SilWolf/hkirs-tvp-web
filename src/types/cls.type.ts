@@ -1,6 +1,8 @@
 import { Course } from './course.type'
+import { Entity } from './strapi/entity.type'
+import { Venue } from './venue.type'
 
-export type Cls = {
+export type Cls = Entity & {
 	id: string
 	price: number
 	capacity: number
@@ -14,9 +16,12 @@ export type Cls = {
 	lessons: ClsLesson[]
 }
 
-export type ClsLesson = {
+export type ClsLesson = Entity & {
 	id: string
 	title: string
 	startAt: string
 	endAt: string
+
+	cls: Cls
+	venue: Venue
 }

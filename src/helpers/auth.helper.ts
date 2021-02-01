@@ -39,19 +39,19 @@ export const ssoSignIn = (providerName: string, query: string) => {
 		})
 }
 
-export const resolveSignIn = (authUserData: AuthUserInfo) => {
+export const resolveSignIn = (authUserData: AuthUserInfo): void => {
 	store.dispatch(authUserSlice.actions.signIn(authUserData))
 	putAuthUserToLocalStorage(authUserData)
 	setAuthorization(authUserData.jwt as string)
 }
 
-export const signOut = () => {
+export const signOut = (): void => {
 	store.dispatch(authUserSlice.actions.signOut())
 	removeAuthUserFromLocalStorage()
 	removeAuthorization()
 }
 
-export const signUp = (email: string, password: string) => {
+export const signUp = (email: string, password: string): Promise<User> => {
 	return api.post('/auth/local/register', {
 		username: email,
 		email,

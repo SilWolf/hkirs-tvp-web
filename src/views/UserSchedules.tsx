@@ -7,9 +7,7 @@ import { UserSchedule } from '../types/user-schedule.type'
 import { getUserSchedulesByUserId } from '../helpers/api.helper'
 
 import Spinner from 'reactstrap/lib/Spinner'
-import BigCalendar, {
-	BigCalendarEvent,
-} from '../components/BigCalendar/BigCalednar'
+import Calendar from '../components/Calendar/Calendar'
 import PageBrandname from '../components/Page/PageBrand'
 import PageTitle from '../components/Page/PageTitle'
 
@@ -23,24 +21,24 @@ const UserSchedules = () => {
 	// Assume the user id is here
 	const userId = store.getState().authUser.user?.id as string
 
-	const [events, setEvents] = useState<BigCalendarEvent[]>([])
+	const [events, setEvents] = useState<UserSchedule[]>([])
 
 	const userSchedulesAsync = useAsync<UserSchedule[]>({
 		promiseFn: getUserSchedulesFn,
 		userId,
 		onResolve: async (data) => {
-			setEvents((prevs) => [
-				...prevs,
-				...data.map((item) => ({
-					title: item.subject,
-					start: new Date(item.startAt),
-					end: new Date(item.endAt),
-					allDay: false,
-					resource: {
-						content: item.content,
-					},
-				})),
-			])
+			// setEvents((prevs) => [
+			// 	...prevs,
+			// 	...data.map((item) => ({
+			// 		title: item.subject,
+			// 		start: new Date(item.startAt),
+			// 		end: new Date(item.endAt),
+			// 		allDay: false,
+			// 		resource: {
+			// 			content: item.content,
+			// 		},
+			// 	})),
+			// ])
 		},
 	})
 
@@ -57,7 +55,7 @@ const UserSchedules = () => {
 			<PageTitle>行事曆</PageTitle>
 			<PageBrandname>行事曆</PageBrandname>
 			<div className='content'>
-				<BigCalendar events={events} />
+				<Calendar events={events} />
 			</div>
 		</>
 	)

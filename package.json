@@ -10,9 +10,9 @@
     "bootstrap": "4.5.0",
     "chart.js": "2.9.3",
     "classnames": "^2.2.6",
+    "date-fns": "^2.16.1",
     "history": "4.10.1",
     "jquery": "3.5.1",
-    "luxon": "^1.25.0",
     "node-sass": "4.14.1",
     "perfect-scrollbar": "1.5.0",
     "react": "16.13.1",
@@ -50,70 +50,70 @@
     "map-sass": "node-sass src/assets/scss/paper-dashboard.scss src/assets/css/paper-dashboard.css --source-map true"
   },
   "eslintConfig": {
-		"parser": "@typescript-eslint/parser",
-		"extends": [
-			"plugin:@typescript-eslint/recommended",
-			"plugin:prettier/recommended",
-			"prettier/prettier",
-			"prettier/@typescript-eslint"
-		],
-		"plugins": [
-			"@typescript-eslint",
-			"import",
-			"simple-import-sort",
-			"prettier"
-		],
-		"rules": {
-			"prettier/prettier": [
-				"error",
-				{
-					"printWidth": 80,
-					"tabWidth": 2,
-					"useTabs": true,
-					"semi": false,
-					"singleQuote": true,
-					"quoteProps": "as-needed",
-					"jsxSingleQuote": true,
-					"trailingComma": "es5",
-					"bracketSpacing": true,
-					"jsxBracketSameLine": false,
-					"arrowParens": "always"
-				}
-			],
-			"simple-import-sort/imports": [
-				"error",
-				{
-					"groups": [
-						[
-							"react$",
-							"react-",
-							"styled-components",
-							"date-fns",
-							"classnames",
-							"axios",
-							"copy-to-clipboard"
-						],
-						[
-							"/interfaces/",
-							"/types/"
-						],
-						[
-							"/utils/",
-							"/helpers/"
-						],
-						[
-							"reactstrap",
-							"/components/"
-						]
-					]
-				}
-			],
-			"simple-import-sort/exports": "error",
-			"sort-imports": "off",
-			"import/first": "error",
-			"import/newline-after-import": "error",
-			"import/no-duplicates": "error"
-		},
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended",
+      "prettier/prettier",
+      "prettier/@typescript-eslint"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "import",
+      "simple-import-sort",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "printWidth": 80,
+          "tabWidth": 2,
+          "useTabs": true,
+          "semi": false,
+          "singleQuote": true,
+          "quoteProps": "as-needed",
+          "jsxSingleQuote": true,
+          "trailingComma": "es5",
+          "bracketSpacing": true,
+          "jsxBracketSameLine": false,
+          "arrowParens": "always"
+        }
+      ],
+      "simple-import-sort/imports": [
+        "error",
+        {
+          "groups": [
+            [
+              "react$",
+              "react-",
+              "styled-components",
+              "date-fns",
+              "classnames",
+              "axios",
+              "copy-to-clipboard"
+            ],
+            [
+              "/interfaces/",
+              "/types/"
+            ],
+            [
+              "/utils/",
+              "/helpers/"
+            ],
+            [
+              "reactstrap",
+              "/components/"
+            ]
+          ]
+        }
+      ],
+      "simple-import-sort/exports": "error",
+      "sort-imports": "off",
+      "import/first": "error",
+      "import/newline-after-import": "error",
+      "import/no-duplicates": "error"
+    },
     "overrides": [
       {
         "files": [
@@ -141,8 +141,6 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@types/classnames": "^2.2.11",
-    "@types/luxon": "^1.25.0",
-    "@types/react-helmet": "^6.1.0",
     "@types/googlemaps": "3.39.6",
     "@types/history": "^4.7.8",
     "@types/jest": "^26.0.15",
@@ -151,6 +149,7 @@
     "@types/react": "^16.9.56",
     "@types/react-big-calendar": "^0.24.8",
     "@types/react-dom": "^16.9.9",
+    "@types/react-helmet": "^6.1.0",
     "@types/react-redux": "^7.1.11",
     "@types/react-router-dom": "^5.1.6",
     "@types/reactstrap": "^8.7.2",
@@ -168,9 +167,9 @@
     "prettier": "^2.1.2"
   },
   "lint-staged": {
-		"src/**/*.{js,jsx,ts,tsx}": [
-			"eslint --fix"
-		],
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
     ]

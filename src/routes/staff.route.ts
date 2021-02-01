@@ -19,7 +19,7 @@
 import { RouteType } from '../types/system/route.type'
 
 import ClassDetail from '../views/ClassDetail'
-import Classes from '../views/Classes'
+import ClsLessons from '../views/ClsLessons'
 import UserEvents from '../views/UserEvents'
 import UserSchedules from '../views/UserSchedules'
 
@@ -32,16 +32,16 @@ const routes: RouteType[] = [
 	//   inSidebar: true,
 	// },
 	{
-		path: '/staff/classes/:classId',
+		path: '/staff/clses/:classId',
 		name: '我的課程',
 		icon: 'nc-icon nc-book-bookmark',
 		component: ClassDetail,
 	},
 	{
-		path: '/staff/classes',
+		path: '/staff/clses',
 		name: '我的課程',
 		icon: 'nc-icon nc-book-bookmark',
-		component: Classes,
+		component: ClsLessons,
 		inSidebar: true,
 	},
 	{

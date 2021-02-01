@@ -21,6 +21,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useAsync } from 'react-async'
 import ReactDOM from 'react-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { Provider as ReduxProvider } from 'react-redux'
 import { Route, Router, Switch } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
@@ -76,6 +77,7 @@ const App = () => {
 					</Switch>
 				</Router>
 				<ToastContainer />
+				<ReactQueryDevtools initialIsOpen={false} />
 			</ReduxProvider>
 		</QueryClientProvider>
 	)

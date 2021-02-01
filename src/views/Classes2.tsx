@@ -2,7 +2,7 @@ import React from 'react'
 import { useAsync } from 'react-async'
 import { Link } from 'react-router-dom'
 
-import { Cls } from '../types/class.type'
+import { Cls } from '../types/cls.type'
 
 import { getClassesByUserId } from '../helpers/api.helper'
 
@@ -45,7 +45,7 @@ const Classes = () => {
 						<div key={cls.id}>
 							<div>
 								<div>
-									<Link to={`./classes/${cls.id}`}>{cls.code}</Link>
+									<Link to={`./clses/${cls.id}`}>{cls.code}</Link>
 								</div>
 								<div>
 									<span className='text-mute'>
