@@ -3,6 +3,7 @@ import { Course } from '../types/course.type'
 import { ELearning } from '../types/elearning.type'
 import { UserEvent } from '../types/user-event.type'
 import { UserSchedule } from '../types/user-schedule.type'
+import { Venue, VenueBooking } from '../types/venue.type'
 
 import api, { ExtendedAxiosRequestConfig } from '../services/api.service'
 
@@ -62,6 +63,26 @@ export const getUserEventsByUserId = (userId: string): Promise<UserEvent[]> => {
 			_sort: 'createdAt:DESC',
 		},
 	})
+}
+
+export const getVenues = (): Promise<Venue[]> => {
+	return api.get<Venue[]>(`/venues`)
+}
+export const getVenueBookingsByDateRange = (
+	start: Date,
+	end: Date,
+	config: ExtendedAxiosRequestConfig = {}
+): Promise<VenueBooking[]> => {
+	return api.get<VenueBooking[]>(`/lessons`, {
+		params: {
+			startAt_gte: start.toISOString(),
+			startAt_lte: end.toISOString(),
+		},
+		...config,
+	})
+}
+export const postVenueBooking = (vb: VenueBooking): Promise<VenueBooking> => {
+	return api.post<VenueBooking>(`/venue-bookings`, vb)
 }
 
 export const setAuthorization = api.setAuthorization

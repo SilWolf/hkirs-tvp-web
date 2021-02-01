@@ -22,6 +22,7 @@ import ClassDetail from '../views/ClassDetail'
 import ClsLessons from '../views/ClsLessons'
 import UserEvents from '../views/UserEvents'
 import UserSchedules from '../views/UserSchedules'
+import VenueBookings from '../views/VenueBookings'
 
 const routes: RouteType[] = [
 	// {
@@ -42,6 +43,13 @@ const routes: RouteType[] = [
 		name: '我的課程',
 		icon: 'nc-icon nc-book-bookmark',
 		component: ClsLessons,
+		inSidebar: true,
+	},
+	{
+		path: '/staff/venue-bookings',
+		name: '預約場地',
+		icon: 'nc-icon nc-calendar-60',
+		component: VenueBookings,
 		inSidebar: true,
 	},
 	{

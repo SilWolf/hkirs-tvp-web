@@ -1,0 +1,21 @@
+.event-venueBooking {
+
+  &.event-venueBooking-status-draft {
+    background: #51bcda;
+  }
+  &.event-venueBooking-status-published {
+    background: #6bd098;
+  }
+  &.event-venueBooking-status-completed {
+    background: #ccc;
+  }
+
+  .event-venueBooking-code {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .event-venueBooking-title {
+    font-size: 12px;
+  }
+}

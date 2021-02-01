@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { useEffect, useState } from 'react'
-import 'react-big-calendar/lib/css/react-big-calendar.css'
 import {
 	Calendar as BigCalendar,
 	CalendarProps,
@@ -16,6 +15,8 @@ import zhTWLocale from 'date-fns/locale/zh-TW'
 import parse from 'date-fns/parse'
 import startOfMonth from 'date-fns/startOfMonth'
 import startOfWeek from 'date-fns/startOfWeek'
+
+import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 const locales = {
 	// 'en-US': require('date-fns/locale/en-US'),

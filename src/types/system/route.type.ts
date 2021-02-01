@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 export type RouteType = {
-  path: string
-  name: string
-  icon?: string
-  component: typeof React.Component | React.FC
-  inSidebar?: boolean
+	path: string
+	name: string
+	icon?: string
+	component: typeof React.Component | React.FC
+	inSidebar?: boolean
 }

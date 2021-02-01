@@ -1,8 +1,8 @@
 export type Entity = {
-	id: string
+	id?: string
 	_id?: string
 	__v?: number
-	createdAt: string
-	updatedAt: string
+	createdAt?: string
+	updatedAt?: string
 	published_at?: string | null
 }

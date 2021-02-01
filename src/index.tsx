@@ -17,7 +17,6 @@
 
 */
 import React from 'react'
-import 'react-toastify/dist/ReactToastify.css'
 import { useAsync } from 'react-async'
 import ReactDOM from 'react-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
@@ -30,6 +29,7 @@ import authHelper from './helpers/auth.helper'
 
 import { Spinner } from 'reactstrap'
 
+import 'react-toastify/dist/ReactToastify.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import './assets/scss/paper-dashboard.scss?v=1.2.0'
 import './assets/demo/demo.css'
