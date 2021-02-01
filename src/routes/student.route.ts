@@ -18,36 +18,36 @@
 */
 import { RouteType } from '../types/system/route.type'
 
+import StudentClassDetail from '../views/ClassDetail'
 import StudentClasses from '../views/Classes'
 import CoursePurchase from '../views/CoursePurchase'
-import StudentClassDetail from '../views/ClassDetail'
 
-var routes: RouteType[] = [
-  // {
-  //   path: '/student/dashboard',
-  //   name: '首頁',
-  //   icon: 'nc-icon nc-bank',
-  //   component: Dashboard,
-  //   inSidebar: true,
-  // },
-  {
-    path: '/student/classes/:classId',
-    name: '我的課程',
-    icon: 'nc-icon nc-bank',
-    component: StudentClassDetail,
-  },
-  {
-    path: '/student/classes',
-    name: '我的課程',
-    icon: 'nc-icon nc-bank',
-    component: StudentClasses,
-    inSidebar: true,
-  },
-  {
-    path: '/student/course-purchase/:courseId',
-    name: '報名課程',
-    icon: 'nc-icon nc-diamond',
-    component: CoursePurchase,
-  },
+const routes: RouteType[] = [
+	// {
+	//   path: '/student/dashboard',
+	//   name: '首頁',
+	//   icon: 'nc-icon nc-bank',
+	//   component: Dashboard,
+	//   inSidebar: true,
+	// },
+	{
+		path: '/student/classes/:classId',
+		name: '我的課程',
+		icon: 'nc-icon nc-bank',
+		component: StudentClassDetail,
+	},
+	{
+		path: '/student/classes',
+		name: '我的課程',
+		icon: 'nc-icon nc-bank',
+		component: StudentClasses,
+		inSidebar: true,
+	},
+	{
+		path: '/student/course-purchase/:courseId',
+		name: '報名課程',
+		icon: 'nc-icon nc-diamond',
+		component: CoursePurchase,
+	},
 ]
 export default routes

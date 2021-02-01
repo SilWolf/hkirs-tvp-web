@@ -18,31 +18,31 @@
 */
 import { RouteType } from '../types/system/route.type'
 
-import SignIn from '../views/SignIn'
-import SignUp from '../views/SignUp'
 import ForgotPassword from '../views/ForgotPassword'
 import ResetPassword from '../views/ResetPassword'
+import SignIn from '../views/SignIn'
+import SignUp from '../views/SignUp'
 
-var routes: RouteType[] = [
-  {
-    path: '/auth/sign-in',
-    name: 'SignIn',
-    component: SignIn,
-  },
-  {
-    path: '/auth/sign-up',
-    name: 'SignUp',
-    component: SignUp,
-  },
-  {
-    path: '/auth/forgot-password',
-    name: 'Forgot Password',
-    component: ForgotPassword,
-  },
-  {
-    path: '/auth/reset-password',
-    name: 'Reset Password',
-    component: ResetPassword,
-  },
+const routes: RouteType[] = [
+	{
+		path: '/auth/sign-in',
+		name: 'SignIn',
+		component: SignIn,
+	},
+	{
+		path: '/auth/sign-up',
+		name: 'SignUp',
+		component: SignUp,
+	},
+	{
+		path: '/auth/forgot-password',
+		name: 'Forgot Password',
+		component: ForgotPassword,
+	},
+	{
+		path: '/auth/reset-password',
+		name: 'Reset Password',
+		component: ResetPassword,
+	},
 ]
 export default routes

@@ -17,59 +17,68 @@
 
 */
 import React from 'react'
-import ReactDOM from 'react-dom'
+import 'react-toastify/dist/ReactToastify.css'
 import { useAsync } from 'react-async'
+import ReactDOM from 'react-dom'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider as ReduxProvider } from 'react-redux'
-import { createBrowserHistory } from 'history'
-import { Router, Route, Switch } from 'react-router-dom'
+import { Route, Router, Switch } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
+
+import authHelper from './helpers/auth.helper'
+
+import { Spinner } from 'reactstrap'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import './assets/scss/paper-dashboard.scss?v=1.2.0'
 import './assets/demo/demo.css'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
-import 'react-toastify/dist/ReactToastify.css'
-
-import PublicLayout from './layouts/Public'
 import AuthLayout from './layouts/Auth'
+import PublicLayout from './layouts/Public'
 import StaffLayout from './layouts/Staff'
 import StudentLayout from './layouts/Student'
-
-import authHelper from './helpers/auth.helper'
 import store from './store'
-import { Spinner } from 'reactstrap'
+import { createBrowserHistory } from 'history'
+
+// [react-query] Create a client
+const queryClient = new QueryClient()
 
 const hist = createBrowserHistory()
 
 const tryAutoSignInFn = async () => {
-  return authHelper.tryAutoSignIn()
+	return authHelper.tryAutoSignIn()
 }
 
 const App = () => {
-  const tryAutoSignInAsync = useAsync({
-    promiseFn: tryAutoSignInFn,
-  })
+	const tryAutoSignInAsync = useAsync({
+		promiseFn: tryAutoSignInFn,
+	})
 
-  if (tryAutoSignInAsync.isLoading) {
-    return <Spinner />
-  }
+	if (tryAutoSignInAsync.isLoading) {
+		return <Spinner />
+	}
 
-  return (
-    <ReduxProvider store={store}>
-      <Router history={hist}>
-        <Switch>
-          <Route
-            path="/student"
-            render={(props) => <StudentLayout {...props} />}
-          />
-          <Route path="/staff" render={(props) => <StaffLayout {...props} />} />
-          <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
-          <Route path="/" render={(props) => <PublicLayout {...props} />} />
-        </Switch>
-      </Router>
-      <ToastContainer />
-    </ReduxProvider>
-  )
+	return (
+		<QueryClientProvider client={queryClient}>
+			<ReduxProvider store={store}>
+				<Router history={hist}>
+					<Switch>
+						<Route
+							path='/student'
+							render={(props) => <StudentLayout {...props} />}
+						/>
+						<Route
+							path='/staff'
+							render={(props) => <StaffLayout {...props} />}
+						/>
+						<Route path='/auth' render={(props) => <AuthLayout {...props} />} />
+						<Route path='/' render={(props) => <PublicLayout {...props} />} />
+					</Switch>
+				</Router>
+				<ToastContainer />
+			</ReduxProvider>
+		</QueryClientProvider>
+	)
 }
 
 ReactDOM.render(<App />, document.getElementById('root'))

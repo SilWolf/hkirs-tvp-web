@@ -21,16 +21,16 @@ import { RouteType } from '../types/system/route.type'
 import AfterSSOSignIn from '../views/AfterSSOSignIn'
 import CourseDetail from '../views/CourseDetail'
 
-var routes: RouteType[] = [
-  {
-    path: '/connect/:provider/redirect',
-    name: 'AfterSSOSignIn',
-    component: AfterSSOSignIn,
-  },
-  {
-    path: '/courses/:courseId',
-    name: 'Course Detail',
-    component: CourseDetail,
-  },
+const routes: RouteType[] = [
+	{
+		path: '/connect/:provider/redirect',
+		name: 'AfterSSOSignIn',
+		component: AfterSSOSignIn,
+	},
+	{
+		path: '/courses/:courseId',
+		name: 'Course Detail',
+		component: CourseDetail,
+	},
 ]
 export default routes
