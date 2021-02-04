@@ -1,4 +1,5 @@
 import { Entity } from './strapi/entity.type'
+import { User } from './user.type'
 
 export type Inventory = Entity & {
 	name: string
@@ -8,4 +9,5 @@ export type Inventory = Entity & {
 export type InventoryLog = Entity & {
 	quantity: number
 	description: string
+	user: User
 }

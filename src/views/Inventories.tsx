@@ -1,13 +1,21 @@
 import React, { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { Column, useTable } from 'react-table'
+import { toast } from 'react-toastify'
+import styled from 'styled-components'
+import lightFormat from 'date-fns/lightFormat'
 
 import { Inventory, InventoryLog } from '../types/inventory.type'
 
-import { getInventories, postInventoryLog } from '../helpers/api.helper'
+import {
+	getInventories,
+	getInventoryLogs,
+	postInventoryLog,
+} from '../helpers/api.helper'
 
 import {
-	Button,
+	Col,
 	Form,
 	FormFeedback,
 	FormGroup,
@@ -17,14 +25,46 @@ import {
 	ModalBody,
 	ModalFooter,
 	ModalHeader,
+	Row,
+	Table,
 } from 'reactstrap'
+import Button from '../components/Button'
 
 type InventoryLogDTO = InventoryLog
 
-const inventoryLogDefaultValues: InventoryLogDTO = {
+const inventoryLogDefaultValues: Omit<InventoryLogDTO, 'user'> = {
 	quantity: 0,
 	description: '',
 }
+
+type InventoryDTO = Pick<Inventory, 'id' | 'name' | 'amount' | 'updatedAt'>
+const tableColumns: Column<InventoryDTO>[] = [
+	{
+		Header: '名稱',
+		accessor: 'name',
+	},
+	{
+		Header: '現存數量',
+		accessor: 'amount',
+	},
+	{
+		Header: '最後更新',
+		accessor: 'updatedAt',
+	},
+]
+
+const LogQuantityCol = styled(Col)<{ quantity: number }>`
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: right;
+	align-self: center;
+	padding-right: 2em;
+	color: ${({ quantity }) =>
+		quantity > 0 ? '#6bd098' : quantity < 0 ? '#ef8157' : 'inherit'};
+`
+
+const logQuantityString = (n: number) =>
+	n > 0 ? `+${n}` : n < 0 ? `(${n})` : '0'
 
 const Inventories = (): JSX.Element => {
 	const queryClient = useQueryClient()
@@ -33,10 +73,77 @@ const Inventories = (): JSX.Element => {
 		undefined
 	)
 
-	const [isNewILModalOpened, setIsNewVBModalOpened] = useState<boolean>(false)
-	const handleToggleNewVBModal = useCallback(() => {
-		setIsNewVBModalOpened((prev) => !prev)
-	}, [setIsNewVBModalOpened])
+	const [isNewILModalOpened, setIsNewILModalOpened] = useState<boolean>(false)
+	const handleToggleNewILModal = useCallback(
+		(iId?: string | undefined) => {
+			if (!isNewILModalOpened) {
+				const inventory = inventoriesQuery.data?.find((_) => _.id === iId)
+				setActiveInventory(inventory ? { ...inventory } : undefined)
+			}
+			setIsNewILModalOpened((prev) => !prev)
+		},
+		[setIsNewILModalOpened]
+	)
+
+	const [isLogsModalOpened, setIsLogsModalOpened] = useState<boolean>(false)
+	const handleToggleLogsModal = useCallback(
+		(iId?: string | undefined) => {
+			if (!isLogsModalOpened) {
+				const inventory = inventoriesQuery.data?.find((_) => _.id === iId)
+				setActiveInventory(inventory)
+			}
+			setIsLogsModalOpened((prev) => !prev)
+		},
+		[setIsLogsModalOpened]
+	)
+
+	const inventoriesQuery = useQuery<Inventory[]>(
+		['inventories'],
+		() => getInventories(),
+		{
+			staleTime: 60000,
+			placeholderData: [],
+			select: (inventories: Inventory[]) =>
+				inventories.map(({ id, name, amount, updatedAt }) => ({
+					id,
+					name,
+					amount,
+					updatedAt: updatedAt
+						? lightFormat(new Date(updatedAt), 'yyyy-MM-dd HH:mm')
+						: '-',
+				})),
+		}
+	)
+
+	const inventoryLogsQuery = useQuery<InventoryLog[]>(
+		['inventory', activeInventory?.id, 'logs'],
+		() => getInventoryLogs(activeInventory?.id || ''),
+		{
+			enabled: !!activeInventory && isLogsModalOpened,
+			staleTime: 60000,
+			placeholderData: [],
+			select: (logs: InventoryLog[]) =>
+				logs.map((log) => ({
+					...log,
+					createdAt: lightFormat(
+						new Date(log.createdAt as string),
+						'yyyy-MM-dd HH:mm'
+					),
+				})),
+		}
+	)
+
+	const tableInstance = useTable({
+		columns: tableColumns,
+		data: inventoriesQuery.data || [],
+	})
+	const {
+		getTableProps,
+		getTableBodyProps,
+		headerGroups,
+		rows,
+		prepareRow,
+	} = tableInstance
 
 	const { register, handleSubmit, errors } = useForm<InventoryLogDTO>({
 		defaultValues: inventoryLogDefaultValues,
@@ -63,7 +170,9 @@ const Inventories = (): JSX.Element => {
 					} as InventoryLog,
 				})
 				.then(() => {
-					setIsNewVBModalOpened(false)
+					setIsNewILModalOpened(false)
+					inventoriesQuery.refetch()
+					toast.success('已更新')
 				})
 		},
 		[inventoryMutation]
@@ -73,18 +182,104 @@ const Inventories = (): JSX.Element => {
 		<>
 			<div className='content'>
 				{/* <div style={{ textAlign: 'right' }}>
-					<Button color='primary' onClick={handleToggleNewVBModal}>
+					<Button color='primary' onClick={handleToggleNewILModal}>
 						預約場地
 					</Button>
 				</div> */}
+
+				<Table {...getTableProps()}>
+					<thead>
+						{
+							// Loop over the header rows
+							headerGroups.map((headerGroup) => (
+								// Apply the header row props
+								<tr {...headerGroup.getHeaderGroupProps()}>
+									{
+										// Loop over the headers in each row
+										headerGroup.headers.map((column) => (
+											// Apply the header cell props
+											<th {...column.getHeaderProps()}>
+												{
+													// Render the header
+													column.render('Header')
+												}
+											</th>
+										))
+									}
+									<th>操作</th>
+								</tr>
+							))
+						}
+					</thead>
+					{/* Apply the table body props */}
+					<tbody {...getTableBodyProps()}>
+						{
+							// Loop over the table rows
+							rows.map((row) => {
+								// Prepare the row for display
+								prepareRow(row)
+								return (
+									// Apply the row props
+									<tr {...row.getRowProps()}>
+										{
+											// Loop over the rows cells
+											row.cells.map((cell) => {
+												// Apply the cell props
+												return (
+													<td {...cell.getCellProps()}>
+														{
+															// Render the cell contents
+															cell.render('Cell')
+														}
+													</td>
+												)
+											})
+										}
+										<td>
+											<Button
+												color='primary'
+												onClick={() => handleToggleLogsModal(row.original.id)}
+											>
+												紀錄
+											</Button>{' '}
+											<Button
+												color='primary'
+												onClick={() => handleToggleNewILModal(row.original.id)}
+											>
+												修改
+											</Button>
+										</td>
+									</tr>
+								)
+							})
+						}
+					</tbody>
+				</Table>
 			</div>
 
 			<Modal size='lg' isOpen={isNewILModalOpened}>
 				<Form onSubmit={handleSubmit(onSubmitInventoryLog)}>
-					<ModalHeader toggle={handleToggleNewVBModal}>預約場地</ModalHeader>
+					<ModalHeader toggle={() => handleToggleNewILModal()}>
+						修改
+					</ModalHeader>
 					<ModalBody>
+						<Row>
+							<Col xs={12} sm={6}>
+								<FormGroup>
+									<Label>物品</Label>
+									<Input plaintext readOnly value={activeInventory?.name} />
+								</FormGroup>
+							</Col>
+							<Col xs={12} sm={6}>
+								<FormGroup>
+									<Label>現存數量</Label>
+									<Input plaintext readOnly value={activeInventory?.amount} />
+								</FormGroup>
+							</Col>
+						</Row>
+
 						<FormGroup style={{ maxWidth: '6em' }}>
-							<Label>增減數量</Label>
+							<Label>數量增減</Label>
 							<Input
 								name='quantity'
 								type='number'
@@ -125,11 +320,40 @@ const Inventories = (): JSX.Element => {
 						>
 							提交
 						</Button>{' '}
-						<Button color='secondary' onClick={handleToggleNewVBModal}>
+						<Button color='secondary' onClick={() => handleToggleNewILModal()}>
 							取消
 						</Button>
 					</ModalFooter>
 				</Form>
+			</Modal>
+
+			<Modal isOpen={isLogsModalOpened}>
+				<ModalHeader toggle={() => handleToggleLogsModal()}>
+					{activeInventory?.name} 紀錄
+				</ModalHeader>
+				<ModalBody>
+					{inventoryLogsQuery.data &&
+						inventoryLogsQuery.data.map((log) => (
+							<Row style={{ justifyContent: 'center' }}>
+								<Col>
+									<div>
+										<small className='text-muted'>
+											{log.createdAt} - {log.user?.username}
+										</small>
+										<div>{log.description}</div>
+									</div>
+								</Col>
+								<LogQuantityCol quantity={log.quantity}>
+									{logQuantityString(log.quantity)}
+								</LogQuantityCol>
+							</Row>
+						))}
+				</ModalBody>
+				<ModalFooter>
+					<Button color='secondary' onClick={() => handleToggleLogsModal()}>
+						關閉
+					</Button>
+				</ModalFooter>
 			</Modal>
 		</>
 	)

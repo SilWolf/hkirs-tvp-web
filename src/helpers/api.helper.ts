@@ -89,6 +89,9 @@ export const postVenueBooking = (vb: VenueBooking): Promise<VenueBooking> => {
 export const getInventories = (): Promise<Inventory[]> => {
 	return api.get<Inventory[]>(`/inventories`)
 }
+export const getInventoryLogs = (iId: string): Promise<InventoryLog[]> => {
+	return api.get<InventoryLog[]>(`/inventories/${iId}/logs`)
+}
 export const postInventoryLog = (
 	iId: string,
 	iL: InventoryLog

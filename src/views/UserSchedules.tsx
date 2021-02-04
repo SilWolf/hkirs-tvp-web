@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { useAsync } from 'react-async'
 
 import { UserSchedule } from '../types/user-schedule.type'
@@ -11,6 +10,7 @@ import Calendar from '../components/Calendar/Calendar'
 import PageBrandname from '../components/Page/PageBrand'
 import PageTitle from '../components/Page/PageTitle'
 
+import 'react-big-calendar/lib/css/react-big-calendar.css'
 import store from '../store'
 
 const getUserSchedulesFn = ({ userId }: any) => {
