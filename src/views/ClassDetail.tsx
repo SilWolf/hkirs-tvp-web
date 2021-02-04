@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from 'react'
-import TimeAgo from 'timeago-react'
 import { useAsync } from 'react-async'
 import ReactMarkdown from 'react-markdown'
 import { useParams } from 'react-router-dom'
@@ -25,6 +24,8 @@ import DateSpan from '../components/DateTime/DateSpan'
 import TimeSpan from '../components/DateTime/TimeSpan'
 import PageBrandname from '../components/Page/PageBrand'
 import PageTitle from '../components/Page/PageTitle'
+
+import TimeAgo from 'timeago-react'
 
 enum TAB_INDEX {
 	ANNOUNCEMENTS = 0,

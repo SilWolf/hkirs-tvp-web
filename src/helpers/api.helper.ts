@@ -73,7 +73,7 @@ export const getVenueBookingsByDateRange = (
 	end: Date,
 	config: ExtendedAxiosRequestConfig = {}
 ): Promise<VenueBooking[]> => {
-	return api.get<VenueBooking[]>(`/lessons`, {
+	return api.get<VenueBooking[]>(`/venue-bookings`, {
 		params: {
 			startAt_gte: start.toISOString(),
 			startAt_lte: end.toISOString(),
