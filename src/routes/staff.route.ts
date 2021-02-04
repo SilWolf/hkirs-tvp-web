@@ -20,6 +20,7 @@ import { RouteType } from '../types/system/route.type'
 
 import ClassDetail from '../views/ClassDetail'
 import ClsLessons from '../views/ClsLessons'
+import Inventories from '../views/Inventories'
 import UserEvents from '../views/UserEvents'
 import UserSchedules from '../views/UserSchedules'
 import VenueBookings from '../views/VenueBookings'
@@ -57,6 +58,13 @@ const routes: RouteType[] = [
 		name: '行事歷',
 		icon: 'nc-icon nc-calendar-60',
 		component: UserSchedules,
+		inSidebar: true,
+	},
+	{
+		path: '/staff/inventories',
+		name: '物品庫',
+		icon: 'nc-icon nc-check-2',
+		component: Inventories,
 		inSidebar: true,
 	},
 	{

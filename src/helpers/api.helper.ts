@@ -1,6 +1,7 @@
 import { Cls, ClsLesson } from '../types/cls.type'
 import { Course } from '../types/course.type'
 import { ELearning } from '../types/elearning.type'
+import { Inventory, InventoryLog } from '../types/inventory.type'
 import { UserEvent } from '../types/user-event.type'
 import { UserSchedule } from '../types/user-schedule.type'
 import { Venue, VenueBooking } from '../types/venue.type'
@@ -83,6 +84,16 @@ export const getVenueBookingsByDateRange = (
 }
 export const postVenueBooking = (vb: VenueBooking): Promise<VenueBooking> => {
 	return api.post<VenueBooking>(`/venue-bookings`, vb)
+}
+
+export const getInventories = (): Promise<Inventory[]> => {
+	return api.get<Inventory[]>(`/inventories`)
+}
+export const postInventoryLog = (
+	iId: string,
+	iL: InventoryLog
+): Promise<InventoryLog> => {
+	return api.post<InventoryLog>(`/inventories/${iId}/logs`, iL)
 }
 
 export const setAuthorization = api.setAuthorization
