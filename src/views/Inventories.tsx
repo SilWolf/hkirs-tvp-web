@@ -29,6 +29,8 @@ import {
 	Table,
 } from 'reactstrap'
 import Button from '../components/Button'
+import PageBrandname from '../components/Page/PageBrand'
+import PageTitle from '../components/Page/PageTitle'
 
 type InventoryLogDTO = InventoryLog
 
@@ -180,6 +182,8 @@ const Inventories = (): JSX.Element => {
 
 	return (
 		<>
+			<PageTitle>物品庫 - HKIRS師生平台</PageTitle>
+			<PageBrandname>物品庫</PageBrandname>
 			<div className='content'>
 				{/* <div style={{ textAlign: 'right' }}>
 					<Button color='primary' onClick={handleToggleNewILModal}>

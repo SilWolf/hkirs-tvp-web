@@ -10,6 +10,8 @@ import { Cls, ClsLesson } from '../types/cls.type'
 import { getMyClsesByDateRange } from '../helpers/api.helper'
 
 import Calendar from '../components/Calendar/Calendar'
+import PageBrandname from '../components/Page/PageBrand'
+import PageTitle from '../components/Page/PageTitle'
 
 import '../assets/scss/views/ClsLessons.view.scss'
 
@@ -100,6 +102,8 @@ const ClsLessons = (): JSX.Element => {
 
 	return (
 		<>
+			<PageTitle>我的課程 - HKIRS師生平台</PageTitle>
+			<PageBrandname>我的課程</PageBrandname>
 			<div className='content'>
 				<Calendar
 					onMonthChange={handleCalendarMonthChange}

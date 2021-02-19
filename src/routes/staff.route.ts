@@ -21,8 +21,6 @@ import { RouteType } from '../types/system/route.type'
 import ClassDetail from '../views/ClassDetail'
 import ClsLessons from '../views/ClsLessons'
 import Inventories from '../views/Inventories'
-import UserEvents from '../views/UserEvents'
-import UserSchedules from '../views/UserSchedules'
 import VenueBookings from '../views/VenueBookings'
 
 const routes: RouteType[] = [
@@ -34,44 +32,30 @@ const routes: RouteType[] = [
 	//   inSidebar: true,
 	// },
 	{
-		path: '/staff/clses/:classId',
-		name: '我的課程',
-		icon: 'nc-icon nc-book-bookmark',
+		path: '/staff/clses/:clsId',
+		name: '行事厝',
+		icon: 'nc-icon nc-calendar-60',
 		component: ClassDetail,
 	},
 	{
 		path: '/staff/clses',
-		name: '我的課程',
-		icon: 'nc-icon nc-book-bookmark',
+		name: '行事厝',
+		icon: 'nc-icon nc-calendar-60',
 		component: ClsLessons,
 		inSidebar: true,
 	},
 	{
 		path: '/staff/venue-bookings',
 		name: '預約場地',
-		icon: 'nc-icon nc-calendar-60',
+		icon: 'nc-icon nc-shop',
 		component: VenueBookings,
-		inSidebar: true,
-	},
-	{
-		path: '/staff/user-schedules',
-		name: '行事歷',
-		icon: 'nc-icon nc-calendar-60',
-		component: UserSchedules,
 		inSidebar: true,
 	},
 	{
 		path: '/staff/inventories',
 		name: '物品庫',
-		icon: 'nc-icon nc-check-2',
+		icon: 'nc-icon nc-box-2',
 		component: Inventories,
-		inSidebar: true,
-	},
-	{
-		path: '/staff/user-events',
-		name: '活動',
-		icon: 'nc-icon nc-check-2',
-		component: UserEvents,
 		inSidebar: true,
 	},
 ]

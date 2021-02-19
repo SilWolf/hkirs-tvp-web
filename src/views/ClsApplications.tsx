@@ -8,6 +8,8 @@ import { ClsApplication } from '../types/cls.type'
 import { getMyClsApplications } from '../helpers/api.helper'
 
 import { Table } from 'reactstrap'
+import PageBrandname from '../components/Page/PageBrand'
+import PageTitle from '../components/Page/PageTitle'
 
 type ClsApplicationDTO = Omit<ClsApplication, 'isPaid' | 'isConfirmed'> & {
 	clsName: string
@@ -66,6 +68,8 @@ const ClsApplications = (): JSX.Element => {
 
 	return (
 		<>
+			<PageTitle>我的報名 - HKIRS師生平台</PageTitle>
+			<PageBrandname>我的報名</PageBrandname>
 			<div className='content'>
 				{/* <div style={{ textAlign: 'right' }}>
 					<Button color='primary' onClick={handleToggleNewILModal}>
