@@ -1,5 +1,6 @@
 import { Course } from './course.type'
 import { Entity } from './strapi/entity.type'
+import { StrapiFile } from './strapi/StrapiFile.type'
 import { Venue } from './venue.type'
 
 export type Cls = Entity & {
@@ -17,8 +18,10 @@ export type Cls = Entity & {
 
 export type ClsLesson = Entity & {
 	name: string
+	description: string
 	startAt: string
 	endAt: string
+	files: StrapiFile[]
 }
 
 export type ClsApplication = Entity & {
@@ -29,4 +32,9 @@ export type ClsApplication = Entity & {
 	isPaid: boolean
 	isConfirmed: boolean
 	cls: Cls
+}
+
+export type ClsAnnouncement = Entity & {
+	subject: string
+	content: string
 }

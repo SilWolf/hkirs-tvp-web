@@ -1,6 +1,5 @@
-import { Cls, ClsApplication, ClsLesson } from '../types/cls.type'
+import { Cls, ClsAnnouncement, ClsApplication } from '../types/cls.type'
 import { Course } from '../types/course.type'
-import { ELearning } from '../types/elearning.type'
 import { Inventory, InventoryLog } from '../types/inventory.type'
 import { Entity } from '../types/strapi/entity.type'
 import { UserEvent } from '../types/user-event.type'
@@ -63,16 +62,6 @@ export const getMyClsesByDateRange = (
 	})
 }
 
-export const getELearningByClassId = (classId: string): Promise<ELearning> => {
-	return api
-		.get<ELearning[]>(`/e-learnings`, {
-			params: {
-				classes_in: classId,
-			},
-		})
-		.then((elearnings) => elearnings[0])
-}
-
 export const getUserSchedulesByUserId = (
 	userId: string
 ): Promise<UserSchedule[]> => {
@@ -132,6 +121,12 @@ export const getClsApplicationById = (
 }
 export const getMyClsApplications = (): Promise<ClsApplication[]> => {
 	return api.get<ClsApplication[]>(`/cls-applications/me`)
+}
+
+export const getClsAnnouncementById = (
+	clsId: string
+): Promise<ClsAnnouncement[]> => {
+	return api.get<ClsAnnouncement[]>(`/classes/${clsId}/announcements`)
 }
 
 export const setAuthorization = api.setAuthorization

@@ -33,7 +33,7 @@ const routes: RouteType[] = [
 	//   inSidebar: true,
 	// },
 	{
-		path: '/student/clses/:classId',
+		path: '/student/clses/:clsId',
 		name: '我的課程',
 		icon: 'nc-icon nc-bank',
 		component: StudentClassDetail,
