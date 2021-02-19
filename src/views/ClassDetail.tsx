@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { useQuery } from 'react-query'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { lightFormat } from 'date-fns'
 import classnames from 'classnames'
 
@@ -10,6 +10,8 @@ import { Cls, ClsAnnouncement } from '../types/cls.type'
 import { getClsAnnouncementById, getClsById } from '../helpers/api.helper'
 
 import {
+	Breadcrumb,
+	BreadcrumbItem,
 	Card,
 	CardBody,
 	CardTitle,
@@ -82,6 +84,12 @@ const ClsDetail = (): JSX.Element => {
 			<PageTitle>{cls.name}</PageTitle>
 			<PageBrandname>{cls.name}</PageBrandname>
 			<div className='content'>
+				<Breadcrumb>
+					<BreadcrumbItem>
+						<Link to={`.`}>我的課程</Link>
+					</BreadcrumbItem>
+					<BreadcrumbItem>{cls.name}</BreadcrumbItem>
+				</Breadcrumb>
 				<div style={{ display: 'flex', alignItems: 'flex-start' }}>
 					<div style={{ marginRight: 16 }}>
 						<div

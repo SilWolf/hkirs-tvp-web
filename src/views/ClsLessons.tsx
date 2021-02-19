@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useRouteMatch } from 'react-router-dom'
 import addMonths from 'date-fns/addMonths'
 import endOfMonth from 'date-fns/endOfMonth'
 import classnames from 'classnames'
@@ -46,6 +46,7 @@ const _components = {
 
 const ClsLessons = (): JSX.Element => {
 	const queryClient = useQueryClient()
+	const routeMatch = useRouteMatch()
 	const history = useHistory()
 	const [clsLessonsMap, setClsLessonsMap] = useState<{
 		[x: string]: ClsLessonDTO[]
@@ -92,7 +93,7 @@ const ClsLessons = (): JSX.Element => {
 
 	const handleCalendarSelectEvent = useCallback(
 		(clsLesson) => {
-			history.push(`clses/${clsLesson.cls.id}`)
+			history.push(`${routeMatch.path}/${clsLesson.cls.id}`)
 		},
 		[history]
 	)

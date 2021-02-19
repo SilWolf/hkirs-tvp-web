@@ -21,7 +21,7 @@ import { RouteType } from '../types/system/route.type'
 import StudentClassDetail from '../views/ClassDetail'
 import ClsApplicationDetail from '../views/ClsApplicationDetail'
 import ClsApplications from '../views/ClsApplications'
-import StudentClsLessons from '../views/ClsLessons'
+import StudentClses from '../views/ClsLessons'
 import CoursePurchase from '../views/CoursePurchase'
 
 const routes: RouteType[] = [
@@ -42,7 +42,7 @@ const routes: RouteType[] = [
 		path: '/student/clses',
 		name: '我的課程',
 		icon: 'nc-icon nc-bank',
-		component: StudentClsLessons,
+		component: StudentClses,
 		inSidebar: true,
 	},
 	{
