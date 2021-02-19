@@ -49,7 +49,7 @@ const Classes = () => {
 								</div>
 								<div>
 									<span className='text-mute'>
-										{cls.startDate} - {cls.endDate}
+										{cls.startAt} - {cls.endAt}
 									</span>
 								</div>
 								<div>

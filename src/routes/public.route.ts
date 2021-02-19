@@ -20,6 +20,7 @@ import { RouteType } from '../types/system/route.type'
 
 import AfterSSOSignIn from '../views/AfterSSOSignIn'
 import CourseDetail from '../views/CourseDetail'
+import Courses from '../views/Courses'
 
 const routes: RouteType[] = [
 	{
@@ -31,6 +32,11 @@ const routes: RouteType[] = [
 		path: '/courses/:courseId',
 		name: 'Course Detail',
 		component: CourseDetail,
+	},
+	{
+		path: '/courses',
+		name: 'Courses',
+		component: Courses,
 	},
 ]
 export default routes

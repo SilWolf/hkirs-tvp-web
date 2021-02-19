@@ -18,7 +18,7 @@ const ClsRow = ({ cls, onClick }: Props) => {
 			</div>
 			<div>
 				<span className='text-mute'>
-					{cls.startDate} - {cls.endDate}
+					{cls.startAt} - {cls.endAt}
 				</span>
 			</div>
 			<div>

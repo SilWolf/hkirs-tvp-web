@@ -16,111 +16,81 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import React, { useEffect, useRef } from 'react'
+import { useSelector } from 'react-redux'
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom'
 
-import FixedPlugin from '../components/FixedPlugin/FixedPlugin'
 import Footer from '../components/Footer/Footer'
 import DemoNavbar from '../components/Navbars/DemoNavbar'
 import Sidebar from '../components/Sidebar/Sidebar'
 
 import routes from '../routes/student.route'
-import store from '../store'
-import { History, Location } from 'history'
+import { RootState } from '../store'
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from 'perfect-scrollbar'
 
 let ps: PerfectScrollbar
 
-type Props = {
-	history: History
-	location: Location
-}
+const StaffLayout = (): JSX.Element => {
+	const mainPanel = useRef<HTMLDivElement | null>(null)
+	const location = useLocation()
 
-type State = {
-	activeColor: string
-	backgroundColor: string
-}
-
-class Dashboard extends React.Component<Props, State> {
-	mainPanel: React.RefObject<HTMLDivElement>
-
-	constructor(props: Props) {
-		super(props)
-		this.state = {
-			backgroundColor: 'black',
-			activeColor: 'info',
-		}
-		this.mainPanel = React.createRef()
-	}
-	componentDidMount() {
-		if (navigator.platform.indexOf('Win') > -1 && this.mainPanel?.current) {
-			ps = new PerfectScrollbar(this.mainPanel.current)
+	useEffect(() => {
+		if (navigator.platform.indexOf('Win') > -1 && mainPanel?.current) {
+			ps = new PerfectScrollbar(mainPanel.current)
 			document.body.classList.toggle('perfect-scrollbar-on')
 		}
-	}
-	componentWillUnmount() {
-		if (navigator.platform.indexOf('Win') > -1) {
-			ps.destroy()
-			document.body.classList.toggle('perfect-scrollbar-on')
-		}
-	}
-	componentDidUpdate(prevProps: Props) {
-		if (prevProps.history.action === 'PUSH') {
-			if (this.mainPanel?.current) {
-				this.mainPanel.current.scrollTop = 0
-			}
-			if (document && document.scrollingElement) {
-				document.scrollingElement.scrollTop = 0
-			}
-		}
-	}
-	handleActiveClick = (color: string) => {
-		this.setState({ activeColor: color })
-	}
-	handleBgClick = (color: string) => {
-		this.setState({ backgroundColor: color })
-	}
-	render() {
-		const authUser = store.getState().authUser
-		if (
-			!authUser?.isSignIned ||
-			authUser?.user?.role?.type !== 'authenticated'
-		) {
-			return <Redirect to='/auth/sign-in' />
-		}
 
+		return () => {
+			if (navigator.platform.indexOf('Win') > -1) {
+				ps.destroy()
+				document.body.classList.toggle('perfect-scrollbar-on')
+			}
+		}
+	}, [])
+
+	useEffect(() => {
+		if (mainPanel?.current) {
+			mainPanel.current.scrollTop = 0
+		}
+		if (document && document.scrollingElement) {
+			document.scrollingElement.scrollTop = 0
+		}
+	}, [location])
+
+	const authUser = useSelector((state: RootState) => state.authUser)
+	if (!authUser?.isSignIned || authUser?.user?.role?.type !== 'authenticated') {
 		return (
-			<div className='wrapper'>
-				<Sidebar
-					{...this.props}
-					routes={routes}
-					bgColor={this.state.backgroundColor}
-					activeColor={this.state.activeColor}
-				/>
-				<div className='main-panel' ref={this.mainPanel}>
-					<DemoNavbar {...this.props} />
-					<Switch>
-						{routes.map((prop, key) => {
-							return (
-								<Route path={prop.path} component={prop.component} key={key} />
-							)
-						})}
-						<Route path='*'>
-							<Redirect to='/student/clses' />
-						</Route>
-					</Switch>
-					<Footer fluid />
-				</div>
-				<FixedPlugin
-					bgColor={this.state.backgroundColor}
-					activeColor={this.state.activeColor}
-					handleActiveClick={this.handleActiveClick}
-					handleBgClick={this.handleBgClick}
-				/>
-			</div>
+			<Redirect
+				to={{
+					pathname: '/auth/sign-in',
+					state: {
+						nextPathname: location.pathname,
+					},
+				}}
+			/>
 		)
 	}
+
+	return (
+		<div className='wrapper'>
+			<Sidebar routes={routes} />
+			<div className='main-panel' ref={mainPanel}>
+				<DemoNavbar />
+				<Switch>
+					{routes.map((prop, key) => {
+						return (
+							<Route path={prop.path} component={prop.component} key={key} />
+						)
+					})}
+					<Route path='*'>
+						<Redirect to='/student/clses' />
+					</Route>
+				</Switch>
+				<Footer fluid />
+			</div>
+		</div>
+	)
 }
 
-export default Dashboard
+export default StaffLayout

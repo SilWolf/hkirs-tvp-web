@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
-import getClassByClassIdRes from '../mock/getClassByClassId.mock.json'
+import getClsByIdRes from '../mock/getClsById.mock.json'
 import getClassesByUserIdRes from '../mock/getClassesByUserId.mock.json'
 import getCourseRes from '../mock/getCourse.mock.json'
 import getELearningByClassIdRes from '../mock/getELearningByClassId.mock.json'
@@ -13,7 +13,7 @@ const clientMock = (axios: AxiosInstance): void => {
 	mock.onPost('/auth/local').reply(200, signInRes)
 
 	mock.onGet(/\/courses\/\w+/).reply(200, getCourseRes)
-	mock.onGet(/\/classes\/\w+/).reply(200, getClassByClassIdRes)
+	mock.onGet(/\/classes\/\w+/).reply(200, getClsByIdRes)
 	mock.onGet(/\/classes/).reply(200, getClassesByUserIdRes)
 	mock.onGet(/\/e-learnings/).reply(200, getELearningByClassIdRes)
 

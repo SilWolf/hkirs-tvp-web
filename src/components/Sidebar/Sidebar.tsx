@@ -16,96 +16,82 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useCallback, useEffect, useRef } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 
 import { RouteType } from '../../types/system/route.type'
 
 import { Nav } from 'reactstrap'
 
 import logo from '../../logo.png'
-import { Location } from 'history'
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from 'perfect-scrollbar'
 
 let ps: PerfectScrollbar
 
 type Props = {
-	location: Location
-	bgColor: string
-	activeColor: string
 	routes: RouteType[]
 }
 
-class Sidebar extends React.Component<Props> {
-	sidebar: React.RefObject<HTMLDivElement>
+const Sidebar = ({ routes }: Props): JSX.Element => {
+	const sidebar = useRef<HTMLDivElement | null>(null)
+	const location = useLocation()
 
-	constructor(props: Props) {
-		super(props)
-		this.activeRoute.bind(this)
-		this.sidebar = React.createRef()
-	}
-	// verifies if routeName is the one active (in browser input)
-	activeRoute(routeName: string) {
-		return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : ''
-	}
-	componentDidMount() {
-		if (
-			navigator.platform.indexOf('Win') > -1 &&
-			this.sidebar &&
-			this.sidebar.current
-		) {
-			ps = new PerfectScrollbar(this.sidebar.current, {
+	const isActiveRoute = useCallback(
+		(routeName: string) => location.pathname.indexOf(routeName) !== -1,
+		[location]
+	)
+
+	useEffect(() => {
+		if (navigator.platform.indexOf('Win') > -1 && sidebar && sidebar.current) {
+			ps = new PerfectScrollbar(sidebar.current, {
 				suppressScrollX: true,
 				suppressScrollY: false,
 			})
 		}
-	}
-	componentWillUnmount() {
-		if (navigator.platform.indexOf('Win') > -1 && ps) {
-			ps.destroy()
+
+		return () => {
+			if (navigator.platform.indexOf('Win') > -1 && ps) {
+				ps.destroy()
+			}
 		}
-	}
-	render() {
-		return (
-			<div
-				className='sidebar'
-				data-color={this.props.bgColor}
-				data-active-color={this.props.activeColor}
-			>
-				<div className='logo'>
-					<a href='/' className='simple-text logo-mini'>
-						<div className='logo-img'>
-							<img src={logo} alt='react-logo' />
-						</div>
-					</a>
-					<a href='/' className='simple-text logo-normal'>
-						HKIRS師生平台
-					</a>
-				</div>
-				<div className='sidebar-wrapper' ref={this.sidebar}>
-					<Nav>
-						{this.props.routes
-							.filter((route) => route.inSidebar)
-							.map((prop, key) => {
-								return (
-									<li key={key}>
-										<NavLink
-											to={prop.path}
-											className='nav-link'
-											activeClassName='active'
-										>
-											<i className={prop.icon} />
-											<p>{prop.name}</p>
-										</NavLink>
-									</li>
-								)
-							})}
-					</Nav>
-				</div>
+	}, [])
+
+	return (
+		<div className='sidebar'>
+			<div className='logo'>
+				<a href='/' className='simple-text logo-mini'>
+					<div className='logo-img'>
+						<img src={logo} alt='react-logo' />
+					</div>
+				</a>
+				<a href='/' className='simple-text logo-normal'>
+					HKIRS師生平台
+				</a>
 			</div>
-		)
-	}
+			<div className='sidebar-wrapper' ref={sidebar}>
+				<Nav>
+					{routes
+						.filter((route) => route.inSidebar)
+						.map((prop, key) => {
+							return (
+								<li key={key}>
+									<NavLink
+										to={prop.path}
+										className='nav-link'
+										activeClassName='active'
+										isActive={() => isActiveRoute(prop.path)}
+									>
+										<i className={prop.icon} />
+										<p>{prop.name}</p>
+									</NavLink>
+								</li>
+							)
+						})}
+				</Nav>
+			</div>
+		</div>
+	)
 }
 
 export default Sidebar

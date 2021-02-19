@@ -19,6 +19,8 @@
 import { RouteType } from '../types/system/route.type'
 
 import StudentClassDetail from '../views/ClassDetail'
+import ClsApplicationDetail from '../views/ClsApplicationDetail'
+import ClsApplications from '../views/ClsApplications'
 import StudentClsLessons from '../views/ClsLessons'
 import CoursePurchase from '../views/CoursePurchase'
 
@@ -48,6 +50,19 @@ const routes: RouteType[] = [
 		name: '報名課程',
 		icon: 'nc-icon nc-diamond',
 		component: CoursePurchase,
+	},
+	{
+		path: '/student/cls-applications/:id',
+		name: '報名課程',
+		icon: 'nc-icon nc-diamond',
+		component: ClsApplicationDetail,
+	},
+	{
+		path: '/student/cls-applications',
+		name: '我的報名',
+		icon: 'nc-icon nc-diamond',
+		component: ClsApplications,
+		inSidebar: true,
 	},
 ]
 export default routes

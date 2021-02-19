@@ -1,7 +1,7 @@
-import React from 'react'
-import { useAsync } from 'react-async'
+import React, { useCallback } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { useParams } from 'react-router-dom'
+import { useQuery } from 'react-query'
+import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { Course } from '../types/course.type'
@@ -30,27 +30,31 @@ const CoursePrice = styled.div`
 	font-size: 24px;
 `
 
-const getCourseByIdFn = ({ courseId }: any) => {
-	return getCourseById(courseId)
-}
-
-const CourseDetail = () => {
+const CourseDetail = (): JSX.Element => {
 	const { courseId } = useParams<{ courseId: string }>()
+	const history = useHistory()
 
-	const courseAsync = useAsync<Course>({
-		promiseFn: getCourseByIdFn,
-		courseId,
-	})
+	const courseQuery = useQuery<Course>(['course', courseId], () =>
+		getCourseById(courseId)
+	)
+	const course = courseQuery.data as Course
 
-	if (courseAsync.isLoading) {
+	const handleClickSignUp = useCallback(
+		(courseId: string) => {
+			history.push(`/student/course-purchase/${courseId}`)
+		},
+		[history]
+	)
+
+	if (courseQuery.isLoading) {
 		return (
 			<div className='content'>
-				<Spinner type='grow' color='primary' />
+				<div className='text-center'>
+					<Spinner type='grow' color='primary' />
+				</div>
 			</div>
 		)
 	}
-
-	const course = courseAsync.data as Course
 
 	return (
 		<>
@@ -59,7 +63,9 @@ const CourseDetail = () => {
 			<div className='content'>
 				<UpperWrapper>
 					<h5>{course.name}</h5>
-					<CourseCoverImage src={course.coverImage.url} />
+					{course.coverImage && (
+						<CourseCoverImage src={course.coverImage.url} />
+					)}
 					<p>
 						評分: {course.rating.toFixed(1)}/5.0 ( {course.ratingCount} 條評論 )
 					</p>
@@ -85,9 +91,7 @@ const CourseDetail = () => {
 								color='primary'
 								size='lg'
 								block
-								onClick={() => {
-									alert('在試用版中不開放此功能。')
-								}}
+								onClick={() => handleClickSignUp(course.id)}
 							>
 								立即報名
 							</Button>

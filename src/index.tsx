@@ -42,7 +42,13 @@ import store from './store'
 import { createBrowserHistory } from 'history'
 
 // [react-query] Create a client
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 5 * 60 * 1000,
+		},
+	},
+})
 
 const hist = createBrowserHistory()
 
@@ -64,14 +70,8 @@ const App = () => {
 			<ReduxProvider store={store}>
 				<Router history={hist}>
 					<Switch>
-						<Route
-							path='/student'
-							render={(props) => <StudentLayout {...props} />}
-						/>
-						<Route
-							path='/staff'
-							render={(props) => <StaffLayout {...props} />}
-						/>
+						<Route path='/student' render={() => <StudentLayout />} />
+						<Route path='/staff' render={() => <StaffLayout />} />
 						<Route path='/auth' render={(props) => <AuthLayout {...props} />} />
 						<Route path='/' render={(props) => <PublicLayout {...props} />} />
 					</Switch>

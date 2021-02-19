@@ -1,13 +1,14 @@
 import React, { useCallback, useState } from 'react'
-import { useAsync } from 'react-async'
 import ReactMarkdown from 'react-markdown'
+import { useQuery } from 'react-query'
 import { useParams } from 'react-router-dom'
+import { lightFormat } from 'date-fns'
 import classnames from 'classnames'
 
 import { Cls } from '../types/cls.type'
 import { ELearning } from '../types/elearning.type'
 
-import { getClassByClassId, getELearningByClassId } from '../helpers/api.helper'
+import { getClsById, getELearningByClassId } from '../helpers/api.helper'
 
 import {
 	Card,
@@ -20,8 +21,6 @@ import {
 	TabPane,
 } from 'reactstrap'
 import Spinner from 'reactstrap/lib/Spinner'
-import DateSpan from '../components/DateTime/DateSpan'
-import TimeSpan from '../components/DateTime/TimeSpan'
 import PageBrandname from '../components/Page/PageBrand'
 import PageTitle from '../components/Page/PageTitle'
 
@@ -34,14 +33,10 @@ enum TAB_INDEX {
 	DESCRIPTION,
 }
 
-const getClassFn = ({ classId }: any) => {
-	return getClassByClassId(classId)
-}
-const getELearningFn = ({ classId }: any) => {
-	return getELearningByClassId(classId)
-}
+const formatDateTime = (dateString: string) =>
+	lightFormat(new Date(dateString), 'yyyy年MM月dd日 HH:mm')
 
-const ClassDetail = () => {
+const ClassDetail = (): JSX.Element => {
 	const [activeTab, setActiveTab] = useState<TAB_INDEX>(TAB_INDEX.ANNOUNCEMENTS)
 	const { classId } = useParams<{ classId: string }>()
 
@@ -49,22 +44,27 @@ const ClassDetail = () => {
 		setActiveTab(newTabIndex)
 	}, [])
 
-	const eLearningAsync = useAsync<ELearning>({
-		deferFn: getELearningFn,
-		classId,
+	const clsQuery = useQuery<Cls>(['cls', classId], () => getClsById(classId), {
+		select: (cls: Cls) => ({
+			...cls,
+			startAt: formatDateTime(cls.startAt),
+			endAt: formatDateTime(cls.endAt),
+			lessons: cls.lessons.map((clsLesson) => ({
+				...clsLesson,
+				startAt: formatDateTime(clsLesson.startAt),
+				endAt: formatDateTime(clsLesson.endAt),
+			})),
+		}),
 	})
-	const classAsync = useAsync<Cls>({
-		promiseFn: getClassFn,
-		classId,
-		onResolve: async () => {
-			eLearningAsync.run(classId)
-		},
-	})
+	const eLearningQuery = useQuery<ELearning>(
+		['cls', classId, 'eLearning'],
+		() => getELearningByClassId(classId)
+	)
 
-	const cls = classAsync.data as Cls
-	const eLearning = eLearningAsync.data as ELearning
+	const cls = clsQuery.data as Cls
+	const eLearning = eLearningQuery.data as ELearning
 
-	if (classAsync.isLoading) {
+	if (clsQuery.isLoading) {
 		return (
 			<div className='content'>
 				<Spinner type='grow' color='primary' />
@@ -74,14 +74,14 @@ const ClassDetail = () => {
 
 	return (
 		<>
-			<PageTitle>{cls.code}</PageTitle>
-			<PageBrandname>{cls.code}</PageBrandname>
+			<PageTitle>{cls.name}</PageTitle>
+			<PageBrandname>{cls.name}</PageBrandname>
 			<div className='content'>
 				<div style={{ display: 'flex', alignItems: 'flex-start' }}>
 					<div style={{ marginRight: 16 }}>
 						<div
 							style={{
-								backgroundImage: `url('${cls.course.coverImage.url}')`,
+								backgroundImage: `url('${cls.course.coverImage?.url}')`,
 								backgroundSize: 'cover',
 								backgroundPosition: 'center',
 								width: 160,
@@ -92,7 +92,7 @@ const ClassDetail = () => {
 					<div style={{ flexGrow: 1 }}>
 						<h4>{cls.code}</h4>
 						<h6>
-							{cls.startDate} - {cls.endDate}
+							{cls.startAt} - {cls.endAt}
 						</h6>
 						<h6>{cls.course.name}</h6>
 					</div>
@@ -137,7 +137,7 @@ const ClassDetail = () => {
 				<div style={{ marginTop: 16 }}>
 					<TabContent activeTab={activeTab}>
 						<TabPane tabId={TAB_INDEX.ANNOUNCEMENTS}>
-							{eLearningAsync.isLoading && (
+							{eLearningQuery.isLoading && (
 								<Spinner type='grow' color='primary' />
 							)}
 							{eLearning && eLearning.e_learning_posts.length === 0 && (
@@ -159,7 +159,7 @@ const ClassDetail = () => {
 						</TabPane>
 
 						<TabPane tabId={TAB_INDEX.FILES}>
-							{eLearningAsync.isLoading && (
+							{eLearningQuery.isLoading && (
 								<Spinner type='grow' color='primary' />
 							)}
 							{eLearning && eLearning.files.length === 0 && (
@@ -189,11 +189,9 @@ const ClassDetail = () => {
 								{cls.lessons &&
 									cls.lessons.map((lesson) => (
 										<li style={{ marginBottom: 16 }}>
-											<DateSpan dateOrDateString={lesson.startAt} />{' '}
-											<TimeSpan dateOrDateString={lesson.startAt} />-
-											<TimeSpan dateOrDateString={lesson.endAt} />
+											{lesson.startAt} - {lesson.endAt}
 											<br />
-											{lesson.title}
+											{lesson.name}
 										</li>
 									))}
 							</ol>

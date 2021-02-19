@@ -5,20 +5,24 @@ import addMonths from 'date-fns/addMonths'
 import endOfMonth from 'date-fns/endOfMonth'
 import classnames from 'classnames'
 
-import { ClsLesson } from '../types/cls.type'
+import { Cls, ClsLesson } from '../types/cls.type'
 
-import { getClsLessonsByDateRange } from '../helpers/api.helper'
+import { getMyClsesByDateRange } from '../helpers/api.helper'
 
 import Calendar from '../components/Calendar/Calendar'
 
 import '../assets/scss/views/ClsLessons.view.scss'
 
-const _titleAccessor = (clsLesson: ClsLesson) =>
-	`${clsLesson.cls.code} ${clsLesson.title}`
-const _tooltipAccessor = (clsLesson: ClsLesson) =>
-	`${clsLesson.cls.code} ${clsLesson.title}`
-const _startAccessor = (clsLesson: ClsLesson) => new Date(clsLesson.startAt)
-const _endAccessor = (clsLesson: ClsLesson) => new Date(clsLesson.endAt)
+type ClsLessonDTO = ClsLesson & {
+	cls: Cls
+}
+
+const _titleAccessor = (clsLesson: ClsLessonDTO) =>
+	`${clsLesson.cls.name} ${clsLesson.name}`
+const _tooltipAccessor = (clsLesson: ClsLessonDTO) =>
+	`${clsLesson.cls.name} ${clsLesson.name}`
+const _startAccessor = (clsLesson: ClsLessonDTO) => new Date(clsLesson.startAt)
+const _endAccessor = (clsLesson: ClsLessonDTO) => new Date(clsLesson.endAt)
 const _eventPropGetter = () => {
 	return {
 		className: classnames(
@@ -28,11 +32,11 @@ const _eventPropGetter = () => {
 	}
 }
 
-const _componentEvent = ({ event: clsLesson }: { event: ClsLesson }) => {
+const _componentEvent = ({ event: clsLesson }: { event: ClsLessonDTO }) => {
 	return (
 		<>
-			<span className='event-clsLesson-code'>{clsLesson.cls.code}</span>{' '}
-			<span className='event-clsLesson-title'>{clsLesson.title}</span>
+			<span className='event-clsLesson-code'>{clsLesson.cls.name}</span>{' '}
+			<span className='event-clsLesson-title'>{clsLesson.name}</span>
 		</>
 	)
 }
@@ -44,11 +48,11 @@ const ClsLessons = (): JSX.Element => {
 	const queryClient = useQueryClient()
 	const history = useHistory()
 	const [clsLessonsMap, setClsLessonsMap] = useState<{
-		[x: string]: ClsLesson[]
+		[x: string]: ClsLessonDTO[]
 	}>({})
 
 	const clsLessons = useMemo(
-		() => Array<ClsLesson>().concat(...Object.values(clsLessonsMap)),
+		() => Array<ClsLessonDTO>().concat(...Object.values(clsLessonsMap)),
 		[clsLessonsMap]
 	)
 
@@ -63,17 +67,21 @@ const ClsLessons = (): JSX.Element => {
 				const endOfMonthOfDate = endOfMonth(date)
 				if (!clsLessonsMap[queryKey]) {
 					queryClient
-						.fetchQuery<ClsLesson[]>(
+						.fetchQuery<Cls[]>(
 							['clsLessons', queryKey],
-							() => getClsLessonsByDateRange(date, endOfMonthOfDate),
+							() => getMyClsesByDateRange(date, endOfMonthOfDate),
 							{
 								staleTime: 60000,
 							}
 						)
-						.then((clsLessons: ClsLesson[]) => {
+						.then((clses: Cls[]) => {
 							setClsLessonsMap((prev) => ({
 								...prev,
-								[queryKey]: clsLessons,
+								[queryKey]: ([] as ClsLessonDTO[]).concat(
+									...clses.map((cls) =>
+										cls.lessons.map((clsLesson) => ({ ...clsLesson, cls }))
+									)
+								),
 							}))
 						})
 				}

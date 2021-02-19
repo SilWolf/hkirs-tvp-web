@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAsync } from 'react-async'
 import { useForm } from 'react-hook-form'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Redirect, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { User } from '../types/user.type'
@@ -39,6 +39,7 @@ const signInFn = async ([{ identifier, password }]: any) => {
 }
 
 const SignIn = () => {
+	const location = useLocation<{ nextPathname: string }>()
 	const { register, handleSubmit, errors, setError } = useForm<FormData>()
 	const signInAsync = useAsync<{ jwt: string; user: User }>({
 		deferFn: signInFn,
@@ -58,6 +59,9 @@ const SignIn = () => {
 
 	if (signInAsync.data) {
 		const signInRes = signInAsync.data
+		if (location && location.state?.nextPathname) {
+			return <Redirect to={location.state?.nextPathname} />
+		}
 		if (signInRes.user.role?.type === 'staff') {
 			return <Redirect to='/staff' />
 		} else {

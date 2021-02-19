@@ -3,25 +3,30 @@ import { Entity } from './strapi/entity.type'
 import { Venue } from './venue.type'
 
 export type Cls = Entity & {
-	id: string
-	price: number
-	capacity: number
 	code: string
-	startDate: string
-	endDate: string
-	createdAt: string
-	updatedAt: string
+	name: string
+	price: number
+	capacityMin: number
+	capacityMax: number
+	startAt: string
+	endAt: string
 
 	course: Course
 	lessons: ClsLesson[]
 }
 
 export type ClsLesson = Entity & {
-	id: string
-	title: string
+	name: string
 	startAt: string
 	endAt: string
+}
 
+export type ClsApplication = Entity & {
+	name: string
+	gender: 'M' | 'F'
+	age: number
+	hkid: string
+	isPaid: boolean
+	isConfirmed: boolean
 	cls: Cls
-	venue: Venue
 }
