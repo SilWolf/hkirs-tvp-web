@@ -31,17 +31,15 @@ const CoursePrice = styled.div`
 `
 
 const CourseDetail = (): JSX.Element => {
-	const { courseId } = useParams<{ courseId: string }>()
+	const { id } = useParams<{ id: string }>()
 	const history = useHistory()
 
-	const courseQuery = useQuery<Course>(['course', courseId], () =>
-		getCourseById(courseId)
-	)
+	const courseQuery = useQuery<Course>(['course', id], () => getCourseById(id))
 	const course = courseQuery.data as Course
 
 	const handleClickSignUp = useCallback(
-		(courseId: string) => {
-			history.push(`/student/course-purchase/${courseId}`)
+		(id: string) => {
+			history.push(`/student/course-purchase/${id}`)
 		},
 		[history]
 	)

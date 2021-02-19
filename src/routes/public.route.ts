@@ -29,7 +29,7 @@ const routes: RouteType[] = [
 		component: AfterSSOSignIn,
 	},
 	{
-		path: '/courses/:courseId',
+		path: '/courses/:id',
 		name: 'Course Detail',
 		component: CourseDetail,
 	},

@@ -1,7 +1,6 @@
 import { Course } from './course.type'
 import { Entity } from './strapi/entity.type'
 import { StrapiFile } from './strapi/StrapiFile.type'
-import { Venue } from './venue.type'
 
 export type Cls = Entity & {
 	code: string

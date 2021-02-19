@@ -15,6 +15,7 @@ import {
 	postClsApplication,
 } from '../helpers/api.helper'
 import { loadStripe } from '../helpers/stripe.helper'
+import useLocalStorage from '../hooks/useLocalstorage.hook'
 
 import {
 	Badge,
@@ -68,6 +69,14 @@ const _defaultFormProps = {
 }
 
 const CoursePurchase = (): JSX.Element => {
+	const [personalInfo, setPersonalInfo] = useLocalStorage<
+		Pick<FormProps, 'name' | 'gender' | 'age' | 'hkid'>
+	>('coursePurchasePersonalInfo', {
+		name: '',
+		gender: 'M',
+		age: 6,
+		hkid: '',
+	})
 	const { courseId } = useParams<{ courseId: string }>()
 	const courseQuery = useQuery<Course>(['course', courseId], () =>
 		getCourseById(courseId)
@@ -94,11 +103,13 @@ const CoursePurchase = (): JSX.Element => {
 			hkid: data.hkid,
 		})
 	})
-
 	const { register, control, errors, handleSubmit: rhfHandleSubmit } = useForm<
 		FormProps
 	>({
-		defaultValues: _defaultFormProps,
+		defaultValues: {
+			..._defaultFormProps,
+			...personalInfo,
+		},
 	})
 	const clsId = useWatch({ control, name: 'clsId', defaultValue: '' })
 	const selectedCls = useMemo<Cls | undefined>(
@@ -108,9 +119,15 @@ const CoursePurchase = (): JSX.Element => {
 
 	const handleSubmit = useCallback(
 		rhfHandleSubmit(async (data: FormProps) => {
+			if (data.savePersonalInfo) {
+				setPersonalInfo({
+					name: data.name,
+					gender: data.gender,
+					age: data.age,
+					hkid: data.hkid,
+				})
+			}
 			const res = await applicationMutation.mutateAsync(data)
-
-			console.log(res, res._stripeSessionId)
 
 			if (res._stripeSessionId) {
 				const stripe = await loadStripe

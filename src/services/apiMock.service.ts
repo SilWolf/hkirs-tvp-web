@@ -1,8 +1,8 @@
 import { AxiosInstance } from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
-import getClsByIdRes from '../mock/getClsById.mock.json'
 import getClassesByUserIdRes from '../mock/getClassesByUserId.mock.json'
+import getClsByIdRes from '../mock/getClsById.mock.json'
 import getCourseRes from '../mock/getCourse.mock.json'
 import getELearningByClassIdRes from '../mock/getELearningByClassId.mock.json'
 import signInRes from '../mock/signIn.mock.json'

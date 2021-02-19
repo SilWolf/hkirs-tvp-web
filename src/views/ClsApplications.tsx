@@ -92,7 +92,7 @@ const ClsApplications = (): JSX.Element => {
 											</th>
 										))
 									}
-									<th>操作</th>
+									{/* <th>操作</th> */}
 								</tr>
 							))
 						}
@@ -121,11 +121,11 @@ const ClsApplications = (): JSX.Element => {
 												)
 											})
 										}
-										<td>
+										{/* <td>
 											<Link to={`${routeMatch.path}/${row.original.id}`}>
 												詳細
 											</Link>
-										</td>
+										</td> */}
 									</tr>
 								)
 							})

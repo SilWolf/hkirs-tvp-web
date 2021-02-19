@@ -22,7 +22,9 @@ import StudentClassDetail from '../views/ClassDetail'
 import ClsApplicationDetail from '../views/ClsApplicationDetail'
 import ClsApplications from '../views/ClsApplications'
 import StudentClses from '../views/ClsLessons'
+import CourseDetail from '../views/CourseDetail'
 import CoursePurchase from '../views/CoursePurchase'
+import Courses from '../views/Courses'
 
 const routes: RouteType[] = [
 	// {
@@ -62,6 +64,19 @@ const routes: RouteType[] = [
 		name: '我的報名',
 		icon: 'nc-icon nc-diamond',
 		component: ClsApplications,
+		inSidebar: true,
+	},
+	{
+		path: '/student/courses/:id',
+		name: '熱門課程',
+		icon: 'nc-icon nc-diamond',
+		component: CourseDetail,
+	},
+	{
+		path: '/student/courses',
+		name: '熱門課程',
+		icon: 'nc-icon nc-diamond',
+		component: Courses,
 		inSidebar: true,
 	},
 ]

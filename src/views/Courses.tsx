@@ -17,6 +17,8 @@ import {
 	Row,
 	Spinner,
 } from 'reactstrap'
+import PageBrandname from '../components/Page/PageBrand'
+import PageTitle from '../components/Page/PageTitle'
 
 const Courses = (): JSX.Element => {
 	const routeMatch = useRouteMatch()
@@ -45,31 +47,43 @@ const Courses = (): JSX.Element => {
 	}
 
 	return (
-		<div className='content'>
-			<Container>
-				<Row>
-					{coursesQuery.data &&
-						coursesQuery.data.map((course) => (
-							<Col xs={4} key={course.id}>
-								<Card>
-									{course.coverImage && (
-										<CardImg top width='100%' src={course.coverImage.url} />
-									)}
-									<CardBody>
-										<CardTitle tag='h5'>{course.name}</CardTitle>
-										<CardText>{course.description}</CardText>
-										<div className='text-right'>
+		<>
+			<PageTitle>新課程 - HKIRS師生平台</PageTitle>
+			<PageBrandname>熱門課程</PageBrandname>
+			<div className='content'>
+				<Container>
+					<Row>
+						{coursesQuery.data &&
+							coursesQuery.data.map((course) => (
+								<Col xs={4} key={course.id}>
+									<Card>
+										{course.coverImage && (
+											<CardImg top width='100%' src={course.coverImage.url} />
+										)}
+										<CardBody>
+											<CardTitle tag='h5'>{course.name}</CardTitle>
 											<Link to={`${routeMatch.path}/${course.id}`}>
-												<a>查看更多 &gt;&gt;</a>
+												<Link
+													to={`/student/course-purchase/${course.id}`}
+													className='btn btn-block btn-primary'
+												>
+													立即報名
+												</Link>
 											</Link>
-										</div>
-									</CardBody>
-								</Card>
-							</Col>
-						))}
-				</Row>
-			</Container>
-		</div>
+											<CardText>{course.description}</CardText>
+											<div className='text-right'>
+												<Link to={`${routeMatch.path}/${course.id}`}>
+													<a>查看更多 &gt;&gt;</a>
+												</Link>
+											</div>
+										</CardBody>
+									</Card>
+								</Col>
+							))}
+					</Row>
+				</Container>
+			</div>
+		</>
 	)
 }
 

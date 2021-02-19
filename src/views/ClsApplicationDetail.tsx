@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useQuery } from 'react-query'
-import { useParams } from 'react-router-dom'
+import { Redirect, useLocation, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { ClsApplication } from '../types/cls.type'
 
@@ -8,9 +9,18 @@ import { getClsApplicationById } from '../helpers/api.helper'
 
 const ClsApplicationDetail = (): JSX.Element => {
 	const { id } = useParams<{ id: string }>()
+	const location = useLocation()
 	const caQuery = useQuery<ClsApplication>(['clsApplication', id], () =>
 		getClsApplicationById(id)
 	)
+
+	useEffect(() => {
+		if (location.search.indexOf('success') !== -1) {
+			toast.success('付費成功，你已完成報名程序。')
+		} else if (location.search.indexOf('canceled') !== -1) {
+			toast.warning('你取消了付款程序，報名已取消。')
+		}
+	}, [location.search])
 
 	if (caQuery.isLoading) {
 		return (
@@ -32,7 +42,7 @@ const ClsApplicationDetail = (): JSX.Element => {
 
 	return (
 		<>
-			<div className='content'>{ca.id}</div>
+			<Redirect to='.' />
 		</>
 	)
 }
