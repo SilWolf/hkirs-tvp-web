@@ -74,30 +74,8 @@ const Inventories = (): JSX.Element => {
 	const [activeInventory, setActiveInventory] = useState<Inventory | undefined>(
 		undefined
 	)
-
 	const [isNewILModalOpened, setIsNewILModalOpened] = useState<boolean>(false)
-	const handleToggleNewILModal = useCallback(
-		(iId?: string | undefined) => {
-			if (!isNewILModalOpened) {
-				const inventory = inventoriesQuery.data?.find((_) => _.id === iId)
-				setActiveInventory(inventory ? { ...inventory } : undefined)
-			}
-			setIsNewILModalOpened((prev) => !prev)
-		},
-		[setIsNewILModalOpened]
-	)
-
 	const [isLogsModalOpened, setIsLogsModalOpened] = useState<boolean>(false)
-	const handleToggleLogsModal = useCallback(
-		(iId?: string | undefined) => {
-			if (!isLogsModalOpened) {
-				const inventory = inventoriesQuery.data?.find((_) => _.id === iId)
-				setActiveInventory(inventory)
-			}
-			setIsLogsModalOpened((prev) => !prev)
-		},
-		[setIsLogsModalOpened]
-	)
 
 	const inventoriesQuery = useQuery<Inventory[]>(
 		['inventories'],
@@ -133,6 +111,38 @@ const Inventories = (): JSX.Element => {
 					),
 				})),
 		}
+	)
+
+	const handleToggleNewILModal = useCallback(
+		(iId?: string | undefined) => {
+			if (!isNewILModalOpened) {
+				const inventory = inventoriesQuery.data?.find((_) => _.id === iId)
+				setActiveInventory(inventory ? { ...inventory } : undefined)
+			}
+			setIsNewILModalOpened((prev) => !prev)
+		},
+		[
+			inventoriesQuery.data,
+			setActiveInventory,
+			isNewILModalOpened,
+			setIsNewILModalOpened,
+		]
+	)
+
+	const handleToggleLogsModal = useCallback(
+		(iId?: string | undefined) => {
+			if (!isLogsModalOpened) {
+				const inventory = inventoriesQuery.data?.find((_) => _.id === iId)
+				setActiveInventory(inventory)
+			}
+			setIsLogsModalOpened((prev) => !prev)
+		},
+		[
+			inventoriesQuery.data,
+			setActiveInventory,
+			isLogsModalOpened,
+			setIsLogsModalOpened,
+		]
 	)
 
 	const tableInstance = useTable({
